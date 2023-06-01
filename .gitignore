@@ -35,3 +35,7 @@ yarn-error.log*
 next-env.d.ts
 pages/_app.js
 .env
+.env.development
+.env.production
+
+.vscode/
