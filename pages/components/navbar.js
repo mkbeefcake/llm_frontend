@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import useUser from '../../lib/useUser'
+import Link from 'next/link'
 
 export default function Navbar() {
     
@@ -33,8 +34,8 @@ export default function Navbar() {
                 <div className="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
                 <nav>
                     <ul className="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
-                        <li><a className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/home">Home</a></li>
-                        <li><a className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/dashboard/about">About</a></li>
+                        <li><Link className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/home">Home</Link></li>
+                        <li><Link className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/dashboard/about">About</Link></li>
                     </ul>
                 </nav>
                 </div>
@@ -51,7 +52,7 @@ export default function Navbar() {
                     {
                         user != undefined && user.isLoggedIn == true &&
                         <>
-                            <button className="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700" onClick={onLogout}>Log out</button>
+                            <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 text-gray-100 p-2 rounded border border-gray-300 mr-4 " onClick={onLogout}>Log out</button>
                         </>
                     }
                 </div>
