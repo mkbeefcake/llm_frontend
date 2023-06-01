@@ -1,6 +1,6 @@
-import Navbar from "../components/navbar"
+import Navbar from "./navbar"
 
-export default function DashboardLayout({ children }) {
+export default function DefaultLayout({ children }) {
     return (
         <main className="flex min-h-screen flex-col">
             <Navbar />
