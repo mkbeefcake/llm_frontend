@@ -3,7 +3,7 @@ import withSession from '../../lib/session';
 
 export default withSession(async (req, res) => {
   const user = req.session.get('user')    
-  const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/get_providers'
+  const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/get_my_providers'
     
   try {
     // we check that the user exists on GitHub and store some data in session

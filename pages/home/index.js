@@ -9,7 +9,7 @@ export default function Home() {
   const router = useRouter();
   const { user } = useUser({});
 
-  const [providers, setProviders] = useState([]);
+  const [mine, setMine] = useState([]);
 
   useEffect(() => {
     if (user === undefined || user.isLoggedIn === false) {
@@ -20,8 +20,32 @@ export default function Home() {
   useEffect(() => {
     const async_task = async () => {
       try {
-        setProviders(await fetchJson('/api/getProviders'));
-        console.log(`Home screen: Response = ${JSON.stringify(response)}`);
+        let myInfo = []
+
+        const response = await fetchJson('/api/getMyProviders');
+        console.log(`Response: ${JSON.stringify(response)}`);
+
+        response.providers.map((provider, i) => {
+         
+          provider.isActivated = false;
+          provider.isStartedBot = false;
+
+          if (response.my_providers) {
+            for (let index = 0; index < response.my_providers.length; index++) {
+              if (provider.provider == response.my_providers[index]) {
+                provider.isActivated = true;
+              }
+            }            
+          }
+
+          if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == True) {
+            provider.isStartedBot = true;
+          }
+
+          myInfo.push(provider);
+        });
+
+        setMine(myInfo);
       }
       catch (err) {
         console.log(`Home Screen: ${err}`)
@@ -58,11 +82,8 @@ export default function Home() {
             <div class="shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
               <div class="pt--10 pr-0 pb-10 pl-0">
                 {
-                  providers.map((provider, i) => (
-                    <ProviderCard key={i} providerName={provider.provider_description} 
-                      isActivated={false} 
-                      isStartedBot={false} 
-                      iconUrl="icons8-bot-64.png" />
+                  mine.map((provider, i) => (
+                    <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" />
                   ))
                 }
               </div>
