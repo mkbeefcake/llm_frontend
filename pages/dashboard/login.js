@@ -1,11 +1,23 @@
-import { useState } from "react";
-import fetchJson
- from "../../lib/fetchJson";
+import { useEffect, useState } from "react";
+import fetchJson from "../../lib/fetchJson";
+import { useRouter } from 'next/navigation';
+import useUser from "../../lib/useUser";
+
 export default function Login() {
+
+  const router = useRouter();
+  const { mutateUser, user } = useUser({});
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
+  useEffect(() => {
+    if (user && user.isLoggedIn === true) {
+      router.replace('/home')
+    }
+
+  }, [user, router])
+
   const onLogin = async (e) => {
 
     if (email == '' || password == '') {
@@ -14,12 +26,11 @@ export default function Login() {
     }
 
     try {
-      const response = await fetchJson('/api/login', {
+      mutateUser(await fetchJson('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ email, password })
-      })
-      console.log(`Login Response: ${JSON.stringify(response)}`)
+      }));
     }
     catch(err) {
       console.log(err)

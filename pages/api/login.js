@@ -22,10 +22,10 @@ export default withSession(async (req, res) => {
     });
 
     const user = { isLoggedIn: true, access_token, token_type };
-    req.session.set('user', user);
-    console.log(req.session);
+    req.session.set('user', user);    
+
     await req.session.save();
-    res.json({'ok': ''});    
+    res.json(user);    
   } 
   catch (error) {
     const { response: fetchResponse } = error;

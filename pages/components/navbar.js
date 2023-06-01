@@ -1,9 +1,11 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import useUser from '../../lib/useUser'
 
 export default function Navbar() {
-
+    
     const router = useRouter()
+    const { user } = useUser({})
 
     const onSignup = (e) => {
         router.replace('/dashboard/signup')
@@ -11,6 +13,10 @@ export default function Navbar() {
 
     const onLogin = (e) => {
         router.replace('/dashboard/login')
+    }
+
+    const onLogout = (e) => {
+        router.replace('/dashboard/logout')
     }
 
     return (
@@ -27,7 +33,7 @@ export default function Navbar() {
                 <div className="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
                 <nav>
                     <ul className="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
-                        <li><a className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="#">Home</a></li>
+                        <li><a className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/home">Home</a></li>
                         <li><a className="inline-block no-underline hover:text-black font-medium text-lg py-2 px-4 lg:-ml-2" href="/dashboard/about">About</a></li>
                     </ul>
                 </nav>
@@ -35,8 +41,19 @@ export default function Navbar() {
                 
                 <div className="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
                 <div className="auth flex items-center w-full md:w-full">
-                    <button className="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700" onClick={onLogin}>Sign in</button>
-                    <button className="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100" onClick={onSignup}>Sign up</button>
+                    { 
+                        (user == undefined || user.isLoggedIn == false) && 
+                        <>
+                            <button className="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700" onClick={onLogin}>Sign in</button>
+                            <button className="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100" onClick={onSignup}>Sign up</button>
+                        </>
+                    }
+                    {
+                        user != undefined && user.isLoggedIn == true &&
+                        <>
+                            <button className="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700" onClick={onLogout}>Log out</button>
+                        </>
+                    }
                 </div>
                 </div>
             </div>
