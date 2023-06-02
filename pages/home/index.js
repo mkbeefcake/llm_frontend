@@ -11,7 +11,7 @@ export default function Home() {
 
   const [mine, setMine] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {    
     if (user === undefined || user.isLoggedIn === false) {
       router.replace('/dashboard/login')
     }  

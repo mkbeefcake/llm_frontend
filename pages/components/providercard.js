@@ -1,8 +1,22 @@
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation";
+import { useCustomOAuth } from "../../lib/oauth/useOAuth";
+import fetchJson from '../../lib/fetchJson'
 
 export default function ProviderCard({ provider, iconUrl }) {
 
+    const router = useRouter();
     const [providerStatus, setProviderStatus] = useState('');
+
+    const { customOAuthHandler, setProviderUri } = useCustomOAuth({
+        redirectUri: `${typeof window === 'object' && window.location.origin}/callback/oauth`,
+		onSuccess: async (code) => {
+			console.log('called me')
+		},
+		onError: (error) => {
+			console.log(error)
+		},
+    })
 
     useEffect(() => {
         if (provider.isActivated === false) {
@@ -19,11 +33,24 @@ export default function ProviderCard({ provider, iconUrl }) {
     }, [provider])
 
     const onActivate = (e) => {
-
+        const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/link_provider?provider_name=gmailprovider';
+        setProviderUri(url);
+        customOAuthHandler();
+        // const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/link_provider?provider_name=' + provider?.provider;
+        // window.open(url, '_blank')
     }
 
-    const onDeactivate = (e) => {
-
+    const onDeactivate = async (e) => {
+        try {
+            const response = await fetchJson(`/api/unlinkProvider?provider=${provider?.provider}`, {
+                method: 'Get',
+                headers: { 'Content-Type': 'application/json'},
+            });
+            console.log(`onDeactivate: ${JSON.stringify(response)}`)
+        }
+        catch(err) {
+            console.log(`Unlink provider: ${err}`)
+        }
     }
 
     const onStartAutoBot = (e) => {
@@ -49,24 +76,24 @@ export default function ProviderCard({ provider, iconUrl }) {
                 {
                     provider?.isActivated == false && 
                     <button className="bg-blue-600 hover:bg-blue-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg">Activate</button>
+                    duration-200 rounded-lg" onClick={onActivate}>Activate</button>
                 }
                 {
                     provider?.isActivated == true && 
                     <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg">Deactivate</button>
+                    duration-200 rounded-lg" onClick={onDeactivate} >Deactivate</button>
                 }
             </div>
             <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
                 {
                     provider?.isStartedBot == false &&
                     <button className="bg-blue-600 hover:bg-blue-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg">Start Autobot</button>
+                    duration-200 rounded-lg" onClick={onStartAutoBot} >Start Autobot</button>
                 }
                 {
                     provider?.isStartedBot == true &&
                     <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg">Stop Autobot</button>
+                    duration-200 rounded-lg" onClick={onStopAutoBot} >Stop Autobot</button>
                 }
             </div>
             </div>
