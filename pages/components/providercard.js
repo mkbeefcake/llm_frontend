@@ -67,12 +67,39 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
         }
     }
 
-    const onStartAutoBot = (e) => {
-
+    const onStartAutoBot = async (e) => {
+        try {
+            const response = await fetchJson(`/api/startautobot`, {
+                method: 'Post',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    'provider': provider?.provider,
+                    'interval': 300
+                })
+            });
+            console.log(`onStartAutoBot: ${JSON.stringify(response)}`)
+            onUpdate();
+        }
+        catch(err) {
+            console.log(`Unlink provider: ${err}`)
+        }
     }
 
-    const onStopAutoBot = (e) => {
-        
+    const onStopAutoBot = async (e) => {
+        try {
+            const response = await fetchJson(`/api/stopautobot`, {
+                method: 'Post',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    'provider': provider?.provider
+                })
+            });
+            console.log(`onStopAutoBot: ${JSON.stringify(response)}`)
+            onUpdate();
+        }
+        catch(err) {
+            console.log(`Unlink provider: ${err}`)
+        }        
     }
 
     return (
@@ -102,12 +129,12 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
                 {
                     provider?.isStartedBot == false &&
                     <button className="bg-blue-600 hover:bg-blue-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg" onClick={onStartAutoBot} >Start Autobot</button>
+                    duration-200 rounded-lg" onClick={onStartAutoBot} disabled={!provider?.isActivated}>Start Autobot</button>
                 }
                 {
                     provider?.isStartedBot == true &&
                     <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg" onClick={onStopAutoBot} >Stop Autobot</button>
+                    duration-200 rounded-lg" onClick={onStopAutoBot} disabled={!provider?.isActivated}>Stop Autobot</button>
                 }
             </div>
             </div>

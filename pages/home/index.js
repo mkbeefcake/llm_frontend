@@ -41,7 +41,7 @@ export default function Home() {
           }            
         }
 
-        if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == True) {
+        if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == true) {
           provider.isStartedBot = true;
         }
 

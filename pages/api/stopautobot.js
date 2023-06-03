@@ -2,12 +2,13 @@ import fetchJson from '../../lib/fetchJson';
 import withSession from '../../lib/session';
 
 export default withSession(async (req, res) => {
-  const { provider, social_info } = await req.body;
+  const { provider } = await req.body;
   const user = req.session.get('user')
 
-  const param = encodeURIComponent(JSON.stringify(social_info));
-
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/update_provider_info?provider_name=${provider}&social_info=${param}`
+  const url = process.env.NEXT_PUBLIC_BASE_URL + `/users/stop_auto_bot`
+  console.log(`[StopAutoBot]: ${JSON.stringify({
+    'provider_name': provider, 
+  })}`)
 
   try {
     // we check that the user exists on GitHub and store some data in session
@@ -17,9 +18,8 @@ export default withSession(async (req, res) => {
         'Content-Type': 'application/json',
         'Authorization': user.token_type + ' ' + user.access_token
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         'provider_name': provider, 
-        'social_info': social_info
       })
     });
 
