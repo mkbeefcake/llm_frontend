@@ -8,14 +8,30 @@ export default function ProviderCard({ provider, iconUrl }) {
     const router = useRouter();
     const [providerStatus, setProviderStatus] = useState('');
 
-    const { customOAuthHandler, setProviderUri } = useCustomOAuth({
-        redirectUri: `${typeof window === 'object' && window.location.origin}/callback/oauth`,
-		onSuccess: async (code) => {
-			console.log('called me')
-		},
-		onError: (error) => {
-			console.log(error)
-		},
+    const { customOAuthHandler } = useCustomOAuth({
+		onSuccess: async (data) => {
+			console.log(`Response : ${JSON.stringify(data)}`)
+            debugger;
+            try {
+                const res = await fetchJson('/api/updateProviderInfo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json'},
+                    body: JSON.stringify({ 
+                        'provider': data.provider, 
+                        'social_info': { 
+                            'access_token': data.access_token,
+                            'refresh_token': data.refresh_token
+                        } 
+                    })
+                });
+
+                console.log(`res : ${JSON.stringify(res)}`)
+              }
+              catch(err) {
+                console.log(`Login Screen: ${err}`)
+              }
+          
+        }
     })
 
     useEffect(() => {
@@ -33,9 +49,9 @@ export default function ProviderCard({ provider, iconUrl }) {
     }, [provider])
 
     const onActivate = (e) => {
-        const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/link_provider?provider_name=gmailprovider';
-        setProviderUri(url);
-        customOAuthHandler();
+        const redirectUri = `${typeof window === 'object' && window.location.origin}/callback/oauth`;
+        const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/link_provider?provider_name=gmailprovider&${redirectUri}`;
+        customOAuthHandler(url);
         // const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/link_provider?provider_name=' + provider?.provider;
         // window.open(url, '_blank')
     }
