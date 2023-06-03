@@ -18,41 +18,46 @@ export default function Home() {
   }, [user, router])
 
   useEffect(() => {
-    const async_task = async () => {
-      try {
-        let myInfo = []
-
-        const response = await fetchJson('/api/getMyProviders');
-        console.log(`Response: ${JSON.stringify(response)}`);
-
-        response.providers.map((provider, i) => {
-         
-          provider.isActivated = false;
-          provider.isStartedBot = false;
-
-          if (response.my_providers) {
-            for (let index = 0; index < response.my_providers.length; index++) {
-              if (provider.provider == response.my_providers[index]) {
-                provider.isActivated = true;
-              }
-            }            
-          }
-
-          if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == True) {
-            provider.isStartedBot = true;
-          }
-
-          myInfo.push(provider);
-        });
-
-        setMine(myInfo);
-      }
-      catch (err) {
-        console.log(`Home Screen: ${err}`)
-      }
-    }
-    async_task()
+    getMyProviders()
   }, [])
+
+  const getMyProviders = async () => {
+    try {
+      let myInfo = []
+
+      const response = await fetchJson('/api/getMyProviders');
+      console.log(`Response: ${JSON.stringify(response)}`);
+
+      response.providers.map((provider, i) => {
+       
+        provider.isActivated = false;
+        provider.isStartedBot = false;
+
+        if (response.my_providers) {
+          for (let index = 0; index < response.my_providers.length; index++) {
+            if (provider.provider == response.my_providers[index]) {
+              provider.isActivated = true;
+            }
+          }            
+        }
+
+        if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == True) {
+          provider.isStartedBot = true;
+        }
+
+        myInfo.push(provider);
+      });
+
+      setMine(myInfo);
+    }
+    catch (err) {
+      console.log(`Home Screen: ${err}`)
+    }
+  }
+
+  const onUpdateParent = function() {
+    getMyProviders();
+  }
 
   return (
     <div>
@@ -83,7 +88,7 @@ export default function Home() {
               <div className="pt--10 pr-0 pb-10 pl-0">
                 {
                   mine.map((provider, i) => (
-                    <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" />
+                    <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" onUpdate={onUpdateParent} />
                   ))
                 }
               </div>

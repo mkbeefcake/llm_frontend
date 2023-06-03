@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useCustomOAuth } from "../../lib/oauth/useOAuth";
 import fetchJson from '../../lib/fetchJson'
 
-export default function ProviderCard({ provider, iconUrl }) {
+export default function ProviderCard({ provider, iconUrl, onUpdate }) {
 
     const router = useRouter();
     const [providerStatus, setProviderStatus] = useState('');
@@ -11,7 +11,6 @@ export default function ProviderCard({ provider, iconUrl }) {
     const { customOAuthHandler } = useCustomOAuth({
 		onSuccess: async (data) => {
 			console.log(`Response : ${JSON.stringify(data)}`)
-            debugger;
             try {
                 const res = await fetchJson('/api/updateProviderInfo', {
                     method: 'POST',
@@ -26,11 +25,11 @@ export default function ProviderCard({ provider, iconUrl }) {
                 });
 
                 console.log(`res : ${JSON.stringify(res)}`)
-              }
-              catch(err) {
+                onUpdate();
+            }
+            catch(err) {
                 console.log(`Login Screen: ${err}`)
-              }
-          
+            }          
         }
     })
 
@@ -50,10 +49,8 @@ export default function ProviderCard({ provider, iconUrl }) {
 
     const onActivate = (e) => {
         const redirectUri = `${typeof window === 'object' && window.location.origin}/callback/oauth`;
-        const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/link_provider?provider_name=gmailprovider&${redirectUri}`;
+        const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/link_provider?provider_name=${provider?.provider}&${redirectUri}`;
         customOAuthHandler(url);
-        // const url = process.env.NEXT_PUBLIC_BASE_URL + '/providers/link_provider?provider_name=' + provider?.provider;
-        // window.open(url, '_blank')
     }
 
     const onDeactivate = async (e) => {
@@ -63,6 +60,7 @@ export default function ProviderCard({ provider, iconUrl }) {
                 headers: { 'Content-Type': 'application/json'},
             });
             console.log(`onDeactivate: ${JSON.stringify(response)}`)
+            onUpdate();
         }
         catch(err) {
             console.log(`Unlink provider: ${err}`)
