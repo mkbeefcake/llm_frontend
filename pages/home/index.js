@@ -22,6 +22,7 @@ export default function Home() {
   }, [])
 
   const getMyProviders = async () => {
+    debugger
     try {
       let myInfo = []
 

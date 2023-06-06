@@ -5,7 +5,7 @@ export default withSession(async (req, res) => {
   const { provider, interval } = await req.body;
   const user = req.session.get('user')
 
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/users/start_auto_bot`
+  const url = process.env.NEXT_PUBLIC_BASE_URL + `/users/start_auto_bot?provider_name=${provider}&interval=${interval}`
   console.log(`[StartAutoBot]: ${JSON.stringify({
     'provider_name': provider, 
     'interval': interval
@@ -19,10 +19,7 @@ export default withSession(async (req, res) => {
         'Content-Type': 'application/json',
         'Authorization': user.token_type + ' ' + user.access_token
       },
-      body: JSON.stringify({
-        'provider_name': provider, 
-        'interval': interval
-      })
+      body: JSON.stringify({})
     });
 
     res.json(response);

@@ -68,13 +68,14 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
     }
 
     const onStartAutoBot = async (e) => {
+        debugger
         try {
             const response = await fetchJson(`/api/startautobot`, {
                 method: 'Post',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     'provider': provider?.provider,
-                    'interval': 300
+                    'interval': 60
                 })
             });
             console.log(`onStartAutoBot: ${JSON.stringify(response)}`)

@@ -5,7 +5,7 @@ export default withSession(async (req, res) => {
   const { provider } = await req.body;
   const user = req.session.get('user')
 
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/users/stop_auto_bot`
+  const url = process.env.NEXT_PUBLIC_BASE_URL + `/users/stop_auto_bot?provider_name=${provider}`
   console.log(`[StopAutoBot]: ${JSON.stringify({
     'provider_name': provider, 
   })}`)
@@ -18,9 +18,7 @@ export default withSession(async (req, res) => {
         'Content-Type': 'application/json',
         'Authorization': user.token_type + ' ' + user.access_token
       },
-      body: JSON.stringify({
-        'provider_name': provider, 
-      })
+      body: JSON.stringify({})
     });
 
     res.json(response);
