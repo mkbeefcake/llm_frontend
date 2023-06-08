@@ -47,8 +47,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: #212C3D;
+    --background-end-rgb: #212C3D;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
@@ -90,13 +90,8 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground-rgb);
+  background: var(--background-start-rgb);
 }
 
 a {
@@ -107,5 +102,29 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+
+  body {
+    color: var(--foreground-rgb);
+    background: var(--background-start-rgb);
+  }  
+
+  div.panel {
+    background: #1B222E
+  }
+
+  .main-button {
+    border: 1px solid #635EE3;
+    background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
+  }
+
+  input {
+    background: #37404F;
+    border: #37404F;
+  }
+
+
+  .main-color {
+    color: #635EE3;
   }
 }

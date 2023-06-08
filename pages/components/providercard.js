@@ -68,7 +68,6 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
     }
 
     const onStartAutoBot = async (e) => {
-        debugger
         try {
             const response = await fetchJson(`/api/startautobot`, {
                 method: 'Post',
