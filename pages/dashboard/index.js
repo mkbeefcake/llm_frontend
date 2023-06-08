@@ -15,10 +15,3 @@ export default function Page() {
   )
 }
  
-Page.getLayout = function getLayout(page) {
-  return (
-    <DefaultLayout>
-      {page}
-    </DefaultLayout>
-  )
-}

@@ -108,16 +108,15 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
             <div className="flex items-center flex-1 min-w-0">
                 <img alt={provider?.provider_description} src={iconUrl} width={10} height={10} className="flex-shrink-0 object-cover rounded-full w-10 h-10"/>
                 <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                <p className="text-lg font-bold text-gray-800 truncate">{provider?.provider_description}</p>
-                <p className="text-gray-600 text-md">{providerStatus}</p>
+                <p className="text-lg font-bold main-color truncate">{provider?.provider_description}</p>
+                <p className="text-gray-300 text-md">{providerStatus}</p>
                 </div>
             </div>
             <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
                 sm:mt-0">
                 {
                     provider?.isActivated == false && 
-                    <button className="bg-blue-600 hover:bg-blue-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg" onClick={onActivate}>Activate</button>
+                    <button className="main-button pt-2 pr-6 pb-2 pl-6 text-lg font-medium transition-all duration-200 rounded-lg" onClick={onActivate}>Activate</button>
                 }
                 {
                     provider?.isActivated == true && 
@@ -128,7 +127,7 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
             <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
                 {
                     provider?.isStartedBot == false &&
-                    <button className="bg-blue-600 hover:bg-blue-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                    <button className="main-button pt-2 pr-6 pb-2 pl-6 text-lg font-medium transition-all
                     duration-200 rounded-lg" onClick={onStartAutoBot} disabled={!provider?.isActivated}>Start Autobot</button>
                 }
                 {

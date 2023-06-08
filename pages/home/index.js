@@ -3,6 +3,7 @@ import useUser from '../../lib/useUser'
 import { useEffect, useState } from 'react';
 import ProviderCard from '../components/providercard';
 import fetchJson from '../../lib/fetchJson';
+import HomeLayout from './layout';
 
 export default function Home() {
 
@@ -61,13 +62,13 @@ export default function Home() {
 
   return (
     <div>
-      <div className="bg-white pt-12 pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
+      <div className="pt-12 pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
         <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-4xl sm:px-6 lg:px-8">
             <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
               <div>
-                <p className="text-xl font-bold text-gray-900">Providers</p>
-                <p className="text-sm mt-1 mr-0 mb-0 ml-0 font-semi-bold text-gray-500">Your current automated providers</p>
+                <p className="text-xl font-bold text-gray-200">Providers</p>
+                <p className="text-sm mt-1 mr-0 mb-0 ml-0 font-semi-bold text-gray-400">Your current automated providers</p>
               </div>
               <div className="mt-4 mr-0 mb-0 ml-0 sm:mt-0">
                 <p className="sr-only">Search Position</p>
@@ -84,7 +85,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
+            <div className="panel shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
               <div className="pt--10 pr-0 pb-10 pl-0">
                 {
                   mine.map((provider, i) => (
@@ -99,3 +100,5 @@ export default function Home() {
     </div>
   );
 }
+
+Home.PageLayout = HomeLayout
