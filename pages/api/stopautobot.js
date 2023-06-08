@@ -21,7 +21,7 @@ export default withSession(async (req, res) => {
       body: JSON.stringify({})
     });
 
-    res.json(response);
+    res.json({'ok': 'Success', 'data': response});
   } 
   catch (error) {
     const { response: fetchResponse } = error;

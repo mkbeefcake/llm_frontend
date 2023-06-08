@@ -19,16 +19,14 @@ export default withSession(async (req, res) => {
   
       if (response.detail && response.detail == 'User unauthorized') {
         req.session.destroy();
-        res.json({
-          isLoggedIn: false,
-        })
+        res.json({'err': 'Failure', reason: '{"isLoggedIn": false}'})
         return;
       }
 
-      res.json({
+      res.json({'ok': 'Success', 'data': {
         isLoggedIn: true,
         ...user,
-      })
+      }})
     } 
     catch (error) {
       const { response: fetchResponse } = error;
@@ -36,8 +34,6 @@ export default withSession(async (req, res) => {
     }
   } 
   else {
-    res.json({
-      isLoggedIn: false,
-    })
+    res.json({'err': 'Failure', reason: '{"isLoggedIn": false}'})
   }
 })

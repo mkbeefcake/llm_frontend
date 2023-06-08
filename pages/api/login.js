@@ -25,7 +25,7 @@ export default withSession(async (req, res) => {
     req.session.set('user', user);    
 
     await req.session.save();
-    res.json(user);    
+    res.json({'ok': 'Success', 'data': user});
   } 
   catch (error) {
     const { response: fetchResponse } = error;

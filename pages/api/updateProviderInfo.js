@@ -23,7 +23,7 @@ export default withSession(async (req, res) => {
       })
     });
 
-    res.json(response);
+    res.json({'ok': 'Success', 'data': response});
   } 
   catch (error) {
     const { response: fetchResponse } = error;

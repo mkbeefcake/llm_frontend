@@ -27,11 +27,13 @@ export default function Login() {
     }
 
     try {
-      mutateUser(await fetchJson('/api/login', {
+      debugger;
+      const _user = await fetchJson('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ email, password })
-      }));
+      });
+      mutateUser(_user);
     }
     catch(err) {
       console.log(`Login Screen: ${err}`)
