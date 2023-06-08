@@ -1,6 +1,7 @@
 import '../globals.css'
 
-import DefaultLayout from './components/layout';
+// import DefaultLayout from './components/layout';
+import HomeLayout from './home/layout';
 import { SWRConfig } from 'swr'; 
 import fetchJSON from '../lib/fetchJson'
 
@@ -17,9 +18,9 @@ export default function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Component.PageLayout>
       ) : (
-        <DefaultLayout>
+        <HomeLayout>
           <Component {...pageProps} />
-        </DefaultLayout>
+        </HomeLayout>
       )}
 
     </SWRConfig>

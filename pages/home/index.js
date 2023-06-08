@@ -8,12 +8,12 @@ import HomeLayout from './layout';
 export default function Home() {
 
   const router = useRouter();
-  const { user } = useUser({});
+  const { user } = useUser({ });
 
   const [mine, setMine] = useState([]);
 
   useEffect(() => {    
-    if (user === undefined || user.isLoggedIn === false) {
+    if (user !== undefined && user.isLoggedIn === false) {
       router.replace('/dashboard/login')
     }  
   }, [user, router])
@@ -63,8 +63,8 @@ export default function Home() {
   return (
     <div>
       <div className="pt-12 pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
-        <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-4xl sm:px-6 lg:px-8">
+        <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-8xl sm:px-6 lg:px-8">
+          <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
               <div>
                 <p className="text-xl font-bold text-gray-200">Providers</p>
@@ -85,14 +85,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="panel shadow-xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
-              <div className="pt--10 pr-0 pb-10 pl-0">
-                {
-                  mine.map((provider, i) => (
-                    <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" onUpdate={onUpdateParent} />
-                  ))
-                }
-              </div>
+            <div className="pt-10 pr-0 pb-10 pl-0">
+              {
+                mine.map((provider, i) => (
+                  <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" onUpdate={onUpdateParent} />
+                ))
+              }
             </div>
           </div>
         </div>

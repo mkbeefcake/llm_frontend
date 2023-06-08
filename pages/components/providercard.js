@@ -103,13 +103,13 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
     }
 
     return (
-        <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+        <div className="panel flow-root rounded-lg pt-5 pr-10 pb-5 pl-10 m-5">
             <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
             <div className="flex items-center flex-1 min-w-0">
                 <img alt={provider?.provider_description} src={iconUrl} width={10} height={10} className="flex-shrink-0 object-cover rounded-full w-10 h-10"/>
                 <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                <p className="text-lg font-bold main-color truncate">{provider?.provider_description}</p>
-                <p className="text-gray-300 text-md">{providerStatus}</p>
+                <p className="text-lg font-bold white truncate">{provider?.provider_description}</p>
+                <p className="text-gray-400 text-md"> <a className="main-color"> Add rules </a> / 3 rules added</p>
                 </div>
             </div>
             <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
@@ -133,7 +133,7 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
                 {
                     provider?.isStartedBot == true &&
                     <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg" onClick={onStopAutoBot} disabled={!provider?.isActivated}>Stop Autobot</button>
+                    duration-200 rounded-lg" onClick={onStopAutoBot} disabled={!provider?.isActivated}>In-progress</button>
                 }
             </div>
             </div>

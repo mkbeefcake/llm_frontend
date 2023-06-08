@@ -9,7 +9,7 @@ const projectStyle = {
 
 const sideBarStyle = {
     height: '100vh',
-    width: '16vw',
+    width: '18vw',
     borderRight: '1px solid #33303F',
     padding: '0 6px',
     backgroundColor: '#1b222e'
@@ -17,7 +17,7 @@ const sideBarStyle = {
 
 const workSpaceStyle = {
     height: '100vh',
-    width: '84vw',
+    width: '82vw',
     backgroundColor: '#28313f',
 }
 
