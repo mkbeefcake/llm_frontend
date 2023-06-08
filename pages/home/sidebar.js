@@ -1,5 +1,160 @@
+import Image from "next/image";
+  
 export default function Sidebar() {
+
     return (
-        <></>
+        <>
+        <nav
+            id="sidenav-8"
+            class="absolute left-0 h-full -translate-x-full overflow-hidden data-[te-sidenav-hidden='false']:translate-x-0 "
+            data-te-sidenav-init
+            data-te-sidenav-hidden="false"
+            data-te-sidenav-position="absolute"
+            data-te-sidenav-accordion="true">
+            <a
+                class="mb-3 flex items-center justify-center py-6 outline-none"
+                href="#!"
+                data-te-ripple-init
+                data-te-ripple-color="primary">
+                <Image
+                    id="logo"
+                    src="/icons8-bot-64.png"
+                    alt="Logo"
+                    width={50}
+                    height={50}
+                    draggable="false" />
+                <span></span>
+            </a>
+            <ul
+                class="relative m-0 list-none px-[0.2rem] pb-12"
+                data-te-sidenav-menu-ref>
+                <li class="relative pt-4">
+                    <span
+                        class="li-span px-6 py-4 text-gray-600 dark:text-gray-400"
+                        >Navigation</span>
+                    <a
+                        class="mt-4 flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                        data-te-sidenav-link-ref>
+                        <span class="mr-4 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                            <Image
+                                id="dashboard_icon"
+                                src="/dashboard_icon.png"
+                                alt="Dashboard"
+                                width={18}
+                                height={18}
+                                draggable="false" />
+                        </span>
+                        <span className="li-item">Dashboard</span>
+                    </a>
+                </li>
+                <li class="relative">
+                    <a
+                        class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                        data-te-sidenav-link-ref>
+                        <span
+                        class="mr-4 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                            <Image
+                                id="billing_icon"
+                                src="/billing_icon.png"
+                                alt="Billing"
+                                width={18}
+                                height={18}
+                                draggable="false" />                            
+                        </span>
+                        <span className="li-item">Billing</span>
+                    </a>
+                </li>
+                <li class="relative pt-4 mt-4">
+                    <span
+                        class="li-span px-6 py-4 text-[0.6rem] font-bold text-gray-600 dark:text-gray-400"
+                        >Providers</span
+                    >
+                    <a
+                        class="mt-4 flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                        data-te-sidenav-link-ref>
+                        <span
+                        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                            <Image
+                                id="gmail_icon"
+                                src="/gmail_icon.png"
+                                alt="GMail"
+                                width={18}
+                                height={18}
+                                draggable="false" />
+                        </span>
+                        <span className="li-item">GMail (2)</span>
+                    </a>
+                </li>
+                <li class="relative">
+                <a
+                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref>
+                    <span
+                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                        <Image
+                            id="linkedin_icon"
+                            src="/linkedin_icon.png"
+                            alt="Linkedin"
+                            width={18}
+                            height={18}
+                            draggable="false" />
+                    </span>
+                    <span className="li-item">Replicate (1)</span>
+                </a>
+                </li>
+                <li class="relative">
+                <a
+                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref>
+                    <span
+                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                        <Image
+                            id="facebook_icon"
+                            src="/facebook_icon.png"
+                            alt="Facebook"
+                            width={18}
+                            height={18}
+                            draggable="false" />
+                    </span>
+                    <span className="li-item">Facebook</span>
+                </a>
+                </li>
+                <li class="relative">
+                <a
+                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref>
+                    <span
+                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+                        <Image
+                            id="twitter_icon"
+                            src="/twitter_icon.png"
+                            alt="Twitter"
+                            width={18}
+                            height={18}
+                            draggable="false" />
+                    </span>
+                    <span className="li-item">Twitter</span>
+                </a>
+                </li>
+                <li class="relative">
+                <a
+                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+                    data-te-sidenav-link-ref>
+                    <span
+                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                        <Image
+                            id="addprovider_icon"
+                            src="/addprovider_icon.png"
+                            alt="Add Provider"
+                            width={18}
+                            height={18}
+                            draggable="false" />
+                    </span>
+                    <span className="li-item">Add provider</span>
+                </a>
+                </li>
+            </ul>
+            </nav>
+       </>
     )
 }

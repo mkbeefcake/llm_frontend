@@ -19,7 +19,7 @@ export default withSession(async (req, res) => {
   
       if (response.detail && response.detail == 'User unauthorized') {
         req.session.destroy();
-        res.json({'err': 'Failure', reason: '{"isLoggedIn": false}'})
+        res.json({"isLoggedIn": false})
         return;
       }
 
@@ -34,6 +34,6 @@ export default withSession(async (req, res) => {
     }
   } 
   else {
-    res.json({'err': 'Failure', reason: '{"isLoggedIn": false}'})
+    res.json({"isLoggedIn": false})
   }
 })
