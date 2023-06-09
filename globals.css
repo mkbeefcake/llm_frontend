@@ -47,8 +47,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: #212C3D;
-    --background-end-rgb: #212C3D;
+    --background-start-rgb: #2a3345;
+    --background-end-rgb: #28313f;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
@@ -106,7 +106,7 @@ a {
 
   body {
     color: var(--foreground-rgb);
-    background: var(--background-start-rgb);
+    background: linear-gradient(to right, var(--background-start-rgb), var(--background-end-rgb));
   }  
 
   div.panel {

@@ -10,7 +10,6 @@ const projectStyle = {
     height: '100vh',
     width: '100vw',
     display: 'flex',
-    backgroundColor: '#1B192C',
 }
 
 const sideBarStyle = {
@@ -24,7 +23,6 @@ const sideBarStyle = {
 const workSpaceStyle = {
     height: '100vh',
     width: '80vw',
-    backgroundColor: '#28313f',
 }
 
 export default function HomeLayout({ children }) {

@@ -16,7 +16,7 @@ export default function ProviderLink({ provider, count, isFirst }) {
                 <span class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                     <Image
                         id={provider.provider}
-                        src={provider.provider_icon_url ? provider_icon_url : "/icons8-bot-64.png"}
+                        src={provider.provider_icon_url ? provider.provider_icon_url : "/icons8-bot-64.png"}
                         alt={provider.provider_description}
                         width={18}
                         height={18}
