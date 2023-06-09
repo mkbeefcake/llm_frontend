@@ -1,27 +1,27 @@
+import { useEffect, useState } from 'react';
 import ProviderCard from './components/providercard';
 import HomeLayout from './layout';
+import ProviderPanel from './components/providerpanel';
 
 export default function Home({ myProviders, onUpdateScreen }) {
 
-  // myProviders.providers.map((provider, i) => {
-      
-  //     provider.isActivated = false;
-  //     provider.isStartedBot = false;
+  const [providers, setProviders] = useState([])
 
-  //     if (response.my_providers) {
-  //       for (let index = 0; index < response.my_providers.length; index++) {
-  //         if (provider.provider == response.my_providers[index]) {
-  //           provider.isActivated = true;
-  //         }
-  //       }            
-  //     }
+  useEffect(() => {
+    let myInfo = []
+    
+    myProviders?.providers?.map((provider, i) => {
+      let identifiers = {}
+      if (myProviders.my_providers[provider?.provider]) {
+        identifiers = myProviders.my_providers[provider?.provider];
+      }
 
-  //     if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == true) {
-  //       provider.isStartedBot = true;
-  //     }
+      myInfo.push({provider, identifiers});
+    });
 
-  //     myInfo.push(provider);
-  // });
+    setProviders(myInfo);
+
+  }, [myProviders])
 
   return (
     <div>
@@ -50,9 +50,9 @@ export default function Home({ myProviders, onUpdateScreen }) {
             </div>
             <div className="pt-10 pr-0 pb-10 pl-0">
               {
-                // myProviders.map((provider, i) => (
-                //   <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" onUpdate={onUpdateScreen} />
-                // ))
+                providers.map(({provider, identifiers}, i) => (
+                  <ProviderPanel key={i} provider={provider} identifiers={identifiers} onUpdate={onUpdateScreen} />
+                ))
               }
             </div>
           </div>

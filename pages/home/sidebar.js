@@ -10,7 +10,6 @@ export default function Sidebar({ myProviders }) {
       let myInfo = []
       
       myProviders?.providers?.map((provider, i) => {
-        debugger
         if (myProviders.my_providers[provider?.provider]) {
           provider.count = Object.keys(myProviders.my_providers[provider?.provider]).length;
         }

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
 import fetchJson from '../../../lib/fetchJson'
 
-export default function ProviderCard({ provider, iconUrl, onUpdate }) {
+export default function ProviderCard({ identifierName, provider, identifier, iconUrl, onUpdate }) {
 
     const router = useRouter();
     const [providerStatus, setProviderStatus] = useState('');
@@ -34,18 +34,19 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
     })
 
     useEffect(() => {
-        if (provider.isActivated === false) {
-            setProviderStatus('Chatbot not activated')
-        }
-        else if (provider.isActivated === true) {
-            setProviderStatus('Chatbot activated')
-        }
+        console.log(`[ProviderCard]: ${JSON.stringify(identifier)} -- ${JSON.stringify(provider)}`)
+        // if (provider.isActivated === false) {
+        //     setProviderStatus('Chatbot not activated')
+        // }
+        // else if (provider.isActivated === true) {
+        //     setProviderStatus('Chatbot activated')
+        // }
         
-        if (provider.isActivated === true && provider.isStartedBot === true) {
-            setProviderStatus('Chatbot is working...')
-        }
+        // if (provider.isActivated === true && provider.isStartedBot === true) {
+        //     setProviderStatus('Chatbot is working...')
+        // }
 
-    }, [provider])
+    }, [provider, identifier])
 
     const onActivate = (e) => {
         const redirectUri = `${typeof window === 'object' && window.location.origin}/callback/oauth`;
@@ -103,12 +104,11 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
     }
 
     return (
-        <div className="panel flow-root rounded-lg pt-5 pr-10 pb-5 pl-10 m-5">
-            <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+        <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5 mt-4">
             <div className="flex items-center flex-1 min-w-0">
                 <img alt={provider?.provider_description} src={iconUrl} width={10} height={10} className="flex-shrink-0 object-cover rounded-full w-10 h-10"/>
                 <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                <p className="text-lg font-bold white truncate">{provider?.provider_description}</p>
+                <p className="text-lg font-bold white truncate">{identifierName}</p>
                 <p className="text-gray-400 text-md"> <a className="main-color"> Add rules </a> / 3 rules added</p>
                 </div>
             </div>
@@ -135,7 +135,6 @@ export default function ProviderCard({ provider, iconUrl, onUpdate }) {
                     <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 rounded-lg" onClick={onStopAutoBot} disabled={!provider?.isActivated}>In-progress</button>
                 }
-            </div>
             </div>
         </div>
     )
