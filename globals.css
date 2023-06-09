@@ -113,6 +113,10 @@ a {
     background: #1B222E
   }
 
+  div.gray-panel {
+    background: #37404f;
+  }
+
   div.dialog-overlay {
     backdrop-filter: blur(1.3rem);
   }
@@ -125,6 +129,10 @@ a {
   .main-button {
     border: 1px solid #635EE3;
     background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
+  }
+
+  .bg-main-switch {
+    background-color: #6B54F8;
   }
 
   input {

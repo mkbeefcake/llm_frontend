@@ -27,7 +27,6 @@ export default function Login() {
     }
 
     try {
-      debugger;
       const _user = await fetchJson('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},

@@ -2,10 +2,10 @@ import fetchJson from '../../lib/fetchJson';
 import withSession from '../../lib/session';
 
 export default withSession(async (req, res) => {
-  const { provider, interval } = await req.body;
+  const { provider, interval, identifierName } = await req.body;
   const user = req.session.get('user')
 
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/users/start_auto_bot?provider_name=${provider}&interval=${interval}`
+  const url = process.env.NEXT_PUBLIC_BASE_URL + `/bots/start_auto_bot?provider_name=${provider}&identifier_name=${identifierName}&interval_seconds=${interval}`
   console.log(`[StartAutoBot]: ${JSON.stringify({
     'provider_name': provider, 
     'interval': interval

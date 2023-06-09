@@ -1,71 +1,13 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
 import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
 import fetchJson from '../../../lib/fetchJson'
+import { HomeContext } from "../context/context";
 
-export default function ProviderCard({ identifierName, provider, identifier, iconUrl }) {
+export default function ProviderCard({ identifierName, provider, identifier, iconUrl, statusBot }) {
 
     const router = useRouter();
-    const [providerStatus, setProviderStatus] = useState('');
-
-    const { customOAuthHandler } = useCustomOAuth({
-		onSuccess: async (data) => {
-			console.log(`[ProviderCard] : ${JSON.stringify(data)}`)
-            try {
-                const res = await fetchJson('/api/updateProviderInfo', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json'},
-                    body: JSON.stringify({ 
-                        'provider': data.provider, 
-                        'social_info': { 
-                            'access_token': data.access_token,
-                            'refresh_token': data.refresh_token
-                        } 
-                    })
-                });
-
-                console.log(`res : ${JSON.stringify(res)}`)
-            }
-            catch(err) {
-                console.log(`[ProviderCard]: ${err}`)
-            }          
-        }
-    })
-
-    useEffect(() => {
-    
-        // if (provider.isActivated === false) {
-        //     setProviderStatus('Chatbot not activated')
-        // }
-        // else if (provider.isActivated === true) {
-        //     setProviderStatus('Chatbot activated')
-        // }
-        
-        // if (provider.isActivated === true && provider.isStartedBot === true) {
-        //     setProviderStatus('Chatbot is working...')
-        // }
-
-    }, [provider, identifier])
-
-    const onActivate = (e) => {
-        const redirectUri = `${typeof window === 'object' && window.location.origin}/callback/oauth`;
-        const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/link_provider?provider_name=${provider?.provider}&${redirectUri}`;
-        customOAuthHandler(url);
-    }
-
-    const onDeactivate = async (e) => {
-        try {
-            const response = await fetchJson(`/api/unlinkProvider?provider=${provider?.provider}`, {
-                method: 'Get',
-                headers: { 'Content-Type': 'application/json'},
-            });
-            console.log(`onDeactivate: ${JSON.stringify(response)}`)
-            onUpdate();
-        }
-        catch(err) {
-            console.log(`Unlink provider: ${err}`)
-        }
-    }
+    const { onUpdateScreen } = useContext(HomeContext)
 
     const onStartAutoBot = async (e) => {
         try {
@@ -74,14 +16,15 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     'provider': provider?.provider,
-                    'interval': 60
+                    'identifierName': identifierName,
+                    'interval': 600
                 })
             });
             console.log(`onStartAutoBot: ${JSON.stringify(response)}`)
-            onUpdate();
+            onUpdateScreen();
         }
         catch(err) {
-            console.log(`Unlink provider: ${err}`)
+            console.log(`onStartAutoBot: ${err}`)
         }
     }
 
@@ -91,15 +34,27 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                 method: 'Post',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    'provider': provider?.provider
+                    'provider': provider?.provider,
+                    'identifierName': identifierName,
                 })
             });
             console.log(`onStopAutoBot: ${JSON.stringify(response)}`)
-            onUpdate();
+            onUpdateScreen();
         }
         catch(err) {
-            console.log(`Unlink provider: ${err}`)
+            console.log(`onStartAutoBot: ${err}`)
         }        
+    }
+
+    const onStatusChange = (e) => {        
+        if (statusBot == true) {
+            onStopAutoBot();
+            statusBot = false;
+        }
+        else {
+            onStartAutoBot();
+            statusBot = true;
+        }
     }
 
     return (
@@ -111,29 +66,18 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                 <p className="text-gray-400 text-md"> <a className="main-color"> Add rules </a> / 3 rules added</p>
                 </div>
             </div>
-            <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
-                sm:mt-0">
-                {
-                    provider?.isActivated == false && 
-                    <button className="main-button pt-2 pr-6 pb-2 pl-6 text-lg font-medium transition-all duration-200 rounded-lg" onClick={onActivate}>Activate</button>
-                }
-                {
-                    provider?.isActivated == true && 
-                    <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg" onClick={onDeactivate} >Deactivate</button>
-                }
-            </div>
             <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
-                {
-                    provider?.isStartedBot == false &&
-                    <button className="main-button pt-2 pr-6 pb-2 pl-6 text-lg font-medium transition-all
-                    duration-200 rounded-lg" onClick={onStartAutoBot} disabled={!provider?.isActivated}>Start Autobot</button>
-                }
-                {
-                    provider?.isStartedBot == true &&
-                    <button className="bg-gray-600 hover:bg-gray-500 hover:text-gray-100 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
-                    duration-200 rounded-lg" onClick={onStopAutoBot} disabled={!provider?.isActivated}>In-progress</button>
-                }
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" onChange={onStatusChange} class="sr-only peer" checked={statusBot}/>
+                    <div class="w-11 h-6 bg-gray-600 
+                        peer-focus:outline-none peer-focus:ring-1 peer-focus:ring-purple-300 
+                        dark:peer-focus:ring-purple-800 rounded-full peer dark:bg-gray-700 
+                        peer-checked:after:translate-x-full peer-checked:after:border-white 
+                        after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
+                        after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
+                        dark:border-gray-600 peer-checked:bg-purple-800"></div>
+                    <span class="ml-3 text-sm font-medium text-white-900">{statusBot == true ? 'Active' : 'Inactive'}</span>
+                </label>                
             </div>
         </div>
     )

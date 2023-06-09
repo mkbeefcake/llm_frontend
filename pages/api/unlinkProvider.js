@@ -5,7 +5,7 @@ const _url = require('url')
 export default withSession(async (req, res) => {
   const user = req.session.get('user')    
   const { query } = _url.parse(req.url, true);
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/unlink_provider?provider_name=${query.provider}`
+  const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/unlink_provider?provider_name=${query.provider}&identifier_name=${query.identifier}`
   
   try {
     // we check that the user exists on GitHub and store some data in session

@@ -14,11 +14,16 @@ export default function Home() {
     
     myProviders?.providers?.map((provider, i) => {
       let identifiers = {}
+      let statusBots = {}
       if (myProviders.my_providers[provider?.provider]) {
         identifiers = myProviders.my_providers[provider?.provider];
       }
 
-      myInfo.push({provider, identifiers});
+      if (myProviders.status_autobot[provider?.provider]) {
+        statusBots = myProviders.status_autobot[provider?.provider]
+      }
+
+      myInfo.push({provider, identifiers, statusBots});
     });
 
     setProviders(myInfo);
@@ -52,8 +57,8 @@ export default function Home() {
             </div>
             <div className="pt-10 pr-0 pb-10 pl-0">
               {
-                providers.map(({provider, identifiers}, i) => (
-                  <ProviderPanel key={i} provider={provider} identifiers={identifiers} />
+                providers.map(({provider, identifiers, statusBots}, i) => (
+                  <ProviderPanel key={i} provider={provider} identifiers={identifiers} statusBots={statusBots}/>
                 ))
               }
             </div>
