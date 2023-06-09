@@ -113,6 +113,10 @@ a {
     background: #1B222E
   }
 
+  div.dialog-overlay {
+    backdrop-filter: blur(1.3rem);
+  }
+
   .main-button {
     border: 1px solid #635EE3;
     background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);

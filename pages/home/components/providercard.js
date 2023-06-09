@@ -106,7 +106,7 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
     return (
         <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5 mt-4">
             <div className="flex items-center flex-1 min-w-0">
-                <img alt={provider?.provider_description} src={iconUrl} width={30} height={30} className="flex-shrink-0 object-cover"/>
+                <img alt={provider?.provider_description} src={iconUrl} className="flex-shrink-0 object-cover w-10 h-10" style={{objectFit:'contain'}}/>
                 <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
                 <p className="text-lg font-bold white truncate">{identifierName}</p>
                 <p className="text-gray-400 text-md"> <a className="main-color"> Add rules </a> / 3 rules added</p>

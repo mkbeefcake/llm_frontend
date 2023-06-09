@@ -1,4 +1,4 @@
-import ProviderCard from "./providercard"
+import ProviderCard from "../providercard"
 
 export default function ProviderPanel({ provider, identifiers, onUpdateScreen }) {
 

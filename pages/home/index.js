@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProviderCard from './components/providercard';
 import HomeLayout from './layout';
-import ProviderPanel from './components/providerpanel';
+import ProviderPanel from './components/panels/providerpanel';
 
 export default function Home({ myProviders, onUpdateScreen }) {
 
