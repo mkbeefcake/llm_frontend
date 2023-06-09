@@ -3,14 +3,14 @@ import { useRouter } from "next/navigation";
 import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
 import fetchJson from '../../../lib/fetchJson'
 
-export default function ProviderCard({ identifierName, provider, identifier, iconUrl, onUpdate }) {
+export default function ProviderCard({ identifierName, provider, identifier, iconUrl }) {
 
     const router = useRouter();
     const [providerStatus, setProviderStatus] = useState('');
 
     const { customOAuthHandler } = useCustomOAuth({
 		onSuccess: async (data) => {
-			console.log(`Response : ${JSON.stringify(data)}`)
+			console.log(`[ProviderCard] : ${JSON.stringify(data)}`)
             try {
                 const res = await fetchJson('/api/updateProviderInfo', {
                     method: 'POST',
@@ -25,16 +25,15 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                 });
 
                 console.log(`res : ${JSON.stringify(res)}`)
-                onUpdate();
             }
             catch(err) {
-                console.log(`Login Screen: ${err}`)
+                console.log(`[ProviderCard]: ${err}`)
             }          
         }
     })
 
     useEffect(() => {
-        console.log(`[ProviderCard]: ${JSON.stringify(identifier)} -- ${JSON.stringify(provider)}`)
+    
         // if (provider.isActivated === false) {
         //     setProviderStatus('Chatbot not activated')
         // }

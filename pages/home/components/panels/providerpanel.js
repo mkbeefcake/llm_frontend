@@ -1,8 +1,6 @@
 import ProviderCard from "../providercard"
 
-export default function ProviderPanel({ provider, identifiers, onUpdateScreen }) {
-
-    console.log(`[ProviderPanel]: ${JSON.stringify(provider)}`)
+export default function ProviderPanel({ provider, identifiers}) {
 
     return (
         <div className="panel flow-root rounded-lg pt-5 pr-10 pb-5 pl-10 m-5">
@@ -13,7 +11,6 @@ export default function ProviderPanel({ provider, identifiers, onUpdateScreen })
                         identifierName={identifierName} 
                         provider={provider} 
                         identifier={identifiers[identifierName]}
-                        onUpdate={onUpdateScreen} 
                         iconUrl={provider.provider_icon_url? provider.provider_icon_url : "/icons8-bot-64.png"} />
                 ))
             }

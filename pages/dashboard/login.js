@@ -36,7 +36,7 @@ export default function Login() {
       mutateUser(_user);
     }
     catch(err) {
-      console.log(`Login Screen: ${err}`)
+      console.log(`[Login Screen]: ${err}`)
     }  
   }
 

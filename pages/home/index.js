@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ProviderCard from './components/providercard';
 import HomeLayout from './layout';
 import ProviderPanel from './components/panels/providerpanel';
+import { HomeContext } from './context/context';
 
-export default function Home({ myProviders, onUpdateScreen }) {
+export default function Home() {
 
   const [providers, setProviders] = useState([])
+  const { myProviders } = useContext(HomeContext);
 
   useEffect(() => {
     let myInfo = []
@@ -51,7 +53,7 @@ export default function Home({ myProviders, onUpdateScreen }) {
             <div className="pt-10 pr-0 pb-10 pl-0">
               {
                 providers.map(({provider, identifiers}, i) => (
-                  <ProviderPanel key={i} provider={provider} identifiers={identifiers} onUpdate={onUpdateScreen} />
+                  <ProviderPanel key={i} provider={provider} identifiers={identifiers} />
                 ))
               }
             </div>

@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ProviderAvatar from '../provideravatar';
+import { HomeContext } from '../../context/context';
 
-export default function AddProviderDialog({ providers, isOpen, setIsOpen }) {
+export default function AddProviderDialog({ providers }) {
+
+  const { showAddProviderDialog, setShowAddProviderDialog } = useContext(HomeContext)
 
   return (
     <div className="relative">
-      {isOpen && (
+      {showAddProviderDialog && (
         <div className="fixed z-10 inset-0 overflow-y-auto">
           <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div
               className="fixed inset-0"
               aria-hidden="true"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setShowAddProviderDialog(false)}
             >
               <div className="dialog-overlay absolute inset-0"></div>
             </div>
@@ -48,7 +51,7 @@ export default function AddProviderDialog({ providers, isOpen, setIsOpen }) {
                 <button
                   type="button"
                   className="main-button w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setShowAddProviderDialog(false)}
                 >
                   Close
                 </button>

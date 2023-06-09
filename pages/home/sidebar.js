@@ -1,12 +1,14 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProviderLink from "./components/providerlink";
 import AddProviderDialog from "./components/dialogs/provideradd";
+import { HomeContext } from "./context/context";
+import AddProviderNameDialog from "./components/dialogs/providername";
   
-export default function Sidebar({ myProviders }) {
+export default function Sidebar() {
 
-    const [providers, setProviders] = useState([])
-    const [isOpenAdd, setIsOpenAdd] = useState(false)
+    const [ providers, setProviders ] = useState([])
+    const { myProviders, selectedProvider, setShowAddProviderDialog } = useContext(HomeContext);
 
     useEffect(() => {
       let myInfo = []
@@ -22,10 +24,6 @@ export default function Sidebar({ myProviders }) {
       setProviders(myInfo)
     
     }, [myProviders])
-
-    const onAddProvider = (e) => {
-        setIsOpenAdd(true)
-    }
 
     return (
         <>
@@ -92,14 +90,14 @@ export default function Sidebar({ myProviders }) {
                     <>
                     {
                         providers.map((provider, i) => (
-                        <ProviderLink key={i} provider={provider} count={provider.count} isFirst={i} />
+                            <ProviderLink key={i} provider={provider} count={provider.count} isFirst={i} />
                         ))
                     }
                     </>
                     <li class={`relative`}>
                     <a
                         class={`flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10`}
-                        data-te-sidenav-link-ref onClick={onAddProvider}>
+                        data-te-sidenav-link-ref onClick={(e) => setShowAddProviderDialog(true)}>
                         <span class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                             <Image
                                 id='addprovider_icon'
@@ -127,7 +125,8 @@ export default function Sidebar({ myProviders }) {
                     <button className="main-button ml-6 pt-2 pr-4 pb-2 pl-4 font-medium transition-all duration-200 rounded-lg">Log Out</button>
                 </div>
             </nav>
-            <AddProviderDialog isOpen={isOpenAdd} setIsOpen={setIsOpenAdd} providers={providers} />
+            <AddProviderDialog providers={providers} />
+            <AddProviderNameDialog provider={selectedProvider} />
        </>
     )
 }

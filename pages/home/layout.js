@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import useUser from '../../lib/useUser'
 import { useEffect, useState } from 'react';
-import fetchJson from '../../lib/fetchJson';
 
 import Sidebar from "./sidebar"
+import { HomeContextProvider } from './context/provider';
+import { HomeContext } from './context/context';
 
 const projectStyle = {
     height: '100vh',
@@ -30,50 +31,35 @@ export default function HomeLayout({ children }) {
     const router = useRouter();
     const { user } = useUser({ });
   
-    const [myProviders, setMyProviders] = useState([]);
+    const { myProviders, onUpdateScreen } = useContext(HomeContext)
   
     useEffect(() => {    
       if (user !== undefined && user.isLoggedIn === false) {
         router.replace('/dashboard/login')
       }  
     }, [user, router])
-
-    useEffect(() => {
-        getMyProviders()
-    }, [])
     
-    const getMyProviders = async () => {
-      try {  
-        const response = await fetchJson('/api/getMyProviders');
-        console.log(`Response: ${JSON.stringify(response)}`);
-        setMyProviders(response);
-      }
-      catch (err) {
-        console.log(`Home Screen: ${err}`)
-      }
-    }
 
-    const onUpdateScreen = () => {
-        getMyProviders()
-    }
-
-    const childrenWithProps = React.Children.map(children, child => {
-        if (React.isValidElement(child)) {
-            return React.cloneElement(child, { myProviders, onUpdateScreen})
-        }
-        return child
-    })
+    // const childrenWithProps = React.Children.map(children, child => {
+    //     if (React.isValidElement(child)) {
+    //         return React.cloneElement(child, { myProviders, onUpdateScreen})
+    //     }
+    //     return child
+    // })
     
 
     return (
-        <div style={projectStyle}>
-            <div style={sideBarStyle}>
-                <Sidebar myProviders={myProviders}/>
+        <HomeContextProvider>
+            <div style={projectStyle}>
+                <div style={sideBarStyle}>
+                    <Sidebar />
+                </div>
+                <div style={workSpaceStyle}>
+                    {/* {childrenWithProps} */}
+                    {children}
+                </div>
             </div>
-            <div style={workSpaceStyle}>
-                {childrenWithProps}
-            </div>
-        </div>
+        </HomeContextProvider>
     )
 }
 
