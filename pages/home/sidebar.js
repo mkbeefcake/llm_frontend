@@ -1,12 +1,32 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import ProviderLink from "./components/providerlink";
   
-export default function Sidebar() {
+export default function Sidebar({ myProviders }) {
+
+    const [providers, setProviders] = useState([])
+
+    useEffect(() => {
+      let myInfo = []
+      
+      myProviders?.providers?.map((provider, i) => {
+        debugger
+        if (myProviders.my_providers[provider?.provider]) {
+          provider.count = Object.keys(myProviders.my_providers[provider?.provider]).length;
+        }
+
+        myInfo.push(provider);
+      });
+
+      setProviders(myInfo)
+    
+    }, [myProviders])
 
     return (
         <>
         <nav
             id="sidenav-8"
-            class="absolute left-0 h-full -translate-x-full overflow-hidden data-[te-sidenav-hidden='false']:translate-x-0 "
+            class="left-0 h-full -translate-x-full overflow-hidden data-[te-sidenav-hidden='false']:translate-x-0 "
             data-te-sidenav-init
             data-te-sidenav-hidden="false"
             data-te-sidenav-position="absolute"
@@ -64,96 +84,43 @@ export default function Sidebar() {
                         <span className="li-item">Billing</span>
                     </a>
                 </li>
-                <li class="relative pt-4 mt-4">
-                    <span
-                        class="li-span px-6 py-4 text-[0.6rem] font-bold text-gray-600 dark:text-gray-400"
-                        >Providers</span
-                    >
-                    <a
-                        class="mt-4 flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-                        data-te-sidenav-link-ref>
-                        <span
-                        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
-                            <Image
-                                id="gmail_icon"
-                                src="/gmail_icon.png"
-                                alt="GMail"
-                                width={18}
-                                height={18}
-                                draggable="false" />
-                        </span>
-                        <span className="li-item">GMail (2)</span>
-                    </a>
-                </li>
-                <li class="relative">
-                <a
-                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-                    data-te-sidenav-link-ref>
-                    <span
-                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
-                        <Image
-                            id="linkedin_icon"
-                            src="/linkedin_icon.png"
-                            alt="Linkedin"
-                            width={18}
-                            height={18}
-                            draggable="false" />
-                    </span>
-                    <span className="li-item">Replicate (1)</span>
-                </a>
-                </li>
-                <li class="relative">
-                <a
-                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-                    data-te-sidenav-link-ref>
-                    <span
-                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
-                        <Image
-                            id="facebook_icon"
-                            src="/facebook_icon.png"
-                            alt="Facebook"
-                            width={18}
-                            height={18}
-                            draggable="false" />
-                    </span>
-                    <span className="li-item">Facebook</span>
-                </a>
-                </li>
-                <li class="relative">
-                <a
-                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-                    data-te-sidenav-link-ref>
-                    <span
-                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
-                        <Image
-                            id="twitter_icon"
-                            src="/twitter_icon.png"
-                            alt="Twitter"
-                            width={18}
-                            height={18}
-                            draggable="false" />
-                    </span>
-                    <span className="li-item">Twitter</span>
-                </a>
-                </li>
-                <li class="relative">
-                <a
-                    class="flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
-                    data-te-sidenav-link-ref>
-                    <span
-                    class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
-                        <Image
-                            id="addprovider_icon"
-                            src="/addprovider_icon.png"
-                            alt="Add Provider"
-                            width={18}
-                            height={18}
-                            draggable="false" />
-                    </span>
-                    <span className="li-item">Add provider</span>
-                </a>
-                </li>
+                <>
+                  {
+                    providers.map((provider, i) => (
+                      <ProviderLink key={i} provider={provider} count={provider.count} isFirst={i} />
+                    ))
+                  }
+                </>
+                <li class={`relative`}>
+                  <a
+                      class={`flex cursor-pointer items-center truncate rounded-[5px] px-6 py-[0.45rem] text-[0.85rem] text-gray-600 outline-none transition duration-300 ease-linear  data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10`}
+                      data-te-sidenav-link-ref>
+                      <span class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                          <Image
+                              id='addprovider_icon'
+                              src="/addprovider_icon.png"
+                              alt='addprovider'
+                              width={18}
+                              height={18}
+                              draggable="false" />
+                      </span>
+                      <span className="li-item">Add provider</span>
+                  </a>
+              </li>
+
             </ul>
+            <div class="flex items-center" style={{position:"absolute", bottom:0, height:150, paddingLeft: 20,}}>
+                <Image                    
+                    className="rounded-full"
+                    id="addprovider_icon"
+                    src="/icons8-bot-64.png"
+                    alt="Profile"
+                    width={40}
+                    height={40}
+                    draggable="false" />
+                <span class="ml-2 font-medium text-gray-900">John Doe</span>
+                <button className="main-button ml-6 pt-2 pr-4 pb-2 pl-4 font-medium transition-all duration-200 rounded-lg">Log Out</button>
+            </div>
             </nav>
        </>
     )

@@ -118,6 +118,11 @@ a {
     background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
   }
 
+  .main-button {
+    border: 1px solid #635EE3;
+    background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
+  }
+
   input {
     background: #37404F;
     border: #37404F;

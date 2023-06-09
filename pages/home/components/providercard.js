@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
-import { useCustomOAuth } from "../../lib/oauth/useOAuth";
-import fetchJson from '../../lib/fetchJson'
+import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
+import fetchJson from '../../../lib/fetchJson'
 
 export default function ProviderCard({ provider, iconUrl, onUpdate }) {
 

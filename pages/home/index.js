@@ -1,64 +1,27 @@
-import { useRouter } from 'next/navigation';
-import useUser from '../../lib/useUser'
-import { useEffect, useState } from 'react';
-import ProviderCard from '../components/providercard';
-import fetchJson from '../../lib/fetchJson';
+import ProviderCard from './components/providercard';
 import HomeLayout from './layout';
 
-export default function Home() {
+export default function Home({ myProviders, onUpdateScreen }) {
 
-  const router = useRouter();
-  const { user } = useUser({ });
+  // myProviders.providers.map((provider, i) => {
+      
+  //     provider.isActivated = false;
+  //     provider.isStartedBot = false;
 
-  const [mine, setMine] = useState([]);
+  //     if (response.my_providers) {
+  //       for (let index = 0; index < response.my_providers.length; index++) {
+  //         if (provider.provider == response.my_providers[index]) {
+  //           provider.isActivated = true;
+  //         }
+  //       }            
+  //     }
 
-  useEffect(() => {    
-    if (user !== undefined && user.isLoggedIn === false) {
-      router.replace('/dashboard/login')
-    }  
-  }, [user, router])
+  //     if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == true) {
+  //       provider.isStartedBot = true;
+  //     }
 
-  useEffect(() => {
-    getMyProviders()
-  }, [])
-
-  const getMyProviders = async () => {
-    try {
-      let myInfo = []
-
-      const response = await fetchJson('/api/getMyProviders');
-      console.log(`Response: ${JSON.stringify(response)}`);
-
-      response.providers.map((provider, i) => {
-       
-        provider.isActivated = false;
-        provider.isStartedBot = false;
-
-        if (response.my_providers) {
-          for (let index = 0; index < response.my_providers.length; index++) {
-            if (provider.provider == response.my_providers[index]) {
-              provider.isActivated = true;
-            }
-          }            
-        }
-
-        if (response.status_autobot && response.status_autobot[provider.provider] && response.status_autobot[provider.provider] == true) {
-          provider.isStartedBot = true;
-        }
-
-        myInfo.push(provider);
-      });
-
-      setMine(myInfo);
-    }
-    catch (err) {
-      console.log(`Home Screen: ${err}`)
-    }
-  }
-
-  const onUpdateParent = function() {
-    getMyProviders();
-  }
+  //     myInfo.push(provider);
+  // });
 
   return (
     <div>
@@ -87,9 +50,9 @@ export default function Home() {
             </div>
             <div className="pt-10 pr-0 pb-10 pl-0">
               {
-                mine.map((provider, i) => (
-                  <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" onUpdate={onUpdateParent} />
-                ))
+                // myProviders.map((provider, i) => (
+                //   <ProviderCard key={i} provider={provider} iconUrl="icons8-bot-64.png" onUpdate={onUpdateScreen} />
+                // ))
               }
             </div>
           </div>

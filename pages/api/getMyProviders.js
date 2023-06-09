@@ -14,7 +14,8 @@ export default withSession(async (req, res) => {
         'Authorization': user.token_type + ' ' + user.access_token
       }
     });
-
+    
+    console.log(`[GetMyProviders] ${JSON.stringify(response)}`)
     res.json({'ok': 'Success', 'data': response});
   } 
   catch (error) {
