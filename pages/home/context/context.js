@@ -11,5 +11,6 @@ export const HomeContext = createContext({
     selectedProvider: null,
     setSelectedProvider: () => {},
     updateIdentifierInfo: () => {},
-    getIdentifierInfo: () => {}
+    getIdentifierInfo: () => {},
+    deleteProvider: () => {}
 })

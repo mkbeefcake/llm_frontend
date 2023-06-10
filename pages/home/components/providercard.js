@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function ProviderCard({ identifierName, provider, identifier, iconUrl, statusBot }) {
 
     const router = useRouter();
-    const { onUpdateScreen, updateIdentifierInfo } = useContext(HomeContext)
+    const { onUpdateScreen, updateIdentifierInfo, deleteProvider } = useContext(HomeContext)
     const [showRules, setShowRules] = useState(false);
     const [rules, setRules] = useState('');
 
@@ -76,6 +76,15 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
         setShowRules(false);
     }
 
+    const onShowDropdown = (e) => {
+        document.getElementById(`myDropdown-${identifierName}`).classList.toggle("show");
+    }
+
+    const onDeleteIdentifier = (e) => {
+        onShowDropdown(e);
+        deleteProvider(provider, identifierName);
+    }
+
     return (
         <div>
             <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5 mt-4">
@@ -105,30 +114,20 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                         <span class="ml-3 text-sm font-medium text-white-900" style={{width:'50px'}}>{statusBot == true ? 'Active' : 'Inactive'}</span>
                     </label>                
 
-                    <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center rounded-lg" type="button"> 
-                        <svg width="4" height="18" viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 10C2.55228 10 3 9.55228 3 9C3 8.44772 2.55228 8 2 8C1.44772 8 1 8.44772 1 9C1 9.55228 1.44772 10 2 10Z" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 3C2.55228 3 3 2.55228 3 2C3 1.44772 2.55228 1 2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3Z" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 17C2.55228 17 3 16.5523 3 16C3 15.4477 2.55228 15 2 15C1.44772 15 1 15.4477 1 16C1 16.5523 1.44772 17 2 17Z" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
+                    <div className="dropdown">
+                        <button id={`dropdownMenuIconButton-${identifierName}`} class="dropbtn" type="button" onClick={onShowDropdown}> 
+                            <svg width="4" height="18" viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 10C2.55228 10 3 9.55228 3 9C3 8.44772 2.55228 8 2 8C1.44772 8 1 8.44772 1 9C1 9.55228 1.44772 10 2 10Z" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 3C2.55228 3 3 2.55228 3 2C3 1.44772 2.55228 1 2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3Z" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17C2.55228 17 3 16.5523 3 16C3 15.4477 2.55228 15 2 15C1.44772 15 1 15.4477 1 16C1 16.5523 1.44772 17 2 17Z" stroke="white" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
 
-                    <div id="dropdownDots" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                        </li>
-                        </ul>
-                        <div class="py-2">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
+                        <div id={`myDropdown-${identifierName}`} class="dropdown-content">
+                            <button class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={onDeleteIdentifier} >Delete</button>
                         </div>
                     </div>
+
                 </div>
             </div>
             {

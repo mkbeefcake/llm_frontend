@@ -169,13 +169,38 @@ a {
     outline: none !important;
   }
 
-  ::-webkit-scrollbar-track {
-    background-color: #37404F;
+  .dropbtn {
+    color: white;
+    padding: 4px;
+    border: none;
+    cursor: pointer;
+  }
+    
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1b222e;
+    min-width: 60px;
+    border-radius: 6px;
+    overflow: auto;
+    z-index: 1;
+  }
+ 
+  .dropdown-content button {
+    color: gray;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
   }
 
-  /* Set the color of the scrollbar thumb */
-  ::-webkit-scrollbar-thumb {
-    background-color: #37404F;
+  .dropdown-content button:hover {
+    background-color: #1b222e;
   }
-
+    
+  .show {display: block;}
 }

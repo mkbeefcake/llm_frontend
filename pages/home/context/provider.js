@@ -47,6 +47,23 @@ export const HomeContextProvider = ({ children }) => {
       customOAuthHandler(url);
     }
 
+    const deleteProvider = async (provider, identifierName) => {
+      try {
+        const res = await fetchJson(`/api/unlinkProvider?provider=${provider?.provider}&identifier=${identifierName}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: ""
+        });
+
+        console.log(`[HomeProvider] : ${JSON.stringify(res)}`)
+        onUpdateScreen();
+    }
+    catch(err) {
+        console.log(`[HomeProvider]: ${err}`)
+    }          
+
+    }
+
     const updateIdentifierInfo = async (providerName, identifierName, socialInfo) => {
       try {
         const res = await fetchJson('/api/updateProviderInfo', {
@@ -97,7 +114,8 @@ export const HomeContextProvider = ({ children }) => {
         selectedProvider,
         setSelectedProvider,
         updateIdentifierInfo,
-        getIdentifierInfo
+        getIdentifierInfo,
+        deleteProvider
     }
 
     return (
