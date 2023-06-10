@@ -121,18 +121,13 @@ a {
     backdrop-filter: blur(1.3rem);
   }
 
-  .main-button {
+  .primary-button {
     border: 1px solid #635EE3;
     background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
   }
 
-  .main-button {
-    border: 1px solid #635EE3;
-    background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
-  }
-
-  .bg-main-switch {
-    background-color: #6B54F8;
+  .secondary-button {
+    background: #6B54F8;
   }
 
   input {
@@ -140,9 +135,21 @@ a {
     border: #37404F;
   }
 
-  .main-color {
+  .primary-color {
     color: #635EE3;
   }
+
+  .secondary-color {
+    color : #8b7ffa;
+  }
+
+  .bg-textarea-color {
+    background-color: #454969;
+  }
+
+  .peer:checked ~ .peer-checked\:bg-third-color {
+    background-color: #6b54f8;
+  }  
 
   .li-span {
     font-size: 14px;
@@ -156,4 +163,19 @@ a {
     line-height: 150%;
     color: rgba(255, 255, 255, 0.65);
   }
+
+  textarea:focus, select:focus{
+    border: var(--background-start-rgb);
+    outline: none !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #37404F;
+  }
+
+  /* Set the color of the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: #37404F;
+  }
+
 }

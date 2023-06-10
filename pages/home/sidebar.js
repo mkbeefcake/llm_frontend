@@ -4,11 +4,14 @@ import ProviderLink from "./components/providerlink";
 import AddProviderDialog from "./components/dialogs/provideradd";
 import { HomeContext } from "./context/context";
 import AddProviderNameDialog from "./components/dialogs/providername";
+import { useRouter } from "next/navigation";
   
 export default function Sidebar() {
 
     const [ providers, setProviders ] = useState([])
     const { myProviders, selectedProvider, setShowAddProviderDialog } = useContext(HomeContext);
+
+    const router = useRouter();
 
     useEffect(() => {
       let myInfo = []
@@ -24,6 +27,10 @@ export default function Sidebar() {
       setProviders(myInfo)
     
     }, [myProviders])
+
+    const onLogout = (e) => {
+        router.replace('/dashboard/logout');
+    }
 
     return (
         <>
@@ -122,7 +129,7 @@ export default function Sidebar() {
                         height={40}
                         draggable="false" />
                     <span class="ml-2 font-medium text-gray-900">John Doe</span>
-                    <button className="main-button ml-6 pt-2 pr-4 pb-2 pl-4 font-medium transition-all duration-200 rounded-lg">Log Out</button>
+                    <button className="primary-button ml-6 pt-2 pr-4 pb-2 pl-4 font-medium transition-all duration-200 rounded-lg" onClick={onLogout} >Log Out</button>
                 </div>
             </nav>
             <AddProviderDialog providers={providers} />

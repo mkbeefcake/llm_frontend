@@ -9,5 +9,7 @@ export const HomeContext = createContext({
     addNewProvider: () => {},
     onUpdateScreen: () => {},
     selectedProvider: null,
-    setSelectedProvider: () => {}
+    setSelectedProvider: () => {},
+    updateIdentifierInfo: () => {},
+    getIdentifierInfo: () => {}
 })

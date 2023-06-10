@@ -47,6 +47,26 @@ export const HomeContextProvider = ({ children }) => {
       customOAuthHandler(url);
     }
 
+    const updateIdentifierInfo = async (providerName, identifierName, socialInfo) => {
+      try {
+        const res = await fetchJson('/api/updateProviderInfo', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({ 
+                'provider': providerName, 
+                'identifier': identifierName,
+                'social_info': socialInfo 
+            })
+        });
+
+        console.log(`[HomeProvider] : ${JSON.stringify(res)}`)
+        onUpdateScreen();
+      }
+      catch(err) {
+          console.log(`[HomeProvider]: ${err}`)
+      }          
+    }
+
     const getMyProviders = async () => {
       try {  
         const response = await fetchJson('/api/getMyProviders');
@@ -62,6 +82,9 @@ export const HomeContextProvider = ({ children }) => {
         getMyProviders()
     }
   
+    const getIdentifierInfo = (providerName, identifierName) => {
+      return myProviders.my_providers[providerName][identifierName];
+    }
 
     const value = {
         showAddProviderDialog,
@@ -72,7 +95,9 @@ export const HomeContextProvider = ({ children }) => {
         addNewProvider,
         onUpdateScreen,    
         selectedProvider,
-        setSelectedProvider
+        setSelectedProvider,
+        updateIdentifierInfo,
+        getIdentifierInfo
     }
 
     return (
