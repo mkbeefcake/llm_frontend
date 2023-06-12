@@ -21,7 +21,8 @@ export const HomeContextProvider = ({ children }) => {
                     'identifier': localStorage.getItem('identifier'),
                     'social_info': { 
                         'access_token': data.access_token,
-                        'refresh_token': data.refresh_token
+                        'refresh_token': data.refresh_token,
+                        'option': data.option,
                     } 
                 })
             });
