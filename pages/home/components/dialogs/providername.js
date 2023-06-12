@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import ProviderAvatar from '../provideravatar';
 import Image from 'next/image';
-import { HomeContext } from '../../context/context';
+import { HomeContext } from '../../../../context/home/context/context';
 
 export default function AddProviderNameDialog({ provider }) {
 

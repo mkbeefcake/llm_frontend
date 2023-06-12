@@ -15,14 +15,14 @@ export default function ProviderLink({ provider, count, isFirst }) {
                 data-te-sidenav-link-ref>
                 <span class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
                     <Image
-                        id={provider.provider}
-                        src={provider.provider_icon_url ? provider.provider_icon_url : "/icons8-bot-64.png"}
-                        alt={provider.provider_description}
+                        id={provider?.provider}
+                        src={provider?.provider_icon_url ? provider?.provider_icon_url : "/icons8-bot-64.png"}
+                        alt={provider?.provider_description}
                         width={18}
                         height={18}
                         draggable="false" />
                 </span>
-                <span className="li-item">{provider.short_name} {count > 0 && `(${count})`}</span>
+                <span className="li-item">{provider?.short_name} {count > 0 && `(${count})`}</span>
             </a>
         </li>
     )

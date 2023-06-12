@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import ProviderCard from './components/providercard';
 import HomeLayout from './layout';
 import ProviderPanel from './components/panels/providerpanel';
-import { HomeContext } from './context/context';
+import { HomeContext } from '../../context/home/context/context'
 
 export default function Home() {
 

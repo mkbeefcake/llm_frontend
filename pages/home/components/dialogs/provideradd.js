@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import ProviderAvatar from '../provideravatar';
-import { HomeContext } from '../../context/context';
+import { HomeContext } from '../../../../context/home/context/context';
 
 export default function AddProviderDialog({ providers }) {
 

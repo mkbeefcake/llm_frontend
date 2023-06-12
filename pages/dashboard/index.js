@@ -1,5 +1,4 @@
-import DefaultLayout from '../components/layout'
- 
+
 export default function Page() {
   return (
     <div className="flex flex-col justify-center sm:py-12">

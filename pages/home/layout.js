@@ -4,8 +4,8 @@ import useUser from '../../lib/useUser'
 import { useEffect, useState } from 'react';
 
 import Sidebar from "./sidebar"
-import { HomeContextProvider } from './context/provider';
-import { HomeContext } from './context/context';
+import { HomeContextProvider } from '../../context/home/context/provider';
+import { HomeContext } from '../../context/home/context/context';
 
 const projectStyle = {
     height: '100vh',

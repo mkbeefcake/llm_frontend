@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
 import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
 import fetchJson from '../../../lib/fetchJson'
-import { HomeContext } from "../context/context";
+import { HomeContext } from "../../../context/home/context/context";
 import Image from "next/image";
 
 
@@ -20,7 +20,9 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
     const [rules, setRules] = useState('');
 
     useEffect(() => {
-        setRules(identifier['rules']);
+        if (identifier && identifier["rules"])
+            setRules(identifier['rules']);
+
     }, [identifier])
 
     const onStartAutoBot = async (e) => {
@@ -103,11 +105,11 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
         <div>
             <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5 mt-4">
                 <div className="flex items-center flex-1 min-w-0">
-                    <img alt={provider?.provider_description} src={iconUrl} className="flex-shrink-0 object-cover w-10 h-10" style={{objectFit:'contain'}}/>
+                    <Image alt={provider?.provider_description} src={iconUrl} className="flex-shrink-0 object-cover w-10 h-10" width={16} height={16} style={{objectFit:'contain'}}/>
                     <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
                     <p className="text-lg font-bold white truncate">{identifierName}</p>
                     <p className="text-gray-400 text-md" 
-                        style={{overflow: "hidden",  textOverflow: "ellipsis", whiteSpace:"nowrap", maxWidth:"280px"}}>{identifier['rules'] ?? 'No rules have been added yet'}</p>
+                        style={{overflow: "hidden",  textOverflow: "ellipsis", whiteSpace:"nowrap", maxWidth:"280px"}}>{(identifier && identifier['rules']) ?? 'No rules have been added yet'}</p>
                     </div>
                 </div>
                 <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">

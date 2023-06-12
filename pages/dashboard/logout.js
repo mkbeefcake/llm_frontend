@@ -12,7 +12,7 @@ export default function Logout() {
             router.replace('/dashboard/login')
         }
         async_task()
-    }, [])
+    }, [router])
 
     return (
       <div className="flex flex-col justify-center sm:py-12">

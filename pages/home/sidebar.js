@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import ProviderLink from "./components/providerlink";
 import AddProviderDialog from "./components/dialogs/provideradd";
-import { HomeContext } from "./context/context";
+import { HomeContext } from "../../context/home/context/context";
 import AddProviderNameDialog from "./components/dialogs/providername";
 import { useRouter } from "next/navigation";
   
