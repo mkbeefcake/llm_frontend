@@ -5,6 +5,13 @@ import fetchJson from '../../../lib/fetchJson'
 import { HomeContext } from "../context/context";
 import Image from "next/image";
 
+
+const REPLICA_SAMPLE_RULE = `{
+    "prompt_template": "Name: Estefania, the horniest Latina on Onlyfans. Example dialogue : Hey hon, feeling horny ? ",
+    "character_name": "Estefania",
+    "context": ""
+}`
+
 export default function ProviderCard({ identifierName, provider, identifier, iconUrl, statusBot }) {
 
     const router = useRouter();
@@ -59,6 +66,11 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
             statusBot = false;
         }
         else {
+            if (rules == '') {
+                alert('Please add new rule for this bot');
+                return;
+            }
+
             onStartAutoBot();
             statusBot = true;
         }
@@ -66,6 +78,8 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
 
     const onAddRule = (e) => {
         setShowRules(!showRules);
+        if (rules == '')
+            setRules(REPLICA_SAMPLE_RULE);
     }
 
     const onSaveRule = async (e) => {
