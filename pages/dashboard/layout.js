@@ -1,20 +1,48 @@
 import Link from "next/link";
 
+const smallGradientStyle = {
+  background:
+    "conic-gradient(from -30.05deg at 50% 50%, #4D4A8B 0deg, #63419F 116.25deg, #4D4A8B 360deg)",
+  filter: "blur(100px)",
+};
+
+const bigGradientStyle = {
+  background:
+    "conic-gradient(from 179.95deg at 50% 50%, #43416B 0deg, #BF8796 247.5deg, #43416B 360deg)",
+  filter: "blur(200px)",
+};
+
 export default function DashboardLayout({ children }) {
-    return (
-      <div className="w-full min-h-screen grid grid-cols-1 content-center">
-        <div className="flex flex-row items-center justify-content">
-            <div className="flex flex-col items-center ml-20 lg:items-start w-full max-w-xl lg:w-1/2 text-center lg:text-left z-30">
-                <h2 style={{ color: '#9C98FF' }} className="font-black text-2xl sm:text-4xl leading-tight relative mb-4 xl:mb-8">ChatAutomation</h2>
-                <h1 className="text-white-900 font-black text-3xl sm:text-6xl leading-tight relative mb-4 xl:mb-8">Here is the slogan</h1>
-                <p className="text-base sm:text-lg xl:text-xl text-gray-300 mb-8 pr-0 lg:pr-20">Here is the web tool description. Here is the web tool description</p>
-                <Link href="/dashboard/login" className="primary-button mt-0 sm:mt-1 px-8 py-4 rounded-md fold-bold text-base shadow-xl text-white border-t w-auto font-bold relative self-start inline-block lg:mx-0 mx-auto">Log in</Link>
-            </div>
-            <div className="flex flex-col items-center h-full w-full lg:w-1/2 ms:pl-10 relative z-50">
-              { children }
-            </div>
+  return (
+    <div className="w-full md:h-screen grid grid-cols-1 relative md:overflow-hidden overflow-auto content-center bg-background-color">
+      <div
+        className="absolute w-[36vw] h-[36vw] top-[6.6vw] left-[15vw] opacity-[.35] z-10"
+        style={smallGradientStyle}
+      ></div>
+      <div
+        className="absolute w-[56vw] h-[56vw] top-[17vw] left-[23vw] opacity-75 z-10"
+        style={bigGradientStyle}
+      ></div>
+      <div className="flex flex-wrap md:flex-nowrap items-center justify-content z-20">
+        <div className="basis-[100%] md:basis-1/3 md:ml-[10vw] text-center md:text-left mt-10 md:mt-0">
+          <h2 className="font-normal text-base mb-3 text-[#9C98FF]">
+            ChatAutomation
+          </h2>
+          <h1 className="text-white font-normal text-xl sm:text-[32px] mb-1.5">
+            Here is the slogan
+          </h1>
+          <p className="text-white font-normal text-base mx-3 sm:mx-0">
+            Here is the web tool description. Here is the web tool description
+          </p>
+          <Link
+            href="/dashboard/login"
+            className="primary-button block w-[132px] my-8 mx-auto md:mx-0 px-10 py-3.5 rounded-lg text-center text-white font-normal text-base"
+          >
+            Log-in
+          </Link>
         </div>
+        <div className="basis-[100%] md:basis-2/3 text-center">{children}</div>
       </div>
-    )
-  }
-  
+    </div>
+  );
+}
