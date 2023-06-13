@@ -17,7 +17,7 @@ export default function Sidebar() {
       let myInfo = []
       
       myProviders?.providers?.map((provider, i) => {
-        if (myProviders.my_providers[provider?.provider]) {
+        if (myProviders.my_providers && myProviders.my_providers[provider?.provider]) {
           provider.count = Object.keys(myProviders.my_providers[provider?.provider]).length;
         }
 
