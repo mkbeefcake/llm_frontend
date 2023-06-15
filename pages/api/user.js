@@ -1,14 +1,14 @@
-import withSession from '../../lib/session'
+import { getSession } from '../../lib/session';
 import fetchJson from '../../lib/fetchJson'
 
-export default withSession(async (req, res) => {
+export default async function(req, res) {
 
-  const user = req.session.get('user')
+  const user = getSession(req)
 
   if (user) {
     try {
       // we check that the user exists on GitHub and store some data in session
-      const url = process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app" + '/users/me'
+      const url = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") + '/users/me'
       const response = await fetchJson(url, {
         method: 'GET',
         headers: {
@@ -36,4 +36,4 @@ export default withSession(async (req, res) => {
   else {
     res.json({"isLoggedIn": false})
   }
-})
+}
