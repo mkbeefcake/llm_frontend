@@ -38,7 +38,7 @@ export default function DashboardLayout({ children }) {
             href="/dashboard/login"
             className="primary-button block w-[132px] my-8 mx-auto md:mx-0 px-10 py-3.5 rounded-lg text-center text-white font-normal text-base"
           >
-            Log-in
+            Log in
           </Link>
         </div>
         <div className="basis-[100%] md:basis-2/3 text-center">{children}</div>
