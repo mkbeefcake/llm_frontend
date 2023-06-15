@@ -12,7 +12,6 @@ export default withSession(async (req, res) => {
 
   try {
     // we check that the user exists on GitHub and store some data in session
-    console.log(`email:${email}, pass: ${password}`)
     const { token_type, access_token } = await fetchJson(url, {
       method: 'POST',
       headers: {
@@ -21,7 +20,6 @@ export default withSession(async (req, res) => {
       },
       body: formBody
     });
-    console.log(`token_type:${token_type}, access_token: ${access_token}`)
 
     const user = { isLoggedIn: true, access_token, token_type };
     req.session.set('user', user);    
@@ -31,6 +29,6 @@ export default withSession(async (req, res) => {
   } 
   catch (error) {
     const { response: fetchResponse } = error;
-    res.status(fetchResponse?.status || 500).json(error.data);
+    res.status(fetchResponse?.status || 500).json({'err': JSON.stringify(error) });
   }
 });
