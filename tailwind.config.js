@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         "background-color": "#212C3D",
+        "sidebar-color": "#1B222E",
         "black-gray": "#1B222E",
         "input-color": "#37404F",
         "devider-color": "#73777F",

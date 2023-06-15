@@ -121,7 +121,6 @@ export default function Signup() {
             Already have an account?
           </p>
           <button
-            href="/dashboard/signup"
             className="ml-3 text-link-color font-normal text-sm"
             onClick={onLogin}
           >

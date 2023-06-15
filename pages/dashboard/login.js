@@ -109,7 +109,6 @@ export default function Login() {
             Don&apos;t have an account?
           </p>
           <button
-            href="/dashboard/signup"
             className="ml-3 text-link-color font-normal text-sm"
             onClick={onSignup}
           >
