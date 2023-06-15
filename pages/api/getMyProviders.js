@@ -1,6 +1,7 @@
 import fetchJson from '../../lib/fetchJson';
 import withSession from '../../lib/session';
 
+
 export default withSession(async (req, res) => {
   const user = req.session.get('user')    
   const url = process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app" + '/providers/get_my_providers'
