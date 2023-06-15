@@ -129,7 +129,7 @@ export default function Sidebar() {
                         height={40}
                         draggable="false" />
                     <span class="ml-2 font-medium text-gray-900">John Doe</span>
-                    <button className="primary-button ml-6 pt-2 pr-4 pb-2 pl-4 font-medium transition-all duration-200 rounded-lg" onClick={onLogout} >Log Out</button>
+                    <button className="text-gray-200 primary-button ml-6 pt-2 pr-4 pb-2 pl-4 font-medium transition-all duration-200 rounded-lg" onClick={onLogout} >Log Out</button>
                 </div>
             </nav>
             <AddProviderDialog providers={providers} />

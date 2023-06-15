@@ -4,7 +4,7 @@ export default function ProviderPanel({ provider, identifiers, statusBots}) {
 
     return (
         <div className="gray-panel flow-root rounded-lg pt-5 pr-10 pb-5 pl-10 m-5">
-            <p className="pb-2 text-xl" >{provider?.provider_description}</p>
+            <p className="pb-2 text-xl text-gray-200" >{provider?.provider_description}</p>
             {
                 identifiers && Object.keys(identifiers).map((identifierName, i) => (
                     <ProviderCard key={i}

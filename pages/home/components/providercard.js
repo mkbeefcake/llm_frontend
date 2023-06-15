@@ -107,7 +107,7 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                 <div className="flex items-center flex-1 min-w-0">
                     <Image alt={provider?.provider_description} src={iconUrl} className="flex-shrink-0 object-cover w-10 h-10" width={16} height={16} style={{objectFit:'contain'}}/>
                     <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                    <p className="text-lg font-bold white truncate">{identifierName}</p>
+                    <p className="text-gray-200 text-lg font-bold white truncate">{identifierName}</p>
                     <p className="text-gray-400 text-md" 
                         style={{overflow: "hidden",  textOverflow: "ellipsis", whiteSpace:"nowrap", maxWidth:"280px"}}>{(identifier && identifier['rules']) ?? 'No rules have been added yet'}</p>
                     </div>
@@ -127,7 +127,7 @@ export default function ProviderCard({ identifierName, provider, identifier, ico
                             after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
                             after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
                             dark:border-gray-600 peer-checked:bg-third-color"></div>
-                        <span class="ml-3 text-sm font-medium text-white-900" style={{width:'50px'}}>{statusBot == true ? 'Active' : 'Inactive'}</span>
+                        <span class="ml-3 text-sm font-medium text-gray-100" style={{width:'50px'}}>{statusBot == true ? 'Active' : 'Inactive'}</span>
                     </label>                
 
                     <div className="dropdown">
