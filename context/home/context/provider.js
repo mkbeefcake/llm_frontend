@@ -44,7 +44,7 @@ export const HomeContextProvider = ({ children }) => {
       localStorage.setItem('identifier', identifierName);
 
       const redirectUri = `${typeof window === 'object' && window.location.origin}/callback/oauth`;
-      const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/link_provider?provider_name=${provider?.provider}&${redirectUri}`;
+      const url = process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app" + `/providers/link_provider?provider_name=${provider?.provider}&${redirectUri}`;
       customOAuthHandler(url);
     }
 

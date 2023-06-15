@@ -3,7 +3,7 @@ import withSession from '../../lib/session';
 
 export default withSession(async (req, res) => {
   const { email, password } = await req.body;
-  const url = process.env.NEXT_PUBLIC_BASE_URL + '/users/token'
+  const url = process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app" + '/users/token'
     
   var formBody = [];
   formBody.push('username' + '=' + email);

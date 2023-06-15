@@ -8,7 +8,7 @@ export default withSession(async (req, res) => {
   if (user) {
     try {
       // we check that the user exists on GitHub and store some data in session
-      const url = process.env.NEXT_PUBLIC_BASE_URL + '/users/me'
+      const url = process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app" + '/users/me'
       const response = await fetchJson(url, {
         method: 'GET',
         headers: {

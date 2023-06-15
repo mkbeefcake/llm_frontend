@@ -5,7 +5,7 @@ export default withSession(async (req, res) => {
   const { provider, interval, identifierName } = await req.body;
   const user = req.session.get('user')
 
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/bots/start_auto_bot?provider_name=${provider}&identifier_name=${identifierName}&interval_seconds=${interval}`
+  const url = process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app" + `/bots/start_auto_bot?provider_name=${provider}&identifier_name=${identifierName}&interval_seconds=${interval}`
   console.log(`[StartAutoBot]: ${JSON.stringify({
     'provider_name': provider, 
     'interval': interval
