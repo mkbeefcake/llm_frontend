@@ -12,7 +12,7 @@ export default function ProviderPanel({
   statusBots,
   index,
 }) {
-  const [open, setOpen] = useState(index <= 3 ? true : false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(!open);

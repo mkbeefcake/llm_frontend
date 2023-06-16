@@ -19,8 +19,7 @@ export default function ProviderCard({
   statusBot,
 }) {
   const router = useRouter();
-  const { onUpdateScreen, updateIdentifierInfo, deleteProvider } =
-    useContext(HomeContext);
+  const { onUpdateScreen, updateIdentifierInfo, deleteProvider } = useContext(HomeContext);
   const [showRules, setShowRules] = useState(false);
   const [rules, setRules] = useState("");
 
@@ -68,10 +67,10 @@ export default function ProviderCard({
       onStopAutoBot();
       statusBot = false;
     } else {
-      if (rules == "") {
-        alert("Please add new rule for this bot");
-        return;
-      }
+      // if (rules == "") {
+      //   alert("Please add new rule for this bot");
+      //   return;
+      // }
 
       onStartAutoBot();
       statusBot = true;
@@ -96,9 +95,17 @@ export default function ProviderCard({
   };
 
   const onShowDropdown = (e) => {
-    document
-      .getElementById(`myDropdown-${identifierName}`)
-      .classList.toggle("show");
+    var me = document.getElementById(`myDropdown-${identifierName}`)
+
+    // get all showed dropdown contents
+    var elements = document.getElementsByClassName("dropdown-content show");
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i]
+      if (element != me)
+        element.classList.toggle('show');
+    }
+    
+    me.classList.toggle("show");
   };
 
   const onDeleteIdentifier = (e) => {
@@ -260,6 +267,7 @@ export default function ProviderCard({
             className="block w-full h-[60px] overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
             placeholder="Rules: You can define the bot's option..."
             value={rules}
+            style={{height:150}}
             onChange={(e) => setRules(e.target.value)}
             required
           />

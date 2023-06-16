@@ -1,7 +1,7 @@
 import fetchJson from '../../lib/fetchJson';
 import { getSession } from '../../lib/session';
 
-export default async function(req, res) {
+export default async function stopAutobot(req, res) {
   const { provider, identifierName } = await req.body;
   const user = getSession(req)
 

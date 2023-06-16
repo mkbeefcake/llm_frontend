@@ -1,7 +1,7 @@
 import fetchJson from '../../lib/fetchJson';
 import { getSession } from '../../lib/session';
 
-export default async function(req, res) {
+export default async function getMyProviders(req, res) {
   const user = getSession(req)    
   const url = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") + '/providers/get_my_providers'
     
