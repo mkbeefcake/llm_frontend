@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { HomeContext } from "../../context/home/context/context";
+import { HomeContext } from "../context/home/context/context";
 import { useRouter } from "next/navigation";
-import ProviderLink from "./components/providerlink";
+import ProviderLink from "pages/home/components/providerlink";
 
 export default function Sidebar() {
   const [providers, setProviders] = useState([]);
