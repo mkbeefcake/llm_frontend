@@ -9,6 +9,7 @@ import { HomeContext } from "../../context/home/context/context";
 import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
 import AddProviderDialog from "./components/dialogs/provideradd";
 import AddProviderNameDialog from "./components/dialogs/providername";
+import SuccessProviderDialog from "./components/dialogs/providersuccess";
 
 export default function HomeLayout({ children }) {
   const router = useRouter();
@@ -81,6 +82,7 @@ export default function HomeLayout({ children }) {
       </div>
       <AddProviderDialog />
       <AddProviderNameDialog />
+      <SuccessProviderDialog />
     </HomeContextProvider>
   );
 }
