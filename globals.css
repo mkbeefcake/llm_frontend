@@ -5,9 +5,9 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: #2a3345;
@@ -100,7 +100,7 @@ a {
 }
 
 div.panel {
-  background: #1B222E
+  background: #1b222e;
 }
 
 div.gray-panel {
@@ -112,25 +112,26 @@ div.dialog-overlay {
 }
 
 .primary-button {
-  border: 1px solid #635EE3;
-  background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
+  border: 1px solid #635ee3;
+  background: linear-gradient(0deg, #635ee3, #635ee3),
+    linear-gradient(0deg, #6b54f8, #6b54f8);
 }
 
 .secondary-button {
-  background: #6B54F8;
+  background: #6b54f8;
 }
 
 input {
-  background: #37404F;
-  border: #37404F;
+  background: #37404f;
+  border: #37404f;
 }
 
 .primary-color {
-  color: #635EE3;
+  color: #635ee3;
 }
 
 .secondary-color {
-  color : #8b7ffa;
+  color: #8b7ffa;
 }
 
 .bg-textarea-color {
@@ -139,7 +140,7 @@ input {
 
 .peer:checked ~ .peer-checked\:bg-third-color {
   background-color: #6b54f8;
-}  
+}
 
 .li-span {
   font-size: 14px;
@@ -154,7 +155,8 @@ input {
   color: rgba(255, 255, 255, 0.65);
 }
 
-textarea:focus, select:focus{
+textarea:focus,
+select:focus {
   border: var(--background-start-rgb);
   outline: none !important;
 }
@@ -165,7 +167,7 @@ textarea:focus, select:focus{
   border: none;
   cursor: pointer;
 }
-  
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -191,8 +193,10 @@ textarea:focus, select:focus{
 .dropdown-content button:hover {
   background-color: #1b222e;
 }
-  
-.show {display: block;}
+
+.show {
+  display: block;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -201,11 +205,15 @@ textarea:focus, select:focus{
 
   body {
     color: var(--foreground-rgb);
-    background: linear-gradient(to right, var(--background-start-rgb), var(--background-end-rgb));
-  }  
+    background: linear-gradient(
+      to right,
+      var(--background-start-rgb),
+      var(--background-end-rgb)
+    );
+  }
 
   div.panel {
-    background: #1B222E
+    background: #1b222e;
   }
 
   div.gray-panel {
@@ -217,25 +225,26 @@ textarea:focus, select:focus{
   }
 
   .primary-button {
-    border: 1px solid #635EE3;
-    background: linear-gradient(0deg, #635EE3, #635EE3), linear-gradient(0deg, #6B54F8, #6B54F8);
+    border: 1px solid #635ee3;
+    background: linear-gradient(0deg, #635ee3, #635ee3),
+      linear-gradient(0deg, #6b54f8, #6b54f8);
   }
 
   .secondary-button {
-    background: #6B54F8;
+    background: #6b54f8;
   }
 
   input {
-    background: #37404F;
-    border: #37404F;
+    background: #37404f;
+    border: #37404f;
   }
 
   .primary-color {
-    color: #635EE3;
+    color: #635ee3;
   }
 
   .secondary-color {
-    color : #8b7ffa;
+    color: #8b7ffa;
   }
 
   .bg-textarea-color {
@@ -244,7 +253,7 @@ textarea:focus, select:focus{
 
   .peer:checked ~ .peer-checked\:bg-third-color {
     background-color: #6b54f8;
-  }  
+  }
 
   .li-span {
     font-size: 14px;
@@ -259,7 +268,8 @@ textarea:focus, select:focus{
     color: rgba(255, 255, 255, 0.65);
   }
 
-  textarea:focus, select:focus{
+  textarea:focus,
+  select:focus {
     border: var(--background-start-rgb);
     outline: none !important;
   }
@@ -270,12 +280,12 @@ textarea:focus, select:focus{
     border: none;
     cursor: pointer;
   }
-    
+
   .dropdown {
     position: relative;
     display: inline-block;
   }
-  
+
   .dropdown-content {
     display: none;
     position: absolute;
@@ -285,7 +295,7 @@ textarea:focus, select:focus{
     overflow: auto;
     z-index: 1;
   }
- 
+
   .dropdown-content button {
     color: gray;
     padding: 12px 16px;
@@ -296,6 +306,32 @@ textarea:focus, select:focus{
   .dropdown-content button:hover {
     background-color: #1b222e;
   }
-    
-  .show {display: block;}
+
+  .show {
+    display: block;
+  }
+}
+
+#sidebar {
+  --tw-translate-x: -100%;
+}
+#menu-close-icon {
+  display: none;
+}
+
+#menu-open:checked ~ #sidebar {
+  --tw-translate-x: 0;
+}
+
+#menu-open:checked ~ * #menu-open-icon {
+  display: none;
+}
+#menu-open:checked ~ * #menu-close-icon {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    --tw-translate-x: 0;
+  }
 }
