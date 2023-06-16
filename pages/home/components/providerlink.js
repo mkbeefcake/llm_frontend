@@ -4,7 +4,7 @@ export default function ProviderLink({ provider, count }) {
   return (
     <li className="mb-4">
       <a className="flex cursor-pointer items-center truncate text-white">
-        <span className="mr-5 text-lg font-normal">
+        <span className="mr-5">
           <Image
             id={provider?.provider}
             src={
@@ -18,16 +18,16 @@ export default function ProviderLink({ provider, count }) {
             draggable="false"
           />
         </span>
-        <span className="opacity-[.65]">
+        <span className="opacity-[.65] text-lg font-normal">
           {provider?.short_name} {count > 0 && `(${count})`}
         </span>
-        <span className="ml-2 text-lg font-normal">
+        <span className="ml-2.5">
           <Image
             id="check_verified_icon"
             src="/check_verified_icon.png"
             alt="checkVerified"
-            width={18}
-            height={18}
+            width={15}
+            height={15}
             draggable="false"
           />
         </span>

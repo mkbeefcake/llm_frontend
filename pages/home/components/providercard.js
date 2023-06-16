@@ -119,14 +119,14 @@ export default function ProviderCard({
         />
         <div className="text-white">
           <div className="flex gap-1">
-            <span className="block font-normal text-sm truncate">
+            <span className="block font-medium text-base truncate">
               {identifierName}
             </span>
-            <span className="bg-[#5448B7] text-white opacity-[.75] text-xs font-medium ml-2 px-2 py-0.5 rounded-full">
+            <span className="bg-[#5448B7] text-white opacity-[.75] text-xs font-medium leading-[22px] ml-2 px-2 py-px rounded-full">
               Sales
             </span>
           </div>
-          <span className="block font-normal text-xs opacity-[.65] truncate w-[130px] md:w-[90px] lg:w-[125px] xl:w-[365px]">
+          <span className="block font-normal mt-0.5 text-[15px] opacity-[.65] truncate w-[130px] md:w-[90px] lg:w-[125px] xl:w-[365px]">
             {(identifier && identifier["rules"]) ??
               "No rules have been added yet"}
           </span>
@@ -141,14 +141,14 @@ export default function ProviderCard({
             id="edit_icon"
             src="/edit_icon.png"
             alt="Edit"
-            className="mr-2.5"
-            width={24}
-            height={24}
+            className="mr-3"
+            width={17}
+            height={17}
             draggable="false"
           />
           <span className="whitespace-nowrap">Add rules</span>
         </div>
-        <div className="ml-9 mr-8">
+        <div className="ml-[35px] mr-[34px]">
           <label className="relative inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
@@ -157,7 +157,7 @@ export default function ProviderCard({
               checked={statusBot}
             />
             <div className="w-10 h-6 bg-background-color rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-link-color"></div>
-            <span className="ml-3 text-base font-medium text-white">
+            <span className="ml-[9px] text-base font-medium text-white">
               {statusBot == true ? "Active" : "Inactive"}
             </span>
           </label>
@@ -246,7 +246,7 @@ export default function ProviderCard({
               </svg>
             </span>
             <button
-              className="block hover:bg-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="block text-white text-base font-normal"
               onClick={onDeleteIdentifier}
             >
               Delete
@@ -257,14 +257,14 @@ export default function ProviderCard({
       {showRules && (
         <div className="relative mt-6 w-full overflow-hidden transition-[all] duration-700 ease-in-out">
           <textarea
-            className="block w-full overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
+            className="block w-full h-[60px] overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
             placeholder="Rules: You can define the bot's option..."
             value={rules}
             onChange={(e) => setRules(e.target.value)}
             required
           />
           <button
-            className="text-white font-semibold text-base absolute right-3 bottom-1.5 primary-button hover:opacity-[.7] rounded-lg text-sm px-5 py-2"
+            className="text-white font-semibold text-base absolute right-2.5 bottom-2.5 primary-button hover:opacity-[.7] rounded-lg px-[45px] py-[7px]"
             onClick={onSaveRule}
           >
             Save

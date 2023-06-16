@@ -40,7 +40,7 @@ export default function ProviderPanel({
       <AccordionHeader className="font-bold text-lg" onClick={handleOpen}>
         {provider?.provider_description}
       </AccordionHeader>
-      <AccordionBody className="pb-0 overflow-visible">
+      <AccordionBody className="pb-0 pt-3.5 overflow-visible">
         {identifiers &&
           Object.keys(identifiers).map((identifierName, i) => (
             <ProviderCard
