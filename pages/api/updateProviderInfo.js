@@ -1,13 +1,13 @@
 import fetchJson from '../../lib/fetchJson';
-import withSession from '../../lib/session';
+import { getSession } from '../../lib/session';
 
-export default withSession(async (req, res) => {
+export default async function(req, res) {
   const { provider, social_info, identifier } = await req.body;
-  const user = req.session.get('user')
+  const user = getSession(req)
 
   const param = encodeURIComponent(JSON.stringify(social_info));
 
-  const url = process.env.NEXT_PUBLIC_BASE_URL + `/providers/update_provider_info?provider_name=${provider}&identifier_name=${identifier}&social_info=${param}`
+  const url = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") + `/providers/update_provider_info?provider_name=${provider}&identifier_name=${identifier}&social_info=${param}`
   console.log(`[UpdateProviderInfo]: ${url}`)
   
   try {
@@ -30,4 +30,4 @@ export default withSession(async (req, res) => {
     const { response: fetchResponse } = error;
     res.status(fetchResponse?.status || 500).json(error.data);
   }
-});
+}
