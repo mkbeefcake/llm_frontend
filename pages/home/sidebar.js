@@ -2,11 +2,11 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { HomeContext } from "../../context/home/context/context";
 import { useRouter } from "next/navigation";
+import ProviderLink from "./components/providerlink";
 
 export default function Sidebar() {
   const [providers, setProviders] = useState([]);
-  const { myProviders, selectedProvider, setShowAddProviderDialog } =
-    useContext(HomeContext);
+  const { myProviders, setShowAddProviderDialog } = useContext(HomeContext);
 
   const router = useRouter();
 
@@ -33,7 +33,7 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="bg-sidebar-color w-3/4 sm:w-80 flex flex-col justify-between px-11 py-12 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto z-30"
+      className="bg-sidebar-color w-3/4 max-h-screen overflow-y-auto sm:w-80 flex flex-col justify-between px-11 py-12 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto z-30"
     >
       <div>
         <div className="w-[50px] h-[50px] min-h-[50px] bg-[#635EE3] rounded-full"></div>
@@ -62,14 +62,14 @@ export default function Sidebar() {
                 <span className="mr-6 text-lg font-normal">
                   <Image
                     id="activity_icon"
-                    src="/activity_icon.png"
+                    src="/billing_icon.png"
                     alt="Activity"
                     width={18}
                     height={18}
                     draggable="false"
                   />
                 </span>
-                <span className="opacity-[.65]">Activity</span>
+                <span className="opacity-[.65]">Billing</span>
               </a>
             </li>
           </ul>
@@ -79,106 +79,13 @@ export default function Sidebar() {
             Providers
           </p>
           <ul className="mt-7">
-            <li className="mb-4">
-              <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-5 text-lg font-normal">
-                  <Image
-                    id="linkedin_icon"
-                    src="/linkedin_icon.png"
-                    alt="LinkedIn"
-                    width={24}
-                    height={24}
-                    draggable="false"
-                  />
-                </span>
-                <span className="opacity-[.65]">LinkedIn</span>
-                <span className="ml-2 text-lg font-normal">
-                  <Image
-                    id="check_verified_icon"
-                    src="/check_verified_icon.png"
-                    alt="checkVerified"
-                    width={18}
-                    height={18}
-                    draggable="false"
-                  />
-                </span>
-              </a>
-            </li>
-            <li className="mb-4">
-              <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-5 text-lg font-normal">
-                  <Image
-                    id="gmail_icon"
-                    src="/gmail_icon.png"
-                    alt="Gmail"
-                    width={24}
-                    height={24}
-                    draggable="false"
-                  />
-                </span>
-                <span className="opacity-[.65]">Gmail</span>
-                <span className="ml-2 text-lg font-normal">
-                  <Image
-                    id="check_verified_icon"
-                    src="/check_verified_icon.png"
-                    alt="checkVerified"
-                    width={18}
-                    height={18}
-                    draggable="false"
-                  />
-                </span>
-              </a>
-            </li>
-            <li className="mb-4">
-              <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-5 text-lg font-normal">
-                  <Image
-                    id="twitter_icon"
-                    src="/twitter_icon.png"
-                    alt="Twitter"
-                    width={24}
-                    height={24}
-                    draggable="false"
-                  />
-                </span>
-                <span className="opacity-[.65]">Twitter</span>
-                <span className="ml-2 text-lg font-normal">
-                  <Image
-                    id="check_verified_icon"
-                    src="/check_verified_icon.png"
-                    alt="checkVerified"
-                    width={18}
-                    height={18}
-                    draggable="false"
-                  />
-                </span>
-              </a>
-            </li>
-            <li className="mb-4">
-              <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-5 text-lg font-normal">
-                  <Image
-                    id="facebook_icon"
-                    src="/facebook_icon.png"
-                    alt="Facebook"
-                    width={24}
-                    height={24}
-                    draggable="false"
-                  />
-                </span>
-                <span className="opacity-[.65]">Facebook</span>
-                <span className="ml-2 text-lg font-normal">
-                  <Image
-                    id="dashboard_icon"
-                    src="/check_verified_icon.png"
-                    alt="checkVerified"
-                    width={18}
-                    height={18}
-                    draggable="false"
-                  />
-                </span>
-              </a>
-            </li>
+            {providers.map((provider, i) => (
+              <ProviderLink
+                key={i}
+                provider={provider}
+                count={provider.count}
+              />
+            ))}
             <li className="mb-4">
               <a
                 className="flex cursor-pointer items-center truncate text-white"
@@ -187,7 +94,7 @@ export default function Sidebar() {
                 <span className="mr-5 text-lg font-normal">
                   <Image
                     id="add_provider_icon"
-                    src="/add_icon.png"
+                    src="/addprovider_icon.png"
                     alt="addProvider"
                     width={24}
                     height={24}

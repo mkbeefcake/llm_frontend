@@ -1,31 +1,45 @@
 import Image from "next/image";
-import fetchJson from '../../../lib/fetchJson'
-import AddProviderNameDialog from "./dialogs/providername";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { HomeContext } from "../../../context/home/context/context";
 
-export default function ProviderAvatar({ provider }) {
+export default function ProviderAvatar({ provider, index }) {
+  const {
+    setShowAddProviderDialog,
+    setShowProviderNameDialog,
+    setSelectedProvider,
+  } = useContext(HomeContext);
 
-    const {setShowAddProviderDialog,  setShowProviderNameDialog, setSelectedProvider} = useContext(HomeContext)
+  const onAddProvider = (e) => {
+    setSelectedProvider(provider);
+    setShowAddProviderDialog(false);
+    setShowProviderNameDialog(true);
+  };
 
-    const onAddProvider = (e) => {
-        setSelectedProvider(provider);
-        setShowAddProviderDialog(false)
-        setShowProviderNameDialog(true)
-    }
-
-    return (
-        <div className="flex flex-col items-center p-4" onClick={onAddProvider} >
-            <Image 
-                className="inline-block w-10 h-10" 
-                style={{objectFit:'contain'}}
-                id={provider?.provider}
-                src={provider?.provider_icon_url ? provider?.provider_icon_url : "/icons8-bot-64.png"}
-                alt={provider?.provider_description}
-                draggable="false"            
-                width={50}
-                height={50}/>
-            <p className="mt-2 text-md">{provider?.short_name}</p>
-        </div>
-    )
+  return (
+    <div
+      className={`mb-10 w-16 mr-2 ${index % 4 === 0 ? "sm:mr-0" : "sm:mr-12"}`}
+    >
+      <button
+        type="button"
+        className="rounded-full w-16 h-16 mb-2 flex justify-center items-center active:shadow-lg bg-input-color"
+        onClick={onAddProvider}
+      >
+        <Image
+          id={provider?.provider}
+          src={
+            provider?.provider_icon_url
+              ? provider?.provider_icon_url
+              : "/icons8-bot-64.png"
+          }
+          alt={provider?.provider_description}
+          width={24}
+          height={24}
+          draggable="false"
+        />
+      </button>
+      <p className="text-xs font-normal text-white opacity-[.65] text-center">
+        {provider?.short_name}
+      </p>
+    </div>
+  );
 }

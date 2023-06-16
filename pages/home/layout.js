@@ -14,31 +14,13 @@ export default function HomeLayout({ children }) {
   const router = useRouter();
   const { user } = useUser({});
 
-  const [providers, setProviders] = useState([]);
-  const { myProviders, selectedProvider, onUpdateScreen } =
-    useContext(HomeContext);
+  const { myProviders, onUpdateScreen } = useContext(HomeContext);
 
   useEffect(() => {
     if (user !== undefined && user.isLoggedIn === false) {
       router.replace("/dashboard/login");
     }
   }, [user, router]);
-
-  useEffect(() => {
-    let myInfo = [];
-
-    myProviders?.providers?.map((provider, i) => {
-      if (myProviders.my_providers[provider?.provider]) {
-        provider.count = Object.keys(
-          myProviders.my_providers[provider?.provider]
-        ).length;
-      }
-
-      myInfo.push(provider);
-    });
-
-    setProviders(myInfo);
-  }, [myProviders]);
 
   // const childrenWithProps = React.Children.map(children, child => {
   //     if (React.isValidElement(child)) {
@@ -97,8 +79,8 @@ export default function HomeLayout({ children }) {
           {children}
         </main>
       </div>
-      <AddProviderDialog providers={providers} />
-      <AddProviderNameDialog provider={selectedProvider} />
+      <AddProviderDialog />
+      <AddProviderNameDialog />
     </HomeContextProvider>
   );
 }
