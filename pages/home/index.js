@@ -17,9 +17,9 @@ export default function Home() {
     let myInfo = [];
 
     myProviders?.providers?.map((provider, i) => {
-      let identifiers = {};
-      let statusBots = {};
-      if (myProviders.my_providers[provider?.provider]) {
+      let identifiers = {}
+      let statusBots = {}
+      if (myProviders.my_providers && myProviders.my_providers[provider?.provider]) {
         identifiers = myProviders.my_providers[provider?.provider];
       }
 
