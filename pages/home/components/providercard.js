@@ -257,7 +257,7 @@ export default function ProviderCard({
       {showRules && (
         <div className="relative mt-6 w-full overflow-hidden transition-[all] duration-700 ease-in-out">
           <textarea
-            className="block w-full py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
+            className="block w-full overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
             placeholder="Rules: You can define the bot's option..."
             value={rules}
             onChange={(e) => setRules(e.target.value)}

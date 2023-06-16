@@ -47,7 +47,7 @@ export default function Home() {
               Your current automated providers
             </p>
           </div>
-          <div className="flex flex-wrap gap-2 justify-start lg:justify-end">
+          <div className="flex flex-wrap gap-2 justify-start lg:justify-end z-20">
             <div className="relative w-[260px]">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
