@@ -39,16 +39,16 @@ export default function Home() {
         className="absolute w-[43vw] h-[43vw] top-[-5vw] right-[42vw] opacity-[.15] z-10"
         style={homeGradientStyle}
       ></div>
-      <div className="px-3 pt-24 sm:px-20 sm:pt-32">
-        <div className="flex flex-wrap gap-2 justify-between items-center mb-2">
+      <div className="px-3 pt-24 sm:px-20 sm:pt-28">
+        <div className="flex flex-wrap gap-2 justify-between items-center mb-7">
           <div>
             <p className="text-white text-2xl font-bold">Providers</p>
             <p className="text-white text-sm font-normal opacity-[.65] mt-1">
               Your current automated providers
             </p>
           </div>
-          <div className="flex flex-wrap gap-2 justify-start lg:justify-end z-20">
-            <div className="relative w-[260px]">
+          <div className="flex flex-wrap gap-4 items-center justify-start lg:justify-end z-20">
+            <div className="relative w-[258px]">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   aria-hidden="true"
@@ -67,11 +67,11 @@ export default function Home() {
               <input
                 type="text"
                 id="provider-search"
-                className="bg-transparent border border-solid border-gray-300 text-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="bg-transparent h-[44px] border border-solid border-gray-300 text-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
             </div>
             <button
-              className="py-2 px-8 ml-0 lg:ml-4 whitespace-nowrap text-base font-semibold text-white primary-button rounded-lg"
+              className="py-2.5 px-8 whitespace-nowrap text-base font-semibold text-white bg-link-color rounded-lg"
               onClick={(e) => setShowAddProviderDialog(true)}
             >
               Add Provider

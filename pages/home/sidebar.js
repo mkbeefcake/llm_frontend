@@ -33,18 +33,18 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="bg-sidebar-color w-3/4 max-h-screen overflow-y-auto sm:w-80 flex flex-col justify-between px-11 py-12 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto z-30"
+      className="bg-sidebar-color w-3/4 max-h-screen overflow-y-auto sm:w-80 flex flex-col justify-between px-11 py-[51px] absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto z-30"
     >
       <div>
         <div className="w-[50px] h-[50px] min-h-[50px] bg-[#635EE3] rounded-full"></div>
-        <div className="mt-8 sm:mt-12">
+        <div className="mt-8 sm:mt-[51px]">
           <p className="text-white opacity-[.65] font-normal text-sm">
             Navigation
           </p>
-          <ul className="mt-7">
+          <ul className="mt-6">
             <li className="mb-4">
               <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-6 text-lg font-normal">
+                <span className="mr-[23px]">
                   <Image
                     id="dashboard_icon"
                     src="/dashboard_icon.png"
@@ -54,12 +54,14 @@ export default function Sidebar() {
                     draggable="false"
                   />
                 </span>
-                <span className="opacity-[.65]">Dashboard</span>
+                <span className="opacity-[.65] text-lg font-normal">
+                  Dashboard
+                </span>
               </a>
             </li>
             <li className="mb-4">
               <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-6 text-lg font-normal">
+                <span className="mr-[23px]">
                   <Image
                     id="activity_icon"
                     src="/billing_icon.png"
@@ -69,16 +71,18 @@ export default function Sidebar() {
                     draggable="false"
                   />
                 </span>
-                <span className="opacity-[.65]">Billing</span>
+                <span className="opacity-[.65] text-lg font-normal">
+                  Billing
+                </span>
               </a>
             </li>
           </ul>
         </div>
-        <div className="mt-10 sm:mt-16">
+        <div className="mt-10 sm:mt-14">
           <p className="text-white opacity-[.65] font-normal text-sm">
             Providers
           </p>
-          <ul className="mt-7">
+          <ul className="mt-6">
             {providers.map((provider, i) => (
               <ProviderLink
                 key={i}
@@ -91,7 +95,7 @@ export default function Sidebar() {
                 className="flex cursor-pointer items-center truncate text-white"
                 onClick={(e) => setShowAddProviderDialog(true)}
               >
-                <span className="mr-5 text-lg font-normal">
+                <span className="mr-5">
                   <Image
                     id="add_provider_icon"
                     src="/addprovider_icon.png"
@@ -101,7 +105,9 @@ export default function Sidebar() {
                     draggable="false"
                   />
                 </span>
-                <span>Add Provider</span>
+                <span className="text-white text-lg font-normal">
+                  Add Provider
+                </span>
               </a>
             </li>
           </ul>
@@ -109,7 +115,7 @@ export default function Sidebar() {
       </div>
       <div className="flex flex-wrap gap-2 items-center justify-between">
         <div className="flex items-center">
-          <span className="mr-3 text-lg font-normal">
+          <span className="mr-3">
             <Image
               id="avatar"
               src="/avatar.png"
@@ -119,17 +125,17 @@ export default function Sidebar() {
               draggable="false"
             />
           </span>
-          <div className="text-white">
-            <span className="block font-normal text-sm truncate max-w-[100px]">
+          <div>
+            <span className="block font-normal text-white text-sm truncate max-w-[100px]">
               User name
             </span>
-            <span className="block font-normal text-xs opacity-[.65] truncate max-w-[100px]">
+            <span className="block font-normal text-xs text-[#928E8A] truncate max-w-[100px]">
               user@gmail.com
             </span>
           </div>
         </div>
         <button
-          className="bg-[#313044] text-white font-normal text-xs rounded-lg py-3 px-3.5"
+          className="bg-[#313044] text-white font-normal text-xs rounded-lg py-[11px] px-3.5"
           onClick={onLogout}
         >
           Log out
