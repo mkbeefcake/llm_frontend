@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { HomeContext } from "../../context/home/context/context";
+import { HomeContext } from "../context/home/context/context";
 import { useRouter } from "next/navigation";
-import ProviderLink from "./components/providerlink";
+import ProviderLink from "pages/home/components/providerlink";
 
 export default function Sidebar() {
   const [providers, setProviders] = useState([]);
@@ -10,13 +10,15 @@ export default function Sidebar() {
 
   const router = useRouter();
 
-    useEffect(() => {
-      let myInfo = []
-      
-      myProviders?.providers?.map((provider, i) => {
-        if (myProviders.my_providers && myProviders.my_providers[provider?.provider]) {
-          provider.count = Object.keys(myProviders.my_providers[provider?.provider]).length;
-        }
+  useEffect(() => {
+    let myInfo = [];
+
+    myProviders?.providers?.map((provider, i) => {
+      if (myProviders.my_providers[provider?.provider]) {
+        provider.count = Object.keys(
+          myProviders.my_providers[provider?.provider]
+        ).length;
+      }
 
       myInfo.push(provider);
     });
