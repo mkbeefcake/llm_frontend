@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionHeader,
@@ -11,12 +11,19 @@ export default function ProviderPanel({
   identifiers,
   statusBots,
   index,
+  defaultOpen
 }) {
+
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(defaultOpen)
+  }, [defaultOpen])
 
   const handleOpen = () => {
     setOpen(!open);
   };
+
   const Icon = ({ open }) => {
     return (
       <svg

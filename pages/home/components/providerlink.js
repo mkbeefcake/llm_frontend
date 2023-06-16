@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProviderLink({ provider, count }) {
   return (
     <li className="mb-4">
-      <a className="flex cursor-pointer items-center truncate text-white">
+      <Link className="flex cursor-pointer items-center truncate text-white" href={`/home/${provider?.provider}`}>
         <span className="mr-5">
           <Image
             id={provider?.provider}
@@ -31,7 +32,7 @@ export default function ProviderLink({ provider, count }) {
             draggable="false"
           />
         </span>
-      </a>
+      </Link>
     </li>
   );
 }
