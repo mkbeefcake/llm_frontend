@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
 import fetchJson from "../../../lib/fetchJson";
 import { HomeContext } from "../../../context/home/context/context";
 import Image from "next/image";
@@ -17,6 +16,7 @@ export default function ProviderCard({
   identifier,
   iconUrl,
   statusBot,
+  index,
 }) {
   const router = useRouter();
   const { onUpdateScreen, updateIdentifierInfo, deleteProvider } =
@@ -95,19 +95,23 @@ export default function ProviderCard({
     setShowRules(false);
   };
 
-  const onShowDropdown = (e) => {
+  const onShowDropdown = () => {
     document
-      .getElementById(`myDropdown-${identifierName}`)
+      .getElementById(`provider_dropdown_${identifierName}`)
       .classList.toggle("show");
   };
 
-  const onDeleteIdentifier = (e) => {
-    onShowDropdown(e);
+  const onDeleteIdentifier = () => {
+    onShowDropdown();
     deleteProvider(provider, identifierName);
   };
 
   return (
-    <div className="flex flex-wrap gap-2 mb-6 items-center justify-between">
+    <div
+      className={`flex flex-wrap gap-2 ${
+        index === 0 ? "mt-2" : "mt-6"
+      } items-center justify-between`}
+    >
       <div className="flex items-center">
         <Image
           alt={provider?.provider_description ?? "avatar image"}
@@ -148,7 +152,7 @@ export default function ProviderCard({
           />
           <span className="whitespace-nowrap">Add rules</span>
         </div>
-        <div className="ml-[35px] mr-[34px]">
+        <div className="mx-3 sm:ml-[35px] sm:mr-[34px]">
           <label className="relative inline-flex items-center cursor-pointer">
             <input
               type="checkbox"
@@ -162,11 +166,10 @@ export default function ProviderCard({
             </span>
           </label>
         </div>
-        <div className="dropdown">
+        <div className="relative">
           <button
-            id={`dropdownMenuIconButton-${identifierName}`}
-            className="dropbtn w-5 text-center rounded-md hover:bg-gray-600"
             type="button"
+            className="dropbtn w-5 text-center rounded-md hover:bg-gray-600"
             onClick={onShowDropdown}
           >
             <svg
@@ -204,53 +207,41 @@ export default function ProviderCard({
             </svg>
           </button>
           <div
-            id={`myDropdown-${identifierName}`}
-            className="overflow-hidden dropdown-content top-0 right-0 w-24"
+            id={`provider_dropdown_${identifierName}`}
+            className="absolute top-10 right-0 z-20 w-[150px] bg-input-color hidden border-[1.4px] border-[#586171] border-solid rounded-lg shadow"
           >
-            <span
-              className="absolute top-[9px] right-1 w-5 rounded-md py-1 px-2 text-center hover:bg-gray-600"
-              onClick={onShowDropdown}
-            >
-              <svg
-                className="mx-auto"
-                width="4"
-                height="18"
-                viewBox="0 0 4 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2 10C2.55228 10 3 9.55228 3 9C3 8.44772 2.55228 8 2 8C1.44772 8 1 8.44772 1 9C1 9.55228 1.44772 10 2 10Z"
-                  stroke="white"
-                  strokeOpacity="0.5"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M2 3C2.55228 3 3 2.55228 3 2C3 1.44772 2.55228 1 2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3Z"
-                  stroke="white"
-                  strokeOpacity="0.5"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M2 17C2.55228 17 3 16.5523 3 16C3 15.4477 2.55228 15 2 15C1.44772 15 1 15.4477 1 16C1 16.5523 1.44772 17 2 17Z"
-                  stroke="white"
-                  strokeOpacity="0.5"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-            <button
-              className="block text-white text-base font-normal"
-              onClick={onDeleteIdentifier}
-            >
-              Delete
-            </button>
+            <ul className="py-1">
+              <li onClick={onDeleteIdentifier}>
+                <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
+                  <Image
+                    id="delete"
+                    src="/delete_icon.png"
+                    alt="Delete"
+                    width={24}
+                    height={24}
+                    draggable="false"
+                  />
+                  <p className="text-base text-white opacity-[.65] truncate">
+                    Delete
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
+                  <Image
+                    id="edit"
+                    src="/edit_icon.png"
+                    alt="Edit"
+                    width={24}
+                    height={24}
+                    draggable="false"
+                  />
+                  <p className="text-base text-white opacity-[.65] truncate">
+                    Edit
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

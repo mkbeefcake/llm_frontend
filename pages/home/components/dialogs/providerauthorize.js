@@ -58,7 +58,7 @@ export default function AuthorizeProviderDialog({}) {
                 Authorize <span className="text-white">Gmail</span> account
               </h3>
               <div className="mt-10">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mb-1.5">
                   <p className="font-normal text-[15px] text-white opacity-[.65]">
                     This will allow Autobot to automate:
                   </p>
@@ -80,7 +80,7 @@ export default function AuthorizeProviderDialog({}) {
                     height={8}
                     draggable="false"
                   />
-                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-2">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px]">
                     Product sell optimizing
                   </p>
                 </div>
@@ -93,11 +93,11 @@ export default function AuthorizeProviderDialog({}) {
                     height={8}
                     draggable="false"
                   />
-                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-2">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px]">
                     Product marketing emailing
                   </p>
                 </div>
-                <div className="flex items-center mb-1.5">
+                <div className="flex items-center">
                   <Image
                     id="dot"
                     src="/dot_icon.png"
@@ -106,7 +106,7 @@ export default function AuthorizeProviderDialog({}) {
                     height={8}
                     draggable="false"
                   />
-                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-2">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px]">
                     XXXXX
                   </p>
                 </div>
@@ -114,18 +114,18 @@ export default function AuthorizeProviderDialog({}) {
               <div className="mt-10 flex gap-3 justify-between">
                 <button
                   type="button"
-                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2 text-sm font-medium sm:font-semibold text-white hover:bg-blue-700 sm:text-base"
+                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 text-sm font-medium sm:font-semibold text-white hover:bg-blue-700 sm:text-base"
                 >
                   Authorize
                 </button>
                 <button
                   type="button"
-                  className="bg-input-color w-full rounded-lg border border-transparent shadow-sm px-4 py-2 text-sm font-medium sm:font-semibold text-white sm:text-base"
+                  className="bg-input-color w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 text-sm font-medium sm:font-semibold text-white sm:text-base"
                 >
                   Cancel
                 </button>
               </div>
-              <p className="mt-2 font-normal text-xs text-white opacity-[.5]">
+              <p className="mt-2.5 font-normal text-xs text-white opacity-[.5]">
                 This will bring you to www.gmail.com
               </p>
             </div>

@@ -10,13 +10,18 @@ export default function Sidebar() {
 
   const router = useRouter();
 
-    useEffect(() => {
-      let myInfo = []
-      
-      myProviders?.providers?.map((provider, i) => {
-        if (myProviders.my_providers && myProviders.my_providers[provider?.provider]) {
-          provider.count = Object.keys(myProviders.my_providers[provider?.provider]).length;
-        }
+  useEffect(() => {
+    let myInfo = [];
+
+    myProviders?.providers?.map((provider, i) => {
+      if (
+        myProviders.my_providers &&
+        myProviders.my_providers[provider?.provider]
+      ) {
+        provider.count = Object.keys(
+          myProviders.my_providers[provider?.provider]
+        ).length;
+      }
 
       myInfo.push(provider);
     });
@@ -31,15 +36,24 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="bg-sidebar-color w-3/4 max-h-screen overflow-y-auto sm:w-80 flex flex-col justify-between px-11 py-[51px] absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto z-30"
+      className="bg-sidebar-color w-3/4 max-h-screen overflow-y-auto sm:w-80 flex flex-col justify-between px-11 py-[51px] absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto z-40"
     >
       <div>
         <div
-          className="w-[50px] h-[50px] min-h-[50px] bg-[#635EE3] rounded-full cursor-pointer"
+          className="w-[50px] h-[50px] min-h-[50px] bg-[#635EE3] flex items-center justify-center rounded-full cursor-pointer"
           onClick={() => {
             router.replace("/home");
           }}
-        ></div>
+        >
+          <Image
+            id="logo_icon"
+            src="/bot_icon.png"
+            alt="Logo"
+            width={24}
+            height={24}
+            draggable="false"
+          />
+        </div>
         <div className="mt-8 sm:mt-[51px]">
           <p className="text-white opacity-[.65] font-normal text-sm">
             Navigation
@@ -48,7 +62,7 @@ export default function Sidebar() {
             <li
               className="mb-4"
               onClick={() => {
-                router.replace("/dashboard/dashboard");
+                router.replace("/dashboard");
               }}
             >
               <a className="flex cursor-pointer items-center truncate text-white">
@@ -74,16 +88,15 @@ export default function Sidebar() {
               }}
             >
               <a className="flex cursor-pointer items-center truncate text-white">
-                <span className="mr-[23px]">
-                  <Image
-                    id="activity_icon"
-                    src="/billing_icon.png"
-                    alt="Activity"
-                    width={18}
-                    height={18}
-                    draggable="false"
-                  />
-                </span>
+                <Image
+                  className="mr-[23px]"
+                  id="activity_icon"
+                  src="/billing_icon.png"
+                  alt="Activity"
+                  width={18}
+                  height={18}
+                  draggable="false"
+                />
                 <span className="opacity-[.65] text-lg font-normal">
                   Billing
                 </span>
@@ -108,16 +121,15 @@ export default function Sidebar() {
                 className="flex cursor-pointer items-center truncate text-white"
                 onClick={(e) => setShowAddProviderDialog(true)}
               >
-                <span className="mr-5">
-                  <Image
-                    id="add_provider_icon"
-                    src="/addprovider_icon.png"
-                    alt="addProvider"
-                    width={24}
-                    height={24}
-                    draggable="false"
-                  />
-                </span>
+                <Image
+                  className="mr-5"
+                  id="add_provider_icon"
+                  src="/addprovider_icon.png"
+                  alt="addProvider"
+                  width={24}
+                  height={24}
+                  draggable="false"
+                />
                 <span className="text-white text-lg font-normal">
                   Add Provider
                 </span>
@@ -128,16 +140,15 @@ export default function Sidebar() {
       </div>
       <div className="flex flex-wrap gap-2 items-center justify-between">
         <div className="flex items-center">
-          <span className="mr-3">
-            <Image
-              id="avatar"
-              src="/avatar.png"
-              alt="Avatar"
-              width={39}
-              height={39}
-              draggable="false"
-            />
-          </span>
+          <Image
+            className="mr-3"
+            id="avatar"
+            src="/avatar.png"
+            alt="Avatar"
+            width={39}
+            height={39}
+            draggable="false"
+          />
           <div>
             <span className="block font-normal text-white text-sm truncate max-w-[100px]">
               User name
