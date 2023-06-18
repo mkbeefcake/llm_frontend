@@ -95,17 +95,10 @@ export default function ProviderCard({
     setShowRules(false);
   };
 
-  const onShowDropdown = (e) => {
-    var me = document.getElementById(`myDropdown-${identifierName}`);
-
-    // get all showed dropdown contents
-    var elements = document.getElementsByClassName("dropdown-content show");
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      if (element != me) element.classList.toggle("show");
-    }
-
-    me.classList.toggle("show");
+  const onShowDropdown = () => {
+    document
+      .getElementById(`provider_dropdown_${identifierName}`)
+      .classList.toggle("show");
   };
 
   const onDeleteIdentifier = () => {
