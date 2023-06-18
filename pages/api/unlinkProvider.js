@@ -2,7 +2,7 @@ import fetchJson from '../../lib/fetchJson';
 import { getSession } from '../../lib/session';
 const _url = require('url')
 
-export default async function(req, res) {
+export default async function unlinkProvider(req, res) {
   const user = getSession(req)    
   const { query } = _url.parse(req.url, true);
   const url = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") + `/providers/unlink_provider?provider_name=${query.provider}&identifier_name=${query.identifier}`

@@ -68,10 +68,10 @@ export default function ProviderCard({
       onStopAutoBot();
       statusBot = false;
     } else {
-      if (rules == "") {
-        alert("Please add new rule for this bot");
-        return;
-      }
+      // if (rules == "") {
+      //   alert("Please add new rule for this bot");
+      //   return;
+      // }
 
       onStartAutoBot();
       statusBot = true;
@@ -80,7 +80,7 @@ export default function ProviderCard({
 
   const onAddRule = (e) => {
     setShowRules(!showRules);
-    if (rules == "") setRules(REPLICA_SAMPLE_RULE);
+    // if (rules == "") setRules(REPLICA_SAMPLE_RULE);
   };
 
   const onSaveRule = async (e) => {
@@ -95,10 +95,17 @@ export default function ProviderCard({
     setShowRules(false);
   };
 
-  const onShowDropdown = () => {
-    document
-      .getElementById(`provider_dropdown_${identifierName}`)
-      .classList.toggle("show");
+  const onShowDropdown = (e) => {
+    var me = document.getElementById(`myDropdown-${identifierName}`);
+
+    // get all showed dropdown contents
+    var elements = document.getElementsByClassName("dropdown-content show");
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      if (element != me) element.classList.toggle("show");
+    }
+
+    me.classList.toggle("show");
   };
 
   const onDeleteIdentifier = () => {
@@ -249,8 +256,9 @@ export default function ProviderCard({
         <div className="relative mt-6 w-full overflow-hidden transition-[all] duration-700 ease-in-out">
           <textarea
             className="block w-full h-[60px] overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
-            placeholder="Rules: You can define the bot's option..."
+            placeholder={`Rules: You can define the bot's option... like as following.....${REPLICA_SAMPLE_RULE}`}
             value={rules}
+            style={{ height: 150 }}
             onChange={(e) => setRules(e.target.value)}
             required
           />

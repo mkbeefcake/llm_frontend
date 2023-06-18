@@ -1,7 +1,7 @@
 import fetchJson from '../../lib/fetchJson';
 import { getSession } from '../../lib/session';
 
-export default async function(req, res) {
+export default async function updateProviderInfo(req, res) {
   const { provider, social_info, identifier } = await req.body;
   const user = getSession(req)
 

@@ -198,6 +198,11 @@ select:focus {
   display: block;
 }
 
+textarea::placeholder {
+  font-weight: 400;
+  font-style: italic;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -310,6 +315,11 @@ select:focus {
   .show {
     display: block;
   }
+
+  textarea::placeholder {
+    font-style: italic;
+  }
+  
 }
 
 #sidebar {

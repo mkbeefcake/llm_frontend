@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import HomeLayout from "./layout";
 import ProviderPanel from "./components/panels/providerpanel";
 import { HomeContext } from "../../context/home/context/context";
+import { useRouter } from "next/router";
 
 const homeGradientStyle = {
   background:
@@ -10,8 +11,12 @@ const homeGradientStyle = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const [providers, setProviders] = useState([]);
   const { myProviders, setShowAddProviderDialog } = useContext(HomeContext);
+
+  const query = router.query;
+  console.log(`Query: ${query.slug}`)
 
   useEffect(() => {
     let myInfo = [];
@@ -88,6 +93,7 @@ export default function Home() {
             identifiers={identifiers}
             statusBots={statusBots}
             index={i}
+            defaultOpen={provider?.provider == query?.slug}
           />
         ))}
       </div>

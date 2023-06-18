@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-// import fetchJson from "../../lib/fetchJson";
+import fetchJson from "../../lib/fetchJson";
 import { useRouter } from "next/navigation";
 import useUser from "../../lib/useUser";
 import DashboardLayout from "./layout";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function Signup() {
@@ -21,21 +20,23 @@ export default function Signup() {
   }, [user, router]);
 
   const onSignup = async (e) => {
-    if (name == "" || email == "" || password == "") {
-      alert("Please input name,email and password");
+    debugger
+    if (email == "" || password == "") {
+      alert("Please input at least email and password");
       return;
     }
 
-    // try {
-    //   const _user = await fetchJson("/api/login", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email, password }),
-    //   });
-    //   mutateUser(_user);
-    // } catch (err) {
-    //   console.log(`[Login Screen]: ${err}`);
-    // }
+    try {
+      const message = await fetchJson("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      alert(message);
+      onLogin();
+    } catch (err) {
+      console.log(`[Signup Screen]: ${err}`);
+    }
   };
 
   const onLogin = (e) => {
