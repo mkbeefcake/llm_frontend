@@ -32,15 +32,17 @@ export default function Billing() {
       <div className="px-3 pt-24 pb-8 sm:px-20 sm:pt-28 relative z-20">
         <div className="flex flex-wrap gap-2 justify-between items-center">
           <div>
-            <p className="text-white text-2xl font-bold">Billing information</p>
-            <p className="text-white text-sm font-normal opacity-[.65] mt-1">
+            <p className="text-white text-2xl font-bold inter-font">
+              Billing information
+            </p>
+            <p className="text-white text-sm font-normal opacity-[.65] mt-1 inter-font">
               You have not set up a payment plan yet.
             </p>
           </div>
         </div>
         <button
           type="button"
-          className="primary-button relative z-20 mt-[27px] px-[21.5px] py-2.5 rounded-lg text-white text-base font-semibold"
+          className="primary-button relative z-20 mt-[27px] px-[21.5px] py-2.5 rounded-lg text-white text-base font-semibold inter-font"
           onClick={() => setShowAddPaymentMethodDialog(true)}
         >
           Set up payment method
@@ -49,7 +51,7 @@ export default function Billing() {
           <div className="w-full sm:w-auto">
             <label
               htmlFor="card_number"
-              className="block mb-1.5 text-white font-medium text-sm"
+              className="block mb-1.5 text-white font-medium text-sm inter-font"
             >
               Card information
             </label>
@@ -69,7 +71,7 @@ export default function Billing() {
               <input
                 type="text"
                 id="card_number"
-                className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block pr-3 pl-10 py-2"
+                className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block pr-3 pl-10 py-2 inter-font"
                 placeholder="Card Number"
               />
             </div>
@@ -77,19 +79,19 @@ export default function Billing() {
           <div className="w-full sm:w-auto">
             <label
               htmlFor="name"
-              className="block mb-1.5 text-white font-medium text-sm"
+              className="block mb-1.5 text-white font-medium text-sm inter-font"
             >
               Name on Card
             </label>
             <input
               type="text"
               id="name"
-              className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+              className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
               placeholder="Name"
             ></input>
           </div>
         </div>
-        <p className="mt-11 mb-1.5 text-white font-medium text-sm">
+        <p className="mt-11 mb-1.5 text-white font-medium text-sm inter-font">
           Billing address
         </p>
         <div className="flex flex-wrap gap-3 items-center">
@@ -99,7 +101,7 @@ export default function Billing() {
               className="bg-input-color w-full sm:w-[212px] text-white opacity-[.65] text-base font-normal rounded-lg px-3 py-2 justify-between inline-flex items-center"
               onClick={onShowCountryDropdown}
             >
-              <p className="w-[80%] text-left truncate">
+              <p className="w-[80%] text-left truncate inter-font">
                 {selectedCountry ? selectedCountry : "Country"}
               </p>
               <svg
@@ -140,7 +142,7 @@ export default function Billing() {
                           height={16}
                           draggable="false"
                         />
-                        <p className="text-base text-white opacity-[.65] truncate">
+                        <p className="text-base text-white opacity-[.65] truncate inter-font">
                           {country.name}
                         </p>
                       </div>
@@ -153,13 +155,13 @@ export default function Billing() {
           <input
             type="text"
             id="city"
-            className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+            className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
             placeholder="City"
           ></input>
           <input
             type="text"
             id="postalcode"
-            className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+            className="bg-input-color w-full sm:w-[394px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
             placeholder="Postal code"
           ></input>
         </div>
@@ -167,19 +169,21 @@ export default function Billing() {
           <input
             type="text"
             id="address1"
-            className="bg-input-color w-full sm:w-[394px] xl:w-[508px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+            className="bg-input-color w-full sm:w-[394px] xl:w-[508px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
             placeholder="Address line 1"
           ></input>
           <input
             type="text"
             id="address2"
-            className="bg-input-color w-full sm:w-[394px] xl:w-[508px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+            className="bg-input-color w-full sm:w-[394px] xl:w-[508px] text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
             placeholder="Address line 2"
           ></input>
         </div>
         <div className="mt-10 sm:mt-[86px]">
-          <p className="text-white text-2xl font-bold">Billing history</p>
-          <p className="text-white text-sm font-normal opacity-[.65] mt-1">
+          <p className="text-white text-2xl font-bold inter-font">
+            Billing history
+          </p>
+          <p className="text-white text-sm font-normal opacity-[.65] mt-1 inter-font">
             35 invoices found.
           </p>
           <div className="mt-[27px]">

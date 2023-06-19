@@ -55,7 +55,7 @@ export default function SuccessProviderDialog({}) {
                 </div>
               </div>
               <div className="flex justify-center items-center gap-3.5 mt-10">
-                <h3 className="text-center text-xl font-semibold text-white">
+                <h3 className="text-center text-xl font-semibold text-white inter-font">
                   Success to connect !
                 </h3>
                 <Image
@@ -70,7 +70,7 @@ export default function SuccessProviderDialog({}) {
               </div>
               <div className="mt-10">
                 <div className="flex justify-between items-center mb-1.5">
-                  <p className="font-normal text-[15px] text-white opacity-[.65]">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] inter-font">
                     This will allow Autobot to automate:
                   </p>
                   <Image
@@ -91,7 +91,7 @@ export default function SuccessProviderDialog({}) {
                     height={8}
                     draggable="false"
                   />
-                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px]">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px] inter-font">
                     Product sell optimizing
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export default function SuccessProviderDialog({}) {
                     height={8}
                     draggable="false"
                   />
-                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px]">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px] inter-font">
                     Product marketing emailing
                   </p>
                 </div>
@@ -117,7 +117,7 @@ export default function SuccessProviderDialog({}) {
                     height={8}
                     draggable="false"
                   />
-                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px]">
+                  <p className="font-normal text-[15px] text-white opacity-[.65] ml-[9px] inter-font">
                     XXXXX
                   </p>
                 </div>
@@ -125,13 +125,13 @@ export default function SuccessProviderDialog({}) {
               <div className="mt-10 flex gap-3 justify-between">
                 <button
                   type="button"
-                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 text-sm font-medium sm:font-semibold text-white hover:bg-blue-700 sm:text-base"
+                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 text-sm font-medium sm:font-semibold text-white hover:bg-blue-700 sm:text-base inter-font"
                 >
                   Activate now
                 </button>
                 <button
                   type="button"
-                  className="bg-input-color w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 text-sm font-medium sm:font-semibold text-white sm:text-base"
+                  className="bg-input-color w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 text-sm font-medium sm:font-semibold text-white sm:text-base inter-font"
                 >
                   Cancel
                 </button>

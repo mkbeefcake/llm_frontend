@@ -20,7 +20,7 @@ export default function Signup() {
   }, [user, router]);
 
   const onSignup = async (e) => {
-    debugger
+    debugger;
     if (email == "" || password == "") {
       alert("Please input at least email and password");
       return;
@@ -45,7 +45,7 @@ export default function Signup() {
   return (
     <div className="lg:w-1/2 sm:w-2/3 w-11/12 bg-black-gray p-8 rounded-3xl mx-auto mb-10 md:mb-0">
       <div className="flex justify-between items-center">
-        <p className="text-white font-normal  text-base sm:text-xl">
+        <p className="text-white font-normal  text-base sm:text-xl apple-braille-font">
           Create an account
         </p>
         <svg
@@ -66,7 +66,7 @@ export default function Signup() {
         <input
           type="text"
           id="name"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-10"
+          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-10 inter-font"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -75,7 +75,7 @@ export default function Signup() {
         <input
           type="email"
           id="email"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5"
+          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -84,19 +84,19 @@ export default function Signup() {
         <input
           type="password"
           id="password"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5"
+          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <p className="mt-3.5 text-left text-neutral-400 font-normal text-sm">
+        <p className="mt-3.5 text-left text-neutral-400 font-normal text-sm inter-font">
           Must be at least 8 characters.
         </p>
         <hr className="my-10 h-px border-t-0 bg-devider-color" />
         <button
           type="button"
-          className="primary-button rounded-lg text-center text-white font-semibold text-base w-full py-2.5"
+          className="primary-button rounded-lg text-center text-white font-semibold text-base w-full py-2.5 inter-font"
           onClick={onSignup}
         >
           Get Started
@@ -112,16 +112,16 @@ export default function Signup() {
             src="https://www.svgrepo.com/show/475656/google-color.svg"
             alt="google logo"
           />
-          <span className="text-[#344054] font-semibold text-base ml-3">
+          <span className="text-[#344054] font-semibold text-base ml-3 inter-font">
             Sign up with Google
           </span>
         </button>
         <div className="mt-10 flex justify-center">
-          <p className="text-neutral-400 font-normal text-sm">
+          <p className="text-neutral-400 font-normal text-sm inter-font">
             Already have an account?
           </p>
           <button
-            className="ml-3 text-link-color font-normal text-sm"
+            className="ml-3 text-link-color font-normal text-sm inter-font"
             onClick={onLogin}
           >
             Log in

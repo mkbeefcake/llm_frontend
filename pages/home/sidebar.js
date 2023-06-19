@@ -55,7 +55,7 @@ export default function Sidebar() {
           />
         </div>
         <div className="mt-8 sm:mt-[51px]">
-          <p className="text-white opacity-[.65] font-normal text-sm">
+          <p className="text-white opacity-[.65] font-normal text-sm inter-font">
             Navigation
           </p>
           <ul className="mt-6">
@@ -76,7 +76,7 @@ export default function Sidebar() {
                     draggable="false"
                   />
                 </span>
-                <span className="opacity-[.65] text-lg font-normal">
+                <span className="opacity-[.65] text-lg font-normal inter-font">
                   Dashboard
                 </span>
               </a>
@@ -97,7 +97,7 @@ export default function Sidebar() {
                   height={18}
                   draggable="false"
                 />
-                <span className="opacity-[.65] text-lg font-normal">
+                <span className="opacity-[.65] text-lg font-normal inter-font">
                   Billing
                 </span>
               </a>
@@ -105,7 +105,7 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="mt-10 sm:mt-14">
-          <p className="text-white opacity-[.65] font-normal text-sm">
+          <p className="text-white opacity-[.65] font-normal text-sm inter-font">
             Providers
           </p>
           <ul className="mt-6">
@@ -130,7 +130,7 @@ export default function Sidebar() {
                   height={24}
                   draggable="false"
                 />
-                <span className="text-white text-lg font-normal">
+                <span className="text-white text-lg font-normal inter-font">
                   Add Provider
                 </span>
               </a>
@@ -150,16 +150,16 @@ export default function Sidebar() {
             draggable="false"
           />
           <div>
-            <span className="block font-normal text-white text-sm truncate max-w-[100px]">
+            <span className="block font-normal text-white text-sm truncate max-w-[100px] apple-braille-font">
               User name
             </span>
-            <span className="block font-normal text-xs text-[#928E8A] truncate max-w-[100px]">
+            <span className="block font-normal text-xs text-[#928E8A] truncate max-w-[100px] apple-braille-font">
               user@gmail.com
             </span>
           </div>
         </div>
         <button
-          className="bg-[#313044] text-white font-normal text-xs rounded-lg py-[11px] px-3.5"
+          className="bg-[#313044] text-white font-normal text-xs rounded-lg py-[11px] px-3.5 apple-braille-font"
           onClick={onLogout}
         >
           Log out

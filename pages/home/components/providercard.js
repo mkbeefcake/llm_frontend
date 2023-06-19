@@ -123,14 +123,14 @@ export default function ProviderCard({
         />
         <div className="text-white">
           <div className="flex gap-1">
-            <span className="block font-medium text-base truncate">
+            <span className="block font-medium text-base truncate inter-font">
               {identifierName}
             </span>
-            <span className="bg-[#5448B7] text-white opacity-[.75] text-xs font-medium leading-[22px] ml-2 px-2 py-px rounded-full">
+            <span className="bg-[#5448B7] text-white opacity-[.75] text-xs font-medium leading-[22px] ml-2 px-2 py-px rounded-full inter-font">
               Sales
             </span>
           </div>
-          <span className="block font-normal mt-0.5 text-[15px] opacity-[.65] truncate w-[130px] md:w-[90px] lg:w-[125px] xl:w-[365px]">
+          <span className="block font-normal mt-0.5 text-[15px] opacity-[.65] truncate w-[130px] md:w-[90px] lg:w-[125px] xl:w-[365px] inter-font">
             {(identifier && identifier["rules"]) ??
               "No rules have been added yet"}
           </span>
@@ -150,7 +150,7 @@ export default function ProviderCard({
             height={17}
             draggable="false"
           />
-          <span className="whitespace-nowrap">Add rules</span>
+          <span className="whitespace-nowrap inter-font">Add rules</span>
         </div>
         <div className="mx-3 sm:ml-[35px] sm:mr-[34px]">
           <label className="relative inline-flex items-center cursor-pointer">
@@ -161,7 +161,7 @@ export default function ProviderCard({
               checked={statusBot}
             />
             <div className="w-10 h-6 bg-background-color rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-link-color"></div>
-            <span className="ml-[9px] text-base font-medium text-white">
+            <span className="ml-[9px] text-base font-medium text-white inter-font">
               {statusBot == true ? "Active" : "Inactive"}
             </span>
           </label>
@@ -221,7 +221,7 @@ export default function ProviderCard({
                     height={24}
                     draggable="false"
                   />
-                  <p className="text-base text-white opacity-[.65] truncate">
+                  <p className="text-base text-white opacity-[.65] truncate inter-font">
                     Delete
                   </p>
                 </div>
@@ -236,7 +236,7 @@ export default function ProviderCard({
                     height={24}
                     draggable="false"
                   />
-                  <p className="text-base text-white opacity-[.65] truncate">
+                  <p className="text-base text-white opacity-[.65] truncate inter-font">
                     Edit
                   </p>
                 </div>
@@ -248,7 +248,7 @@ export default function ProviderCard({
       {showRules && (
         <div className="relative mt-6 w-full overflow-hidden transition-[all] duration-700 ease-in-out">
           <textarea
-            className="block w-full h-[60px] overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none"
+            className="block w-full h-[60px] overflow-hidden py-4 px-5 rounded-lg border-solid border-t-0 border-r-0 border-b-0 border-l-[7px] border-l-[#635EE3] font-normal text-[15px] placeholder:text-white text-white opacity-[.65] bg-[#454969] focus:outline-none inter-font"
             placeholder={`Rules: You can define the bot's option... like as following.....${REPLICA_SAMPLE_RULE}`}
             value={rules}
             style={{ height: 150 }}
@@ -256,7 +256,7 @@ export default function ProviderCard({
             required
           />
           <button
-            className="text-white font-semibold text-base absolute right-2.5 bottom-2.5 primary-button hover:opacity-[.7] rounded-lg px-[45px] py-[7px]"
+            className="text-white font-semibold text-base absolute right-2.5 bottom-2.5 primary-button hover:opacity-[.7] rounded-lg px-[45px] py-[7px] inter-font"
             onClick={onSaveRule}
           >
             Save

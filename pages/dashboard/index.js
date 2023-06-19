@@ -144,8 +144,10 @@ export default function Dashboard() {
       <div className="px-3 pb-[57px] pt-24 sm:px-20 sm:pt-28 relative z-20">
         <div className="flex flex-wrap gap-2 justify-between items-center mb-7">
           <div>
-            <p className="text-white text-2xl font-bold">Dashboard</p>
-            <p className="text-white text-sm font-normal opacity-[.65] mt-1">
+            <p className="text-white text-2xl font-bold inter-font">
+              Dashboard
+            </p>
+            <p className="text-white text-sm font-normal opacity-[.65] mt-1 inter-font">
               Analytics about all automated providers
             </p>
           </div>
@@ -157,7 +159,9 @@ export default function Dashboard() {
               className="text-white w-full bg-transparent border-[1.4px] border-[#586171] border-solid font-normal opacity-[.65] rounded-lg text-lg px-6 py-2.5 justify-between inline-flex items-center"
               onClick={onShowProvidersDropdown}
             >
-              <p className="w-[80%] text-left truncate">{selectedProvider}</p>
+              <p className="w-[80%] text-left truncate inter-font">
+                {selectedProvider}
+              </p>
               <svg
                 id="providers_dropdown_icon"
                 className="w-4 h-4 ml-2 transition-transform duration-200 ease-in-out"
@@ -194,7 +198,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       All Providers
                     </p>
                   </div>
@@ -213,7 +217,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       Gmail
                     </p>
                   </div>
@@ -232,7 +236,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       Twitter
                     </p>
                   </div>
@@ -251,7 +255,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       Facebook
                     </p>
                   </div>
@@ -270,7 +274,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       LinkedIn
                     </p>
                   </div>
@@ -289,7 +293,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       Whatsapp
                     </p>
                   </div>
@@ -303,7 +307,9 @@ export default function Dashboard() {
               className="text-white w-full bg-transparent border-[1.4px] border-[#586171] border-solid font-normal opacity-[.65] rounded-lg text-lg px-6 py-2.5 justify-between inline-flex items-center"
               onClick={onShowAccountsDropdown}
             >
-              <p className="w-[80%] text-left truncate">{selectedAccount}</p>
+              <p className="w-[80%] text-left truncate inter-font">
+                {selectedAccount}
+              </p>
               <svg
                 id="accounts_dropdown_icon"
                 className="w-4 h-4 ml-2 transition-transform duration-200 ease-in-out"
@@ -340,7 +346,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       All Accounts
                     </p>
                   </div>
@@ -359,7 +365,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       user@gmail.com
                     </p>
                   </div>
@@ -378,7 +384,7 @@ export default function Dashboard() {
                       height={16}
                       draggable="false"
                     />
-                    <p className="text-base text-white opacity-[.65] truncate">
+                    <p className="text-base text-white opacity-[.65] truncate inter-font">
                       OliviaRhye@Gmail.com
                     </p>
                   </div>
@@ -388,7 +394,7 @@ export default function Dashboard() {
           </div>
           <Datepicker
             containerClassName="relative w-fit border-[1.4px] border-[#586171] border-solid rounded-lg"
-            inputClassName="bg-transparent text-white placeholder:text-white font-normal opacity-[.65] rounded-lg text-lg px-6 py-2.5"
+            inputClassName="bg-transparent text-white placeholder:text-white font-normal opacity-[.65] rounded-lg text-lg px-6 py-2.5 inter-font"
             placeholder={"Select date"}
             showShortcuts={true}
             value={value}
@@ -397,9 +403,11 @@ export default function Dashboard() {
         </div>
         <div className="flex flex-wrap gap-2 items-center mt-5 rounded-2xl bg-input-color px-[54px] py-[45px]">
           <div className="mr-4 sm:mr-0">
-            <p className="text-lg font-bold text-white mb-2">Revunue</p>
+            <p className="text-lg font-bold text-white mb-2 inter-font">
+              Revunue
+            </p>
             <div className="flex gap-4 items-center">
-              <p className="text-lg font-normal text-white opacity-[.65]">
+              <p className="text-lg font-normal text-white opacity-[.65] inter-font">
                 35$
               </p>
               <Image
@@ -414,9 +422,11 @@ export default function Dashboard() {
           </div>
           <div className="w-px hidden sm:block h-[43px] bg-[#818181] mx-[5vw] xl:mx-[114px]"></div>
           <div className="text-center mr-4 sm:mr-0">
-            <p className="text-lg font-bold text-white mb-2">Messages</p>
+            <p className="text-lg font-bold text-white mb-2 inter-font">
+              Messages
+            </p>
             <div className="flex gap-4 items-center">
-              <p className="text-lg font-normal text-white opacity-[.65]">
+              <p className="text-lg font-normal text-white opacity-[.65] inter-font">
                 337
               </p>
               <Image
@@ -431,11 +441,13 @@ export default function Dashboard() {
           </div>
           <div className="w-px hidden sm:block h-[43px] bg-[#818181] mx-[5vw] xl:mx-[114px]"></div>
           <div className="mr-4 sm:mr-0">
-            <p className="text-lg font-bold text-white mb-2">
+            <p className="text-lg font-bold text-white mb-2 inter-font">
               Activated Providers
             </p>
             <div className="flex gap-4 items-center">
-              <p className="text-lg font-normal text-white opacity-[.65]">7</p>
+              <p className="text-lg font-normal text-white opacity-[.65] inter-font">
+                7
+              </p>
               <Image
                 id="increase"
                 src="/increase.png"
@@ -453,7 +465,7 @@ export default function Dashboard() {
               <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
                 <div className="flex flex-wrap items-center">
                   <div className="relative w-full max-w-full flex-grow flex-1">
-                    <h2 className="text-white text-lg font-bold">
+                    <h2 className="text-white text-lg font-bold inter-font">
                       Revenue over time
                     </h2>
                   </div>
@@ -468,12 +480,12 @@ export default function Dashboard() {
           </div>
           <div className="base-1 lg:basis-1/3 w-full lg:w-auto rounded-2xl bg-input-color min-h-[420px] p-[33px]">
             <div className="flex flex-wrap gap-1.5 items-center">
-              <p className="text-white text-base sm:text-lg font-bold">
+              <p className="text-white text-base sm:text-lg font-bold inter-font">
                 Messages by
               </p>
               <div className="relative">
                 <div
-                  className="text-[#7E79FF] bg-transparent cursor-pointer font-normal text-base sm:text-lg text-center inline-flex items-center"
+                  className="text-[#7E79FF] bg-transparent cursor-pointer font-normal text-base sm:text-lg text-center inline-flex items-center inter-font"
                   onClick={onShowTypeDropdown}
                 >
                   {selectedType}
@@ -505,7 +517,7 @@ export default function Dashboard() {
                       }}
                     >
                       <div className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
-                        <p className="text-base text-white opacity-[.65] truncate">
+                        <p className="text-base text-white opacity-[.65] truncate inter-font">
                           Providers
                         </p>
                       </div>
@@ -516,7 +528,7 @@ export default function Dashboard() {
                       }}
                     >
                       <div className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
-                        <p className="text-base text-white opacity-[.65] truncate">
+                        <p className="text-base text-white opacity-[.65] truncate inter-font">
                           Account
                         </p>
                       </div>
@@ -527,8 +539,10 @@ export default function Dashboard() {
             </div>
             <div className="mt-[25px]">
               <div className="flex justify-between items-center">
-                <p className="text-[15px] font-normal text-white">LinkedIn</p>
-                <p className="text-[15px] font-normal text-white opacity-[.65]">
+                <p className="text-[15px] font-normal text-white inter-font">
+                  LinkedIn
+                </p>
+                <p className="text-[15px] font-normal text-white opacity-[.65] inter-font">
                   +40% / 52
                 </p>
               </div>
@@ -541,8 +555,10 @@ export default function Dashboard() {
             </div>
             <div className="mt-[26px]">
               <div className="flex justify-between items-center">
-                <p className="text-[15px] font-normal text-white">Gmail</p>
-                <p className="text-[15px] font-normal text-white opacity-[.65]">
+                <p className="text-[15px] font-normal text-white inter-font">
+                  Gmail
+                </p>
+                <p className="text-[15px] font-normal text-white opacity-[.65] inter-font">
                   +25% / 22
                 </p>
               </div>
@@ -555,8 +571,10 @@ export default function Dashboard() {
             </div>
             <div className="mt-[26px]">
               <div className="flex justify-between items-center">
-                <p className="text-[15px] font-normal text-white">Twitter</p>
-                <p className="text-[15px] font-normal text-white opacity-[.65]">
+                <p className="text-[15px] font-normal text-white inter-font">
+                  Twitter
+                </p>
+                <p className="text-[15px] font-normal text-white opacity-[.65] inter-font">
                   +15% / 9
                 </p>
               </div>
@@ -569,8 +587,10 @@ export default function Dashboard() {
             </div>
             <div className="mt-[26px]">
               <div className="flex justify-between items-center">
-                <p className="text-[15px] font-normal text-white">Facebook</p>
-                <p className="text-[15px] font-normal text-white opacity-[.65]">
+                <p className="text-[15px] font-normal text-white inter-font">
+                  Facebook
+                </p>
+                <p className="text-[15px] font-normal text-white opacity-[.65] inter-font">
                   -5% / 9
                 </p>
               </div>
