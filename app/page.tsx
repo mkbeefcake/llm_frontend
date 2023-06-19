@@ -26,18 +26,18 @@ export default function Home() {
       ></div>
       <div className="flex flex-wrap md:flex-nowrap items-center justify-content z-20">
         <div className="basis-[100%] md:basis-1/3 md:ml-[10vw] text-center md:text-left">
-          <h2 className="font-normal text-base mb-3 text-[#9C98FF]">
+          <h2 className="font-normal text-base mb-3 text-[#9C98FF] apple-braille-font">
             ChatAutomation
           </h2>
-          <h1 className="text-white font-normal text-xl sm:text-[32px] mb-1.5">
+          <h1 className="text-white font-normal text-xl sm:text-[32px] mb-1.5 apple-braille-font">
             Here is the slogan
           </h1>
-          <p className="text-white font-normal text-base mx-3 sm:mx-0">
+          <p className="text-white font-normal text-base mx-3 sm:mx-0 apple-braille-font">
             Here is the web tool description. Here is the web tool description
           </p>
           <Link
             href="/dashboard/login"
-            className="primary-button block w-[132px] my-8 mx-auto md:mx-0 px-10 py-3.5 rounded-lg text-center text-white font-normal text-base"
+            className="primary-button block w-[132px] my-8 mx-auto md:mx-0 px-10 py-3.5 rounded-lg text-center text-white font-normal text-base apple-braille-font"
           >
             Log in
           </Link>

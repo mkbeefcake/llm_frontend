@@ -19,10 +19,10 @@ export default function PaymentMethodCard({ info }) {
           draggable="false"
         />
         <div>
-          <p className="text-white text-lg font-medium mb-[7px]">
+          <p className="text-white text-lg font-medium mb-[7px] inter-font">
             Card XXXX XXXX {info}
           </p>
-          <p className="text-white text-[15px] font-normal opacity-[.5]">
+          <p className="text-white text-[15px] font-normal opacity-[.5] inter-font">
             Added on 01/23/2023
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function PaymentMethodCard({ info }) {
                   height={24}
                   draggable="false"
                 />
-                <p className="text-base text-white opacity-[.65] truncate">
+                <p className="text-base text-white opacity-[.65] truncate inter-font">
                   Delete
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function PaymentMethodCard({ info }) {
                   height={24}
                   draggable="false"
                 />
-                <p className="text-base text-white opacity-[.65] truncate">
+                <p className="text-base text-white opacity-[.65] truncate inter-font">
                   Edit
                 </p>
               </div>

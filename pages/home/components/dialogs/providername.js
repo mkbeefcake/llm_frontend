@@ -48,7 +48,7 @@ export default function AddProviderNameDialog({}) {
               aria-labelledby="modal-headline"
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-base sm:text-xl font-normal text-white">
+                <h3 className="text-base sm:text-xl font-normal text-white inter-font">
                   {selectedProvider?.provider_description} Name
                 </h3>
                 <svg
@@ -86,7 +86,7 @@ export default function AddProviderNameDialog({}) {
                     height={50}
                   />
                   <input
-                    className="rounded-lg p-2 w-fit sm:w-72 text-white"
+                    className="rounded-lg p-2 w-fit sm:w-72 text-white inter-font"
                     value={identiferName}
                     onChange={(e) => setIdentiferName(e.target.value)}
                     required
@@ -94,7 +94,7 @@ export default function AddProviderNameDialog({}) {
                 </div>
                 <button
                   type="button"
-                  className="primary-button inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
+                  className="primary-button inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm inter-font"
                   onClick={onActivate}
                 >
                   Activate

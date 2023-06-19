@@ -28,7 +28,7 @@ export default function ProviderPanel({
         className="text-white font-bold text-lg py-4 w-full justify-between inline-flex items-center"
         onClick={handleProvidersAccordion}
       >
-        <p className="w-[80%] text-left truncate">
+        <p className="w-[80%] text-left truncate inter-font">
           {provider?.provider_description}
         </p>
         <svg

@@ -41,7 +41,7 @@ export default function AddPaymentDialog({}) {
               aria-labelledby="modal-headline"
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-base sm:text-xl font-normal text-white">
+                <h3 className="text-base sm:text-xl font-normal text-white inter-font">
                   Billing information
                 </h3>
                 <svg
@@ -63,7 +63,7 @@ export default function AddPaymentDialog({}) {
                 <div className="w-full">
                   <label
                     htmlFor="card_number"
-                    className="block mb-1.5 text-white font-medium text-sm"
+                    className="block mb-1.5 text-white font-medium text-sm inter-font"
                   >
                     Card information
                   </label>
@@ -83,7 +83,7 @@ export default function AddPaymentDialog({}) {
                     <input
                       type="text"
                       id="card_number"
-                      className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block pr-3 pl-10 py-2"
+                      className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block pr-3 pl-10 py-2 inter-font"
                       placeholder="Card Number"
                     />
                     <Image
@@ -100,19 +100,19 @@ export default function AddPaymentDialog({}) {
                 <div className="w-full mt-10">
                   <label
                     htmlFor="name"
-                    className="block mb-1.5 text-white font-medium text-sm"
+                    className="block mb-1.5 text-white font-medium text-sm inter-font"
                   >
                     Name on Card
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+                    className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
                     placeholder="Name"
                   ></input>
                 </div>
               </div>
-              <p className="mt-5 sm:mt-10 mb-1.5 text-white font-medium text-sm">
+              <p className="mt-5 sm:mt-10 mb-1.5 text-white font-medium text-sm inter-font">
                 Billing address
               </p>
               <div>
@@ -122,7 +122,7 @@ export default function AddPaymentDialog({}) {
                     className="bg-input-color w-full text-white opacity-[.65] text-base font-normal rounded-lg px-3 py-2 justify-between inline-flex items-center"
                     onClick={onShowCountryDropdown}
                   >
-                    <p className="w-[80%] text-left truncate">
+                    <p className="w-[80%] text-left truncate inter-font">
                       {selectedCountry ? selectedCountry : "Country"}
                     </p>
                     <svg
@@ -163,7 +163,7 @@ export default function AddPaymentDialog({}) {
                                 height={16}
                                 draggable="false"
                               />
-                              <p className="text-base text-white opacity-[.65] truncate">
+                              <p className="text-base text-white opacity-[.65] truncate inter-font">
                                 {country.name}
                               </p>
                             </div>
@@ -176,26 +176,26 @@ export default function AddPaymentDialog({}) {
                 <input
                   type="text"
                   id="address1"
-                  className="bg-input-color w-full mb-1.5 text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+                  className="bg-input-color w-full mb-1.5 text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
                   placeholder="Address line 1"
                 ></input>
                 <input
                   type="text"
                   id="address2"
-                  className="bg-input-color w-full mb-1.5 text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+                  className="bg-input-color w-full mb-1.5 text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
                   placeholder="Address line 2"
                 ></input>
                 <div className="flex justify-between items-center gap-3">
                   <input
                     type="text"
                     id="city"
-                    className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+                    className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
                     placeholder="City"
                   ></input>
                   <input
                     type="text"
                     id="postalcode"
-                    className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2"
+                    className="bg-input-color w-full text-white placeholder:text-white opacity-[.65] text-base font-normal rounded-lg block px-3 py-2 inter-font"
                     placeholder="Postal code"
                   ></input>
                 </div>
@@ -203,7 +203,7 @@ export default function AddPaymentDialog({}) {
               <div className="mt-5 sm:mt-10">
                 <button
                   type="button"
-                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 sm:text-base font-medium sm:font-semibold text-white hover:bg-blue-700 text-sm"
+                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 sm:text-base font-medium sm:font-semibold text-white hover:bg-blue-700 text-sm inter-font"
                   // onClick={() => setShowAddProviderDialog(false)}
                 >
                   Set up payment method

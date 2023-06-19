@@ -17,10 +17,10 @@ export default function InvoiceCard({ id }) {
           draggable="false"
         />
         <div className="ml-[23px]">
-          <p className="text-white text-lg font-bold mb-px">
+          <p className="text-white text-lg font-bold mb-px inter-font">
             InvoiceID 00000{id}
           </p>
-          <p className="text-white text-lg font-normal opacity-[.65]">
+          <p className="text-white text-lg font-normal opacity-[.65] inter-font">
             03/23/2023 Tuesday, 20:24
           </p>
         </div>
@@ -28,7 +28,7 @@ export default function InvoiceCard({ id }) {
       <div className="flex justify-between w-full lg:w-auto lg:justify-end items-center">
         <button
           type="button"
-          className="bg-[#59606A] rounded-lg px-[35px] py-2.5 mr-[29px] font-semibold text-base text-white"
+          className="bg-[#59606A] rounded-lg px-[35px] py-2.5 mr-[29px] font-semibold text-base text-white inter-font"
         >
           See detail
         </button>
@@ -87,7 +87,7 @@ export default function InvoiceCard({ id }) {
                     height={24}
                     draggable="false"
                   />
-                  <p className="text-base text-white opacity-[.65] truncate">
+                  <p className="text-base text-white opacity-[.65] truncate inter-font">
                     Delete
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export default function InvoiceCard({ id }) {
                     height={24}
                     draggable="false"
                   />
-                  <p className="text-base text-white opacity-[.65] truncate">
+                  <p className="text-base text-white opacity-[.65] truncate inter-font">
                     Edit
                   </p>
                 </div>

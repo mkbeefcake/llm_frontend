@@ -37,7 +37,7 @@ export default function ProviderAvatar({ provider, index }) {
           draggable="false"
         />
       </button>
-      <p className="text-xs font-normal text-white opacity-[.65] text-center">
+      <p className="text-xs font-normal text-white opacity-[.65] text-center inter-font">
         {provider?.short_name}
       </p>
     </div>

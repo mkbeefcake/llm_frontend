@@ -27,7 +27,7 @@ export default function HomeLayout({ children }) {
       <div className="relative min-h-screen md:flex">
         <input type="checkbox" id="menu-open" className="hidden" />
         <header className="bg-gray-800 flex justify-between md:hidden w-full fixed top-0 z-30">
-          <p className="p-4 text-white font-bold whitespace-nowrap truncate">
+          <p className="p-4 text-white font-bold whitespace-nowrap truncate inter-font">
             Navigation
           </p>
           <label

@@ -17,15 +17,17 @@ export default function Payment() {
       <div className="px-3 pt-24 pb-8 sm:px-20 sm:pt-28">
         <div className="flex flex-wrap gap-2 justify-between items-center">
           <div>
-            <p className="text-white text-2xl font-bold">Billing information</p>
-            <p className="text-white text-sm font-normal opacity-[.65] mt-1">
+            <p className="text-white text-2xl font-bold inter-font">
+              Billing information
+            </p>
+            <p className="text-white text-sm font-normal opacity-[.65] mt-1 inter-font">
               You have not set up a payment plan yet.
             </p>
           </div>
         </div>
         <button
           type="button"
-          className="primary-button relative z-20 mt-[27px] px-[21.5px] py-2.5 rounded-lg text-white text-base font-semibold"
+          className="primary-button relative z-20 mt-[27px] px-[21.5px] py-2.5 rounded-lg text-white text-base font-semibold inter-font"
         >
           Add new payment method
         </button>
@@ -35,8 +37,10 @@ export default function Payment() {
           })}
         </div>
         <div className="mt-10 sm:mt-[86px] relative z-20">
-          <p className="text-white text-2xl font-bold">Billing history</p>
-          <p className="text-white text-sm font-normal opacity-[.65] mt-1">
+          <p className="text-white text-2xl font-bold inter-font">
+            Billing history
+          </p>
+          <p className="text-white text-sm font-normal opacity-[.65] mt-1 inter-font">
             35 invoices found.
           </p>
           <div className="mt-[27px]">
@@ -51,10 +55,10 @@ export default function Payment() {
                   draggable="false"
                 />
                 <div className="ml-[23px]">
-                  <p className="text-white text-lg font-bold mb-px">
+                  <p className="text-white text-lg font-bold mb-px inter-font">
                     InvoiceID 000001
                   </p>
-                  <p className="text-white text-lg font-normal opacity-[.65]">
+                  <p className="text-white text-lg font-normal opacity-[.65] inter-font">
                     03/23/2023 Tuesday, 20:24
                   </p>
                 </div>
@@ -62,7 +66,7 @@ export default function Payment() {
               <div className="flex justify-between w-full lg:w-auto lg:justify-end items-center">
                 <button
                   type="button"
-                  className="bg-[#59606A] rounded-lg px-[35px] py-2.5 mr-[29px] font-semibold text-base text-white"
+                  className="bg-[#59606A] rounded-lg px-[35px] py-2.5 mr-[29px] font-semibold text-base text-white inter-font"
                 >
                   See detail
                 </button>
@@ -145,7 +149,7 @@ export default function Payment() {
                         />
                       </svg>
                     </span>
-                    <button className="block text-white text-base font-normal">
+                    <button className="block text-white text-base font-normal inter-font">
                       Delete
                     </button>
                   </div>
@@ -163,10 +167,10 @@ export default function Payment() {
                   draggable="false"
                 />
                 <div className="ml-[23px]">
-                  <p className="text-white text-lg font-bold mb-px">
+                  <p className="text-white text-lg font-bold mb-px inter-font">
                     InvoiceID 000002
                   </p>
-                  <p className="text-white text-lg font-normal opacity-[.65]">
+                  <p className="text-white text-lg font-normal opacity-[.65] inter-font">
                     03/23/2023 Tuesday, 20:24
                   </p>
                 </div>
@@ -174,7 +178,7 @@ export default function Payment() {
               <div className="flex justify-between w-full lg:w-auto lg:justify-end items-center">
                 <button
                   type="button"
-                  className="bg-[#59606A] rounded-lg px-[35px] py-2.5 mr-[29px] font-semibold text-base text-white"
+                  className="bg-[#59606A] rounded-lg px-[35px] py-2.5 mr-[29px] font-semibold text-base text-white inter-font"
                 >
                   See detail
                 </button>
@@ -257,7 +261,7 @@ export default function Payment() {
                         />
                       </svg>
                     </span>
-                    <button className="block text-white text-base font-normal">
+                    <button className="block text-white text-base font-normal inter-font">
                       Delete
                     </button>
                   </div>

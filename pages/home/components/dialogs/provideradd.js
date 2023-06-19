@@ -10,7 +10,10 @@ export default function AddProviderDialog({}) {
   useEffect(() => {
     let myInfo = [];
     myProviders?.providers?.map((provider, i) => {
-      if (myProviders?.my_providers && myProviders?.my_providers[provider?.provider]) {
+      if (
+        myProviders?.my_providers &&
+        myProviders?.my_providers[provider?.provider]
+      ) {
         provider.count = Object.keys(
           myProviders.my_providers[provider?.provider]
         ).length;
@@ -45,7 +48,7 @@ export default function AddProviderDialog({}) {
               aria-labelledby="modal-headline"
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-base sm:text-xl font-normal text-white">
+                <h3 className="text-base sm:text-xl font-normal text-white inter-font">
                   Connect with provider
                 </h3>
                 <svg
@@ -71,7 +74,7 @@ export default function AddProviderDialog({}) {
               <div className="sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 sm:text-base font-medium sm:font-semibold text-white hover:bg-blue-700 text-sm"
+                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 sm:text-base font-medium sm:font-semibold text-white hover:bg-blue-700 text-sm inter-font"
                   onClick={() => setShowAddProviderDialog(false)}
                 >
                   Verify my account

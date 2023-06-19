@@ -16,7 +16,7 @@ export default function Home() {
   const { myProviders, setShowAddProviderDialog } = useContext(HomeContext);
 
   const query = router.query;
-  console.log(`Query: ${query.slug}`)
+  console.log(`Query: ${query.slug}`);
 
   useEffect(() => {
     let myInfo = [];
@@ -54,8 +54,10 @@ export default function Home() {
       <div className="px-3 pt-24 sm:px-20 sm:pt-28 relative z-20">
         <div className="flex flex-wrap gap-2 justify-between items-center mb-7">
           <div>
-            <p className="text-white text-2xl font-bold">Providers</p>
-            <p className="text-white text-sm font-normal opacity-[.65] mt-1">
+            <p className="text-white text-2xl font-bold inter-font">
+              Providers
+            </p>
+            <p className="text-white text-sm font-normal opacity-[.65] mt-1 inter-font">
               Your current automated providers
             </p>
           </div>
@@ -64,7 +66,7 @@ export default function Home() {
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   aria-hidden="true"
-                  className="w-5 h-5 text-gray-300 dark:text-gray-400"
+                  className="w-5 h-5 text-[#586171] dark:text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,11 +81,11 @@ export default function Home() {
               <input
                 type="text"
                 id="provider-search"
-                className="bg-transparent h-[44px] border border-solid border-gray-300 text-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="bg-transparent h-[44px] border-[1.4px] border-solid border-[#586171] text-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white inter-font"
               />
             </div>
             <button
-              className="py-2.5 px-8 whitespace-nowrap text-base font-semibold text-white bg-link-color rounded-lg"
+              className="py-2.5 px-8 whitespace-nowrap text-base font-semibold text-white bg-link-color rounded-lg inter-font"
               onClick={(e) => setShowAddProviderDialog(true)}
             >
               Add Provider

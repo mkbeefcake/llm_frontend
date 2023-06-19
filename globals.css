@@ -9,9 +9,9 @@
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: #2a3345;
-    --background-end-rgb: #28313f;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: #2a3345;
+  --background-end-rgb: #28313f;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -319,7 +319,6 @@ textarea::placeholder {
   textarea::placeholder {
     font-style: italic;
   }
-  
 }
 
 #sidebar {
@@ -344,4 +343,23 @@ textarea::placeholder {
   #sidebar {
     --tw-translate-x: 0;
   }
+}
+
+.apple-braille-font {
+  font-family: Apple Braillie;
+}
+
+.inter-font {
+  font-family: inter;
+}
+
+@font-face {
+  font-family: Apple Braillie;
+  src: url(public/font/webfonts/Apple_Braille.ttf),
+    url(public/font/webfonts/Apple_Braille.woff);
+}
+
+@font-face {
+  font-family: inter;
+  src: url(public/font/webfonts/Inter-VariableFont.ttf);
 }
