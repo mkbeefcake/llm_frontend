@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useContext } from "react";
-import { HomeContext } from "../../../context/home/context/context";
+import { HomeContext } from "../../../context/home/context";
 
 export default function ProviderAvatar({ provider, index }) {
   const {

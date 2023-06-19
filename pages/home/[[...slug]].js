@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import HomeLayout from "./layout";
 import ProviderPanel from "./components/panels/providerpanel";
-import { HomeContext } from "../../context/home/context/context";
+import { HomeContext } from "../../context/home/context";
 import { useRouter } from "next/router";
 
 const homeGradientStyle = {
@@ -22,9 +22,12 @@ export default function Home() {
     let myInfo = [];
 
     myProviders?.providers?.map((provider, i) => {
-      let identifiers = {}
-      let statusBots = {}
-      if (myProviders.my_providers && myProviders.my_providers[provider?.provider]) {
+      let identifiers = {};
+      let statusBots = {};
+      if (
+        myProviders.my_providers &&
+        myProviders.my_providers[provider?.provider]
+      ) {
         identifiers = myProviders.my_providers[provider?.provider];
       }
 
@@ -44,7 +47,7 @@ export default function Home() {
         className="absolute w-[43vw] h-[43vw] top-[-5vw] right-[42vw] opacity-[.15] z-10"
         style={homeGradientStyle}
       ></div>
-      <div className="px-3 pt-24 sm:px-20 sm:pt-28">
+      <div className="px-3 pt-24 sm:px-20 sm:pt-28 relative z-20">
         <div className="flex flex-wrap gap-2 justify-between items-center mb-7">
           <div>
             <p className="text-white text-2xl font-bold">Providers</p>

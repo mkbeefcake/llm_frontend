@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Image from "next/image";
-import { HomeContext } from "../../../../context/home/context/context";
+import { HomeContext } from "../../../../context/home/context";
 
 export default function AddProviderNameDialog({}) {
   const {

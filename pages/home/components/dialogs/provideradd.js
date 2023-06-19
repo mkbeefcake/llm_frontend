@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ProviderAvatar from "../provideravatar";
-import { HomeContext } from "../../../../context/home/context/context";
+import { HomeContext } from "../../../../context/home/context";
 
 export default function AddProviderDialog({}) {
   const { myProviders, showAddProviderDialog, setShowAddProviderDialog } =
@@ -71,7 +71,7 @@ export default function AddProviderDialog({}) {
               <div className="sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2 sm:text-base font-medium sm:font-semibold text-white hover:bg-blue-700 text-sm"
+                  className="primary-button w-full rounded-lg border border-transparent shadow-sm px-4 py-2.5 sm:text-base font-medium sm:font-semibold text-white hover:bg-blue-700 text-sm"
                   onClick={() => setShowAddProviderDialog(false)}
                 >
                   Verify my account

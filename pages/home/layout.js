@@ -4,17 +4,17 @@ import useUser from "../../lib/useUser";
 import { useEffect, useState } from "react";
 
 import Sidebar from "./sidebar";
-import { HomeContextProvider } from "../../context/home/context/provider";
-import { HomeContext } from "../../context/home/context/context";
-import { TEMPORARY_REDIRECT_STATUS } from "next/dist/shared/lib/constants";
+import { HomeContextProvider } from "../../context/home/provider";
+import { HomeContext } from "../../context/home/context";
 import AddProviderDialog from "./components/dialogs/provideradd";
 import AddProviderNameDialog from "./components/dialogs/providername";
+// import AuthorizeProviderDialog from "./components/dialogs/providerauthorize";
+// import SuccessProviderDialog from "./components/dialogs/providersuccess";
+import AddPaymentDialog from "pages/billing/components/dialog/paymentadd";
 
 export default function HomeLayout({ children }) {
   const router = useRouter();
   const { user } = useUser({});
-
-  const { myProviders, onUpdateScreen } = useContext(HomeContext);
 
   useEffect(() => {
     if (user !== undefined && user.isLoggedIn === false) {
@@ -22,18 +22,11 @@ export default function HomeLayout({ children }) {
     }
   }, [user, router]);
 
-  // const childrenWithProps = React.Children.map(children, child => {
-  //     if (React.isValidElement(child)) {
-  //         return React.cloneElement(child, { myProviders, onUpdateScreen})
-  //     }
-  //     return child
-  // })
-
   return (
     <HomeContextProvider>
       <div className="relative min-h-screen md:flex">
         <input type="checkbox" id="menu-open" className="hidden" />
-        <header className="bg-gray-800 flex justify-between md:hidden w-full fixed top-0 z-20">
+        <header className="bg-gray-800 flex justify-between md:hidden w-full fixed top-0 z-30">
           <p className="p-4 text-white font-bold whitespace-nowrap truncate">
             Navigation
           </p>
@@ -81,6 +74,9 @@ export default function HomeLayout({ children }) {
       </div>
       <AddProviderDialog />
       <AddProviderNameDialog />
+      {/* <AuthorizeProviderDialog /> */}
+      {/* <SuccessProviderDialog /> */}
+      <AddPaymentDialog />
     </HomeContextProvider>
   );
 }

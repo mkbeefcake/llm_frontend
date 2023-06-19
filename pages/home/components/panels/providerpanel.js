@@ -1,9 +1,4 @@
-import { useEffect, useState } from "react";
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from "@material-tailwind/react";
+import { useState, useEffect } from "react";
 import ProviderCard from "../providercard";
 
 export default function ProviderPanel({
@@ -11,59 +6,70 @@ export default function ProviderPanel({
   identifiers,
   statusBots,
   index,
-  defaultOpen
+  defaultOpen,
 }) {
-
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setOpen(defaultOpen)
-  }, [defaultOpen])
+    setOpen(defaultOpen);
+  }, [defaultOpen]);
 
-  const handleOpen = () => {
+  const handleProvidersAccordion = () => {
     setOpen(!open);
+    document
+      .getElementById(`providers_accordion_icon_${index}`)
+      .classList.toggle("rotate-[-180deg]");
   };
 
-  const Icon = ({ open }) => {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className={`${open ? "rotate-180" : ""} h-5 w-5 transition-transform`}
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    );
-  };
   return (
-    <Accordion
-      className="bg-input-color rounded-2xl text-white px-6 py-1 mb-5 z-20"
-      open={open}
-      icon={<Icon open={open} />}
-    >
-      <AccordionHeader className="font-bold text-lg" onClick={handleOpen}>
-        {provider?.provider_description}
-      </AccordionHeader>
-      <AccordionBody className="pb-0 pt-3.5 overflow-visible">
-        {identifiers &&
-          Object.keys(identifiers).map((identifierName, i) => (
-            <ProviderCard
-              key={i}
-              identifierName={identifierName}
-              provider={provider}
-              identifier={identifiers[identifierName]}
-              statusBot={statusBots[identifierName]}
-              iconUrl={
-                provider.provider_icon_url
-                  ? provider.provider_icon_url
-                  : "/icons8-bot-64.png"
-              }
-            />
-          ))}
-      </AccordionBody>
-    </Accordion>
+    <div className="bg-input-color rounded-2xl px-6 py-1 pb-5 mb-5">
+      <button
+        type="button"
+        className="text-white font-bold text-lg py-4 w-full justify-between inline-flex items-center"
+        onClick={handleProvidersAccordion}
+      >
+        <p className="w-[80%] text-left truncate">
+          {provider?.provider_description}
+        </p>
+        <svg
+          id={`providers_accordion_icon_${index}`}
+          className={`w-4 h-4 ml-2 transition-transform duration-200 ease-in-out ${
+            open ? "rotate-[-180deg]" : "rotate-0"
+          }`}
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
+      {open && (
+        <div>
+          {identifiers &&
+            Object.keys(identifiers).map((identifierName, i) => (
+              <ProviderCard
+                key={i}
+                index={i}
+                identifierName={identifierName}
+                provider={provider}
+                identifier={identifiers[identifierName]}
+                statusBot={statusBots[identifierName]}
+                iconUrl={
+                  provider.provider_icon_url
+                    ? provider.provider_icon_url
+                    : "/icons8-bot-64.png"
+                }
+              />
+            ))}
+        </div>
+      )}
+    </div>
   );
 }
