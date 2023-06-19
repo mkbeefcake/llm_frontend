@@ -62,7 +62,7 @@ export default function Home() {
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   aria-hidden="true"
-                  className="w-5 h-5 text-gray-300 dark:text-gray-400"
+                  className="w-5 h-5 text-[#586171] dark:text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export default function Home() {
               <input
                 type="text"
                 id="provider-search"
-                className="bg-transparent h-[44px] border border-solid border-gray-300 text-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white inter-font"
+                className="bg-transparent h-[44px] border-[1.4px] border-solid border-[#586171] text-gray-300 text-sm rounded-lg block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white inter-font"
               />
             </div>
             <button

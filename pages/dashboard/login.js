@@ -65,7 +65,7 @@ export default function Login() {
         <input
           type="email"
           id="email"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-10 inter-font"
+          className="bg-input-color text-white placeholder:text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-10 inter-font"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +74,7 @@ export default function Login() {
         <input
           type="password"
           id="password"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
+          className="bg-input-color text-white placeholder:text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -104,7 +104,7 @@ export default function Login() {
           </span>
         </button>
         <div className="mt-10 flex justify-center">
-          <p className="text-neutral-400 font-normal text-sm inter-font">
+          <p className="text-[#A7A7A7] font-normal text-sm inter-font">
             Don&apos;t have an account?
           </p>
           <button

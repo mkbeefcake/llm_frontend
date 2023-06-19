@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { HomeContext } from "../../context/home/context";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import ProviderLink from "./components/providerlink";
 
 export default function Sidebar() {
@@ -69,14 +69,22 @@ export default function Sidebar() {
                 <span className="mr-[23px]">
                   <Image
                     id="dashboard_icon"
-                    src="/dashboard_icon.png"
+                    src={`${
+                      router.route === "/dashboard"
+                        ? "/dashboard_active_icon.png"
+                        : "/dashboard_icon.png"
+                    }`}
                     alt="Dashboard"
                     width={18}
                     height={18}
                     draggable="false"
                   />
                 </span>
-                <span className="opacity-[.65] text-lg font-normal inter-font">
+                <span
+                  className={`${
+                    router.route === "/dashboard" ? "" : "opacity-[.65]"
+                  } text-lg font-normal inter-font`}
+                >
                   Dashboard
                 </span>
               </a>
@@ -91,13 +99,21 @@ export default function Sidebar() {
                 <Image
                   className="mr-[23px]"
                   id="activity_icon"
-                  src="/billing_icon.png"
+                  src={`${
+                    router.route === "/billing"
+                      ? "/billing_active_icon.png"
+                      : "/billing_icon.png"
+                  }`}
                   alt="Activity"
                   width={18}
                   height={18}
                   draggable="false"
                 />
-                <span className="opacity-[.65] text-lg font-normal inter-font">
+                <span
+                  className={`${
+                    router.route === "/billing" ? "" : "opacity-[.65]"
+                  } text-lg font-normal inter-font`}
+                >
                   Billing
                 </span>
               </a>

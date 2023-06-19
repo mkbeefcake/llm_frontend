@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function ProviderLink({ provider, count }) {
+  const router = useRouter();
+
   return (
     <li className="mb-4">
       <Link
@@ -22,7 +25,13 @@ export default function ProviderLink({ provider, count }) {
             draggable="false"
           />
         </span>
-        <span className="opacity-[.65] text-lg font-normal inter-font">
+        <span
+          className={`${
+            router.query && router.query.slug?.[0] === provider.provider
+              ? ""
+              : "opacity-[.65]"
+          } text-lg font-normal inter-font`}
+        >
           {provider?.short_name} {count > 0 && `(${count})`}
         </span>
         <span className="ml-2.5">

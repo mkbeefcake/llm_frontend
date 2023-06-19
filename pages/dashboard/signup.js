@@ -66,7 +66,7 @@ export default function Signup() {
         <input
           type="text"
           id="name"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-10 inter-font"
+          className="bg-input-color text-white placeholder:text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-10 inter-font"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -75,7 +75,7 @@ export default function Signup() {
         <input
           type="email"
           id="email"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
+          className="bg-input-color text-white placeholder:text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -84,13 +84,13 @@ export default function Signup() {
         <input
           type="password"
           id="password"
-          className="bg-input-color text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
+          className="bg-input-color text-white placeholder:text-white font-normal text-base rounded-lg block w-full px-6 py-2.5 mt-3.5 inter-font"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <p className="mt-3.5 text-left text-neutral-400 font-normal text-sm inter-font">
+        <p className="mt-3.5 text-left text-[#9FA4AB] font-normal text-sm inter-font">
           Must be at least 8 characters.
         </p>
         <hr className="my-10 h-px border-t-0 bg-devider-color" />
@@ -117,7 +117,7 @@ export default function Signup() {
           </span>
         </button>
         <div className="mt-10 flex justify-center">
-          <p className="text-neutral-400 font-normal text-sm inter-font">
+          <p className="text-[#A7A7A7] font-normal text-sm inter-font">
             Already have an account?
           </p>
           <button
