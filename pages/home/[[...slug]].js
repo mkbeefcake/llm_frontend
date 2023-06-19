@@ -29,13 +29,17 @@ export default function Home() {
         myProviders.my_providers[provider?.provider]
       ) {
         identifiers = myProviders.my_providers[provider?.provider];
+        provider.count = Object.keys(
+          myProviders.my_providers[provider?.provider]
+        ).length;
       }
 
       if (myProviders.status_autobot[provider?.provider]) {
         statusBots = myProviders.status_autobot[provider?.provider];
       }
 
-      myInfo.push({ provider, identifiers, statusBots });
+      if (provider.count)
+        myInfo.push({ provider, identifiers, statusBots });
     });
 
     setProviders(myInfo);

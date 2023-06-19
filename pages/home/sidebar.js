@@ -23,7 +23,8 @@ export default function Sidebar() {
         ).length;
       }
 
-      myInfo.push(provider);
+      if (provider.count)
+        myInfo.push(provider);
     });
 
     setProviders(myInfo);
