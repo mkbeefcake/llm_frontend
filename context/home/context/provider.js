@@ -6,6 +6,8 @@ import { useCustomOAuth } from "../../../lib/oauth/useOAuth";
 export const HomeContextProvider = ({ children }) => {
   const [showAddProviderDialog, setShowAddProviderDialog] = useState(false);
   const [showProviderNameDialog, setShowProviderNameDialog] = useState(false);
+  const [showAddPaymentMethodDialog, setShowAddPaymentMethodDialog] =
+    useState(false);
   const [myProviders, setMyProviders] = useState();
   const [selectedProvider, setSelectedProvider] = useState();
 
@@ -115,6 +117,8 @@ export const HomeContextProvider = ({ children }) => {
     setShowAddProviderDialog,
     showProviderNameDialog,
     setShowProviderNameDialog,
+    showAddPaymentMethodDialog,
+    setShowAddPaymentMethodDialog,
     myProviders,
     addNewProvider,
     onUpdateScreen,
