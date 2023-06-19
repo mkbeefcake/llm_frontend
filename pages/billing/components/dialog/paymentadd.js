@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useContext } from "react";
 import { HomeContext } from "../../../../context/home/context";
-import { countries } from "../../country";
+import countries from "../../../../lib/country";
 
 export default function AddPaymentDialog({}) {
   const { showAddPaymentMethodDialog, setShowAddPaymentMethodDialog } =

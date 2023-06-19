@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState, useContext } from "react";
 import { HomeContext } from "../../context/home/context";
 import InvoiceCard from "./components/invoicecard";
-import { countries } from "./country";
+import countries from "../../lib/country";
 
 const homeGradientStyle = {
   background:
