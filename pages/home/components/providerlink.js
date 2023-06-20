@@ -27,7 +27,7 @@ export default function ProviderLink({ provider, count }) {
         </span>
         <span
           className={`${
-            router.query && router.query.slug?.[0] === provider.provider
+            router.query && router.query.slug?.[0] === provider?.provider
               ? ""
               : "opacity-[.65]"
           } text-lg font-normal inter-font`}
