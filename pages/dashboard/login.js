@@ -5,8 +5,14 @@ import useUser from "../../lib/useUser";
 import DashboardLayout from "./layout";
 import Link from "next/link";
 import Image from "next/image";
+import { getAuth, signInWithPopup, GoogleAuthProvider, getIdToken } from 'firebase/auth'
+import { firebaseapp } from "../../lib/firebase";
 
 export default function Login() {
+
+  const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
+
   const router = useRouter();
   const { mutateUser, user } = useUser({});
 
@@ -36,6 +42,31 @@ export default function Login() {
       console.log(`[Login Screen]: ${err}`);
     }
   };
+
+  const onGoogleLogin = async (e) => {
+    signInWithPopup(auth, googleProvider)
+      .then(async (result) => {
+        const user = result.user;
+        const idToken = await getIdToken(user);
+
+        try {
+          debugger
+          const _user = await fetchJson("/api/loginWithToken", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: idToken }),
+          });
+          mutateUser(_user);    
+        }
+        catch (err) {
+          console.log(`[Login Screen]: ${err}`)
+        }
+
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+  }
 
   const onSignup = (e) => {
     router.replace("/dashboard/signup");
@@ -91,6 +122,7 @@ export default function Login() {
         <button
           type="button"
           className="bg-white rounded-lg inline-flex items-center justify-center w-full py-2.5 mt-4"
+          onClick={onGoogleLogin}
         >
           <Image
             className="w-5 h-5"
