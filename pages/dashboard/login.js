@@ -5,8 +5,7 @@ import useUser from "../../lib/useUser";
 import DashboardLayout from "./layout";
 import Link from "next/link";
 import Image from "next/image";
-import { getAuth, signInWithPopup, GoogleAuthProvider, getIdToken } from 'firebase/auth'
-import { firebaseapp } from "../../lib/firebase";
+import { getAuth, signInWithPopup, GoogleAuthProvider, getIdToken, sendPasswordResetEmail } from 'firebase/auth'
 
 export default function Login() {
 
@@ -65,6 +64,21 @@ export default function Login() {
       })
       .catch((err) => {
         alert(err.message);
+      })
+  }
+
+  const onForgetPassword = (e) => {
+    if (email == "") {
+      alert("Please input email field");
+      return;
+    }
+
+    sendPasswordResetEmail(auth, email)    
+      .then(() => {
+        alert(`Success: sent reset password link`)
+      })
+      .catch((err) => {
+        alert(`Failure: couldn't send reset password link. ${err.message}`)
       })
   }
 
@@ -146,12 +160,12 @@ export default function Login() {
             Sign up
           </button>
         </div>
-        <Link
-          href="/dashboard/forgotpassword"
+        <button
           className="mt-3 text-link-color font-semibold text-sm inter-font"
+          onClick={onForgetPassword}
         >
           Forgot password
-        </Link>
+        </button>
       </div>
     </div>
   );

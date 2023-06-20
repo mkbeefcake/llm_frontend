@@ -5,7 +5,6 @@ import useUser from "../../lib/useUser";
 import DashboardLayout from "./layout";
 import Image from "next/image";
 import { getAuth, signInWithPopup, GoogleAuthProvider, getIdToken } from 'firebase/auth'
-import { firebaseapp } from "../../lib/firebase";
 
 export default function Signup() {
   const auth = getAuth();

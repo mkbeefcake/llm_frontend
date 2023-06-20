@@ -3,10 +3,14 @@ import { Inter } from "next/font/google";
 import HomeLayout from "./home/layout";
 import { SWRConfig } from "swr";
 import fetchJSON from "../lib/fetchJson";
+import { initializeFirebaseApp } from '../lib/firebase'
 
 const inter = Inter({ weight: "600", subsets: ["latin"] });
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) { 
+
+  initializeFirebaseApp();
+  
   return (
     <SWRConfig
       value={{
