@@ -4,8 +4,13 @@ import { useRouter } from "next/navigation";
 import useUser from "../../lib/useUser";
 import DashboardLayout from "./layout";
 import Image from "next/image";
+import { getAuth, signInWithPopup, GoogleAuthProvider, getIdToken } from 'firebase/auth'
+import { firebaseapp } from "../../lib/firebase";
 
 export default function Signup() {
+  const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
+
   const router = useRouter();
   const { mutateUser, user } = useUser({});
 
@@ -42,6 +47,32 @@ export default function Signup() {
   const onLogin = (e) => {
     router.replace("/dashboard/login");
   };
+
+  const onGoogleLogin = async (e) => {
+    signInWithPopup(auth, googleProvider)
+      .then(async (result) => {
+        const user = result.user;
+        const idToken = await getIdToken(user);
+
+        try {
+          debugger
+          const _user = await fetchJson("/api/loginWithToken", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: idToken }),
+          });
+          mutateUser(_user);    
+        }
+        catch (err) {
+          console.log(`[Login Screen]: ${err}`)
+        }
+
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+  }
+
   return (
     <div className="lg:w-1/2 sm:w-2/3 w-11/12 bg-black-gray p-8 rounded-3xl mx-auto mb-10 md:mb-0">
       <div className="flex justify-between items-center">
@@ -104,6 +135,7 @@ export default function Signup() {
         <button
           type="button"
           className="bg-white rounded-lg inline-flex items-center justify-center w-full py-2.5 mt-4"
+          onClick={onGoogleLogin}
         >
           <Image
             className="w-5 h-5"
