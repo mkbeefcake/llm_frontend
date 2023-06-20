@@ -3,10 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import { HomeContext } from "../../context/home/context";
 import { useRouter } from "next/router";
 import ProviderLink from "./components/providerlink";
+import useUser from '../../lib/useUser';
 
 export default function Sidebar() {
   const [providers, setProviders] = useState([]);
   const { myProviders, setShowAddProviderDialog } = useContext(HomeContext);
+  const { user } = useUser({});
 
   const router = useRouter();
 
@@ -168,10 +170,10 @@ export default function Sidebar() {
           />
           <div>
             <span className="block font-normal text-white text-sm truncate max-w-[100px] apple-braille-font">
-              User name
+              Username
             </span>
             <span className="block font-normal text-xs text-[#928E8A] truncate max-w-[100px] apple-braille-font">
-              user@gmail.com
+              {user?.email}
             </span>
           </div>
         </div>

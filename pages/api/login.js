@@ -20,8 +20,20 @@ export default async function login(req, res) {
       },
       body: formBody
     });
+    
+    var user = { isLoggedIn: true, access_token, token_type};
 
-    const user = { isLoggedIn: true, access_token, token_type };
+    const _url = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") + '/users/me'
+    const response = await fetchJson(_url, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+        'Authorization': token_type + ' ' + access_token
+      }
+    });
+    if (response && response.email)
+      user.email = response.email
+    
     setSession(res, user);
     res.json({'ok': 'Success', 'data': user});
   } 

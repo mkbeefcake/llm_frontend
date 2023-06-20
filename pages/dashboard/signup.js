@@ -16,6 +16,7 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (user && user.isLoggedIn === true) {
@@ -24,12 +25,12 @@ export default function Signup() {
   }, [user, router]);
 
   const onSignup = async (e) => {
-    debugger;
     if (email == "" || password == "") {
       alert("Please input at least email and password");
       return;
     }
 
+    setIsLoading(true);
     try {
       const message = await fetchJson("/api/signup", {
         method: "POST",
@@ -37,10 +38,19 @@ export default function Signup() {
         body: JSON.stringify({ email, password }),
       });
       alert(message);
-      onLogin();
+
+      const _user = await fetchJson("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      mutateUser(_user);  
+
     } catch (err) {
       console.log(`[Signup Screen]: ${err}`);
+      alert(`Error: Couldn't create an account`)
     }
+    setIsLoading(false);
   };
 
   const onLogin = (e) => {
@@ -64,11 +74,12 @@ export default function Signup() {
         }
         catch (err) {
           console.log(`[Login Screen]: ${err}`)
+          alert(`Error: Couldn't create an account with google login`)
         }
 
       })
       .catch((err) => {
-        alert(err.message);
+        alert(`Error: ${err.message}`);
       })
   }
 
@@ -129,7 +140,19 @@ export default function Signup() {
           className="primary-button rounded-lg text-center text-white font-semibold text-base w-full py-2.5 inter-font"
           onClick={onSignup}
         >
-          Get Started
+          <div className="flex justify-center">
+            { 
+              isLoading && 
+              <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg>          
+            }
+            Get Started
+          </div>
         </button>
         <button
           type="button"
