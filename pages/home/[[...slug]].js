@@ -16,7 +16,6 @@ export default function Home() {
   const { myProviders, setShowAddProviderDialog } = useContext(HomeContext);
 
   const query = router.query;
-  console.log(`Query: ${query.slug}`);
 
   useEffect(() => {
     let myInfo = [];

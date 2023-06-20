@@ -15,7 +15,7 @@ export default async function getMyProviders(req, res) {
       }
     });
     
-    console.log(`[GetMyProviders] ${JSON.stringify(response)}`)
+    // console.log(`[GetMyProviders] ${JSON.stringify(response)}`)
     res.json({'ok': 'Success', 'data': response});
   } 
   catch (error) {
