@@ -10,7 +10,7 @@ export default function InvoiceCard({ id }) {
       <div className="flex items-center">
         <Image
           id="invoice"
-          src="/invoice.png"
+          src="/invoice.svg"
           alt="Invoice"
           width={53}
           height={53}

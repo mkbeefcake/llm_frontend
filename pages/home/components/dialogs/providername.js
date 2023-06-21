@@ -86,7 +86,7 @@ export default function AddProviderNameDialog({}) {
                     height={50}
                   />
                   <input
-                    className="rounded-lg p-2 w-fit sm:w-72 text-white inter-font"
+                    className="rounded-lg p-2 ml-2 w-fit sm:w-72 text-white inter-font"
                     value={identiferName}
                     onChange={(e) => setIdentiferName(e.target.value)}
                     required

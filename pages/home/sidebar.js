@@ -50,7 +50,7 @@ export default function Sidebar() {
         >
           <Image
             id="logo_icon"
-            src="/bot_icon.png"
+            src="/icons8-bot-64.png"
             alt="Logo"
             width={24}
             height={24}
@@ -65,7 +65,7 @@ export default function Sidebar() {
             <li
               className="mb-4"
               onClick={() => {
-                router.replace("/dashboard");
+                router.replace("/home/dashboard");
               }}
             >
               <a className="flex cursor-pointer items-center truncate text-white">
@@ -143,7 +143,7 @@ export default function Sidebar() {
                 <Image
                   className="mr-5"
                   id="add_provider_icon"
-                  src="/addprovider_icon.png"
+                  src="/addprovider_icon.svg"
                   alt="addProvider"
                   width={24}
                   height={24}
@@ -162,7 +162,7 @@ export default function Sidebar() {
           <Image
             className="mr-3"
             id="avatar"
-            src="/avatar.png"
+            src="/avatar.svg"
             alt="Avatar"
             width={39}
             height={39}

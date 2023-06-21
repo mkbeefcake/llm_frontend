@@ -192,7 +192,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="bot"
-                      src="/bot_icon.png"
+                      src="/icons8-bot-64.png"
                       alt="bot"
                       width={16}
                       height={16}
@@ -211,7 +211,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="gmail"
-                      src="/gmail_icon.png"
+                      src="/gmail.svg"
                       alt="Gmail"
                       width={16}
                       height={16}
@@ -230,7 +230,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="twitter"
-                      src="/twitter_icon.png"
+                      src="/twitter_icon.svg"
                       alt="Twitter"
                       width={16}
                       height={16}
@@ -249,7 +249,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="facebook"
-                      src="/facebook_icon.png"
+                      src="/facebook_icon.svg"
                       alt="Facebook"
                       width={16}
                       height={16}
@@ -268,7 +268,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="linkedin"
-                      src="/linkedin_icon.png"
+                      src="/linkedin_icon.svg"
                       alt="LinkedIn"
                       width={16}
                       height={16}
@@ -340,7 +340,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="bot"
-                      src="/bot_icon.png"
+                      src="/icons8-bot-64.png"
                       alt="bot"
                       width={16}
                       height={16}
@@ -359,7 +359,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="avatar"
-                      src="/avatar.png"
+                      src="/avatar.svg"
                       alt="Avatar"
                       width={16}
                       height={16}
@@ -378,7 +378,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-4 px-4 py-2 hover:bg-gray-600 cursor-pointer">
                     <Image
                       id="avatar1"
-                      src="/avatar1.png"
+                      src="/avatar.svg"
                       alt="Avatar1"
                       width={16}
                       height={16}

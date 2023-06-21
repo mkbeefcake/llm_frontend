@@ -12,7 +12,7 @@ export default function PaymentMethodCard({ info }) {
       <div className="flex flex-wrap items-center gap-[23px]">
         <Image
           id={info}
-          src={`/${info}.png`}
+          src={`/${info}.svg`}
           alt={info}
           width={78}
           height={42}

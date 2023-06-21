@@ -98,7 +98,6 @@ export const HomeContextProvider = ({ children }) => {
   const getMyProviders = async () => {
     try {
       const response = await fetchJson("/api/getMyProviders");
-      console.log(`[HomeContext]: ${JSON.stringify(response)}`);
       setMyProviders(response);
     } catch (err) {
       console.log(`[HomeContext]: ${err}`);

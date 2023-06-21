@@ -28,7 +28,7 @@ export default function SuccessProviderDialog({}) {
                 <div className="rounded-full w-[50px] h-[50px] flex justify-center items-center active:shadow-lg bg-[#635EE3]">
                   <Image
                     id="avartar"
-                    src="/bot_icon.png"
+                    src="/icons8-bot-64.png"
                     alt="boticon"
                     width={24}
                     height={24}
@@ -46,7 +46,7 @@ export default function SuccessProviderDialog({}) {
                 <div className="rounded-full w-[50px] h-[50px] flex justify-center items-center active:shadow-lg bg-input-color">
                   <Image
                     id="gmail"
-                    src="/gmail_icon.png"
+                    src="/gmail.svg"
                     alt="gmailicon"
                     width={24}
                     height={24}
