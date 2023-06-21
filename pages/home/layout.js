@@ -18,7 +18,7 @@ export default function HomeLayout({ children }) {
   const { user } = useUser({});
 
   useEffect(() => {
-    if (user !== undefined && user.isLoggedIn === false) {
+    if (user === undefined || user.isLoggedIn === false) {
       router.replace("/dashboard/login");
     }
   }, [user, router]);
