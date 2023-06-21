@@ -107,6 +107,7 @@ export default function ProviderCard({
 
   const onDeleteIdentifier = () => {
     onShowDropdown();
+    setShowLoadingDialog(true);
     deleteProvider(provider, identifierName);
   };
 

@@ -4,12 +4,12 @@ export async function middleware(req) {
 
   let cookie = req.cookies.get('session')
 
-  if (cookie && cookie != "") {
-    console.log(`[Middleware]: ${cookie}, ${req.nextUrl}`)
+  if (req.nextUrl.pathname.includes(".svg") || req.nextUrl.pathname.includes(".png"))
+    return NextResponse.next()
+  else if (cookie && cookie["value"] != "") {
+    console.log(`[Middleware]: ${cookie["value"]}, ${req.nextUrl.pathname}`)
   	return NextResponse.next();
   }
-  else if (req.url.includes(".svg") || req.url.includes(".png"))
-    return NextResponse.next()
   else {
     console.log(`[Middleware]: Redirect ${JSON.stringify(cookie)}, ${req.nextUrl}`)
     return NextResponse.redirect(new URL('/dashboard/login', req.nextUrl))

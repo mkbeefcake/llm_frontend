@@ -9,6 +9,7 @@ export default function AddProviderNameDialog({}) {
     setShowAddProviderDialog,
     showProviderNameDialog,
     setShowProviderNameDialog,
+    setShowLoadingDialog
   } = useContext(HomeContext);
 
   const [identiferName, setIdentiferName] = useState("");
@@ -18,6 +19,7 @@ export default function AddProviderNameDialog({}) {
       alert("Please input provider name");
       return;
     }
+    setShowLoadingDialog(true);
     addNewProvider(selectedProvider, identiferName);
     setShowProviderNameDialog(false);
   };
