@@ -28,6 +28,6 @@ export const config = {
      * - login page
      * - signup page
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|fonts|dashboard/login|dashboard/signup|dashboard/logout).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|fonts|dashboard/login|dashboard/signup|dashboard/logout|callback/oauth).*)',
   ],
 }
