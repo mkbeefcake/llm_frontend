@@ -3,7 +3,10 @@ import { NextResponse } from 'next/server';
 export async function middleware(req) {
 
   let cookie = req.cookies.get('session')
-  if (cookie)
+
+  console.log(`[Middleware]: ${cookie}, ${req.url}`)
+
+  if (cookie && cookie != "")
   	return NextResponse.next();
   else 
     return NextResponse.redirect(new URL('/dashboard/login', req.url))

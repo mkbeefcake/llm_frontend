@@ -8,7 +8,7 @@ export default function Logout() {
   useEffect(() => {
     const async_task = async () => {
       const response = await fetchJson("/api/logout");
-      router.replace("/dashboard/login");
+      router.replace("/home");
     };
     async_task();
   }, [router]);
