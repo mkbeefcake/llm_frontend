@@ -9,7 +9,7 @@ export default function Logout() {
     const async_task = async () => {
       const response = await fetchJson("/api/logout");
       await new Promise(f => setTimeout(f, 2000));
-      router.replace("/home");
+      router.replace("/dashboard/login");
     };
     async_task();
   }, [router]);
