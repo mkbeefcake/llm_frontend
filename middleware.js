@@ -4,7 +4,7 @@ export async function middleware(req) {
 
   let cookie = req.cookies.get('session')
 
-  console.log(`[Middleware]: ${cookie}, ${req.url}`)
+  console.log(`[Middleware]: ${JSON.stringify(cookie)}, ${req.url}`)
 
   if (cookie && cookie != "")
   	return NextResponse.next();
