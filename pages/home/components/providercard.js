@@ -19,7 +19,7 @@ export default function ProviderCard({
   index,
 }) {
   const router = useRouter();
-  const { onUpdateScreen, updateIdentifierInfo, deleteProvider } =
+  const { onUpdateScreen, updateIdentifierInfo, deleteProvider, setShowLoadingDialog } =
     useContext(HomeContext);
   const [showRules, setShowRules] = useState(false);
   const [rules, setRules] = useState("");
@@ -40,7 +40,7 @@ export default function ProviderCard({
         }),
       });
       console.log(`onStartAutoBot: ${JSON.stringify(response)}`);
-      onUpdateScreen();
+      await onUpdateScreen();
     } catch (err) {
       console.log(`onStartAutoBot: ${err}`);
     }
@@ -57,17 +57,21 @@ export default function ProviderCard({
         }),
       });
       console.log(`onStopAutoBot: ${JSON.stringify(response)}`);
-      onUpdateScreen();
+      await onUpdateScreen();
     } catch (err) {
       console.log(`onStartAutoBot: ${err}`);
     }
   };
 
   const onStatusChange = (e) => {
+    e.stopPropagation()
+    setShowLoadingDialog(true);
+
     if (statusBot == true) {
       onStopAutoBot();
       statusBot = false;
-    } else {
+    } 
+    else {
       // if (rules == "") {
       //   alert("Please add new rule for this bot");
       //   return;

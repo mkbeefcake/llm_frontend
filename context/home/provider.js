@@ -10,6 +10,7 @@ export const HomeContextProvider = ({ children }) => {
     useState(false);
   const [myProviders, setMyProviders] = useState();
   const [selectedProvider, setSelectedProvider] = useState();
+  const [showLoadingDialog, setShowLoadingDialog] = useState(false);
 
   const { customOAuthHandler } = useCustomOAuth({
     onSuccess: async (data) => {
@@ -104,8 +105,9 @@ export const HomeContextProvider = ({ children }) => {
     }
   };
 
-  const onUpdateScreen = () => {
-    getMyProviders();
+  const onUpdateScreen = async () => {
+    await getMyProviders();
+    setShowLoadingDialog(false)
   };
 
   const getIdentifierInfo = (providerName, identifierName) => {
@@ -127,6 +129,8 @@ export const HomeContextProvider = ({ children }) => {
     updateIdentifierInfo,
     getIdentifierInfo,
     deleteProvider,
+    showLoadingDialog,
+    setShowLoadingDialog,
   };
 
   return <HomeContext.Provider value={value}>{children}</HomeContext.Provider>;

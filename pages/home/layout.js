@@ -11,6 +11,7 @@ import AddProviderNameDialog from "./components/dialogs/providername";
 // import AuthorizeProviderDialog from "./components/dialogs/providerauthorize";
 // import SuccessProviderDialog from "./components/dialogs/providersuccess";
 import AddPaymentDialog from "pages/billing/components/dialog/paymentadd";
+import LoadingDialog from "./components/dialogs/loading";
 
 export default function HomeLayout({ children }) {
   const router = useRouter();
@@ -68,10 +69,11 @@ export default function HomeLayout({ children }) {
           </label>
         </header>
         <Sidebar />
-        <main id="content" className="flex-1">
+        <main id="content" className="flex-1">          
           {children}
         </main>
       </div>
+      <LoadingDialog />
       <AddProviderDialog />
       <AddProviderNameDialog />
       {/* <AuthorizeProviderDialog /> */}

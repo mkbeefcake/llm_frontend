@@ -9,10 +9,12 @@ export const HomeContext = createContext({
   setShowAddPaymentMethodDialog: () => {},
   myProviders: null,
   addNewProvider: () => {},
-  onUpdateScreen: () => {},
+  onUpdateScreen: async () => {},
   selectedProvider: null,
   setSelectedProvider: () => {},
   updateIdentifierInfo: () => {},
   getIdentifierInfo: () => {},
   deleteProvider: () => {},
+  showLoadingDialog: false,
+  setShowLoadingDialog: () => {}
 });

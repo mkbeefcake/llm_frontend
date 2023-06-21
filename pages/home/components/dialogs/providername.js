@@ -5,8 +5,8 @@ import { HomeContext } from "../../../../context/home/context";
 export default function AddProviderNameDialog({}) {
   const {
     selectedProvider,
-    setShowAddProviderDialog,
     addNewProvider,
+    setShowAddProviderDialog,
     showProviderNameDialog,
     setShowProviderNameDialog,
   } = useContext(HomeContext);
