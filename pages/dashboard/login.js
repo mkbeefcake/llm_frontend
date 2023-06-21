@@ -18,6 +18,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
 
   useEffect(() => {
     if (user && user.isLoggedIn === true) {
@@ -53,8 +54,8 @@ export default function Login() {
         const user = result.user;
         const idToken = await getIdToken(user);
 
+        setIsLoadingGoogle(true);
         try {
-          debugger
           const _user = await fetchJson("/api/loginWithToken", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -65,7 +66,7 @@ export default function Login() {
         catch (err) {
           console.log(`[Login Screen]: ${err}`)
         }
-
+        setIsLoadingGoogle(false);
       })
       .catch((err) => {
         alert(err.message);
@@ -155,16 +156,29 @@ export default function Login() {
           className="bg-white rounded-lg inline-flex items-center justify-center w-full py-2.5 mt-4"
           onClick={onGoogleLogin}
         >
-          <Image
-            className="w-5 h-5"
-            width={0}
-            height={0}
-            src="https://www.svgrepo.com/show/475656/google-color.svg"
-            alt="google logo"
-          />
-          <span className="text-[#344054] font-semibold text-base ml-3 inter-font">
-            Login with Google
-          </span>
+          <div className="flex justify-center">
+            { 
+              isLoadingGoogle && 
+              <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="blue" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg>          
+            }
+
+            <Image
+              className="w-5 h-5"
+              width={0}
+              height={0}
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="google logo"
+            />
+            <span className="text-[#344054] font-semibold text-base ml-3 inter-font">
+              Login with Google
+            </span>
+          </div>
         </button>
         <div className="mt-10 flex justify-center">
           <p className="text-[#A7A7A7] font-normal text-sm inter-font">

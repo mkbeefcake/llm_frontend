@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import fetchJson from "../../lib/fetchJson";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Logout() {
   const router = useRouter();
