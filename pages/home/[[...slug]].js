@@ -106,4 +106,8 @@ export default function Home() {
   );
 }
 
+// // disable SSR, to get window.opener
+// Home.getInitialProps = async() => {
+//   return {}
+// }
 Home.PageLayout = HomeLayout;
