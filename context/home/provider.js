@@ -14,6 +14,12 @@ export const HomeContextProvider = ({ children }) => {
 
   const { customOAuthHandler } = useCustomOAuth({
     onSuccess: async (data) => {
+
+      if (data == undefined) {
+        alert('User cancelled the authentcation')
+        return;
+      }
+
       try {
         const res = await fetchJson("/api/updateProviderInfo", {
           method: "POST",
