@@ -17,6 +17,7 @@ export const HomeContextProvider = ({ children }) => {
 
       if (data == undefined) {
         alert('User cancelled the authentcation')
+        onUpdateScreen();
         return;
       }
 
