@@ -40,10 +40,11 @@ export default function ProviderCard({
         }),
       });
       console.log(`onStartAutoBot: ${JSON.stringify(response)}`);
-      await onUpdateScreen();
     } catch (err) {
       console.log(`onStartAutoBot: ${err}`);
+      alert(`Error happened: ${err.reason}`)
     }
+    await onUpdateScreen();
   };
 
   const onStopAutoBot = async (e) => {
