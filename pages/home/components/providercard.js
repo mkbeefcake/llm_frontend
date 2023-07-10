@@ -36,7 +36,7 @@ export default function ProviderCard({
         body: JSON.stringify({
           provider: provider?.provider,
           identifierName: identifierName,
-          interval: 600,
+          interval: 10,
         }),
       });
       console.log(`onStartAutoBot: ${JSON.stringify(response)}`);
