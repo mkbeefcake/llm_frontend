@@ -13,7 +13,7 @@ export default function Logout() {
       signOut(getAuth());
 
       const response = await fetchJson("/api/logout");
-      await new Promise(f => setTimeout(f, 2000));
+      await new Promise(f => setTimeout(f, 500));
       router.replace("/");
     };
     async_task();
