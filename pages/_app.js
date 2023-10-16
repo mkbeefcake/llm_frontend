@@ -11,6 +11,7 @@ export default function MyApp({ Component, pageProps }) {
 
   initializeFirebaseApp();
   
+  
   return (
     <SWRConfig
       value={{
