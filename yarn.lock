@@ -618,6 +618,11 @@
     "hey-listen" "^1.0.8"
     "tslib" "^2.3.1"
 
+"@nangohq/frontend@^0.35.21":
+  "integrity" "sha512-c2Hdq/U5pqeEa3gpVerDZvTur82ERkJULlpV1PUKZfkTDqfgAupeRPKw1HXi2rCiq3gSplhBd29JTQd9ctOegQ=="
+  "resolved" "https://registry.npmjs.org/@nangohq/frontend/-/frontend-0.35.21.tgz"
+  "version" "0.35.21"
+
 "@next/env@13.4.4":
   "integrity" "sha512-q/y7VZj/9YpgzDe64Zi6rY1xPizx80JjlU2BTevlajtaE3w1LqweH1gGgxou2N7hdFosXHjGrI4OUvtFXXhGLg=="
   "resolved" "https://registry.npmjs.org/@next/env/-/env-13.4.4.tgz"
