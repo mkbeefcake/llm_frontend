@@ -9,7 +9,6 @@ export default function Logout() {
 
   useEffect(() => {
     const async_task = async () => {
-      debugger
       signOut(getAuth());
 
       const response = await fetchJson("/api/logout");
