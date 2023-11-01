@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { HomeContext } from "./context";
 import fetchJson from "../../lib/fetchJson";
 import { useCustomOAuth } from "../../lib/oauth/useOAuth";
+import Nango from '@nangohq/frontend'
 
 export const HomeContextProvider = ({ children }) => {
+  const nango = new Nango({ publicKey: `fe21a641-ea29-45ac-8d9e-0295cea675a2` })
+
   const [showAddProviderDialog, setShowAddProviderDialog] = useState(false);
   const [showProviderNameDialog, setShowProviderNameDialog] = useState(false);
   const [showAddPaymentMethodDialog, setShowAddPaymentMethodDialog] =
@@ -51,14 +54,30 @@ export const HomeContextProvider = ({ children }) => {
   const addNewProvider = (provider, identifierName) => {
     localStorage.setItem("identifier", identifierName);
 
-    const redirectUri = `${
-      typeof window === "object" && window.location.origin
-    }/callback/oauth`;
-    const url =
-      (process.env.NEXT_PUBLIC_BASE_URL ??
-        "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") +
-      `/providers/link_provider?provider_name=${provider?.provider}&redirect_url=${redirectUri}`;
-    customOAuthHandler(url);
+    if (provider?.provider_type === 'base') {
+      const redirectUri = `${
+        typeof window === "object" && window.location.origin
+      }/callback/oauth`;
+      const url =
+        (process.env.NEXT_PUBLIC_BASE_URL ??
+          "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") +
+        `/providers/link_provider?provider_name=${provider?.provider}&redirect_url=${redirectUri}`;
+      customOAuthHandler(url);
+    }
+    else if (provider?.provider_type === 'nango') {
+      nango.auth(provider?.provider_unique_key, identifierName)
+        .then(result => {
+          alert(`Success: ${JSON.stringify(result)}`)
+          onUpdateScreen();
+        })
+        .catch(err => {
+          alert(`Error: ${JSON.stringify(err)}`)
+          onUpdateScreen();
+        })
+    }
+    else {
+      alert(`Unknown Provider Type`)
+    }
   };
 
   const deleteProvider = async (provider, identifierName) => {
