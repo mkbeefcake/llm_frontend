@@ -55,20 +55,32 @@ export const HomeContextProvider = ({ children }) => {
     localStorage.setItem("identifier", identifierName);
 
     if (provider?.provider_type === 'base') {
-      const redirectUri = `${
-        typeof window === "object" && window.location.origin
-      }/callback/oauth`;
-      const url =
-        (process.env.NEXT_PUBLIC_BASE_URL ??
-          "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") +
-        `/providers/link_provider?provider_name=${provider?.provider}&redirect_url=${redirectUri}`;
+      // Link base type provider 
+      const redirectUri = `${typeof window === "object" && window.location.origin}/callback/oauth`;
+      const url = (process.env.NEXT_PUBLIC_BASE_URL ?? "https://chat-automation-387710-yix5m2x4pq-uc.a.run.app") + `/providers/link_provider?provider_name=${provider?.provider}&redirect_url=${redirectUri}`;
       customOAuthHandler(url);
     }
     else if (provider?.provider_type === 'nango') {
+      // Link nango type provider
       nango.auth(provider?.provider_unique_key, identifierName)
-        .then(result => {
-          alert(`Success: ${JSON.stringify(result)}`)
-          onUpdateScreen();
+        .then(async result => {
+          try {
+            const res = await fetchJson("/api/updateProviderInfo", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                provider: provider?.provider,
+                identifier: localStorage.getItem("identifier"),
+                social_info: result,
+              }),
+            });
+    
+            console.log(`[HomeProvider] : ${JSON.stringify(res)}`);
+            onUpdateScreen();
+          } catch (err) {
+            console.log(`[HomeProvider]: ${err}`);
+            onUpdateScreen();
+          }
         })
         .catch(err => {
           alert(`Error: ${JSON.stringify(err)}`)
